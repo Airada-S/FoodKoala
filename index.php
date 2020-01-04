@@ -8,7 +8,7 @@
 <body>
 <h1>Ai</h1>
     <?php
-    for($i= 1 ;$i<=5;$i++) {
+    for($i= 1 ;$i<=10;$i++) {
         echo '<i class="fas fa-star" style="font-size: 50px;color: gold"></i>';
     }
     ?>
