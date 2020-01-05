@@ -2,14 +2,15 @@
 session_start();
 require_once './ConnectDatabase.php';
 
-if($_SESSION['page'] == null){
+if(!isset($_SESSION['page'])){
     $_SESSION['page'] = 'null';
+}
+if($_SESSION['page'] == 'null'){
     $conn = new ConnectDB();
     $result = $conn->getAll();
 }
-
-if($_SESSION['status'] == null){
-
+if(!isset($_SESSION['status'])){
+    $_SESSION['status'] = 'null';
 }
 //session_destroy();
 
