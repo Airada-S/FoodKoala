@@ -7,20 +7,9 @@
     <title>index</title>
 </head>
 <body>
-<?php
-    $username = 'team';
-    $password = '';
-    $host = '10.31.2.10';
-    $database = "foodkoala2";
-    $port = 3306;
 
-    $conn = new mysqli($host.':'.$port, $username, $password,$database);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-//    echo "Connected successfully455841582310";
-    $sql = "SELECT * FROM seller";
-    $result = $conn->query($sql);
+<?php
+    require("SetSessionStatus.php");
 ?>
     <div class="inline">
 <?php
@@ -38,8 +27,10 @@
                     <h5 class="card-title text-danger"><?php echo $row["seller_name"] ?></h5>
                     <p class="card-text">
                         <?php
-                        $sql3 = "SELECT `reviews_start` FROM `reviews` WHERE `seller_id` = '".$row["seller_id"]."'";
-                        $result3 = $conn->query($sql3);
+                        $result3 = $conn->getStar($row["seller_id"]);
+//                        $sql3 = "SELECT `reviews_start` FROM `reviews` WHERE `seller_id` = '".$row["seller_id"]."'";
+//                        echo $sql3;
+//                        $result3 = $conn->query($sql3);
                         $sum = 0;
 
                         if ($result3->num_rows > 0) {
@@ -66,8 +57,8 @@
                         ?>
                         <a class="font-weight-light" style="font-size: small"><?php  echo "  ".($sum/$n)."/5"; ?></a>
                         <?php
-                        $sql2 = "SELECT DISTINCT `product_type` FROM product WHERE `seller_id` = '".$row["seller_id"]."'";
-                        $result2 = $conn->query($sql2);
+//                        $sql2 = "SELECT DISTINCT `product_type` FROM product WHERE `seller_id` = '".$row["seller_id"]."'";
+                        $result2 = $conn->getType($row["seller_id"]);
                         ?>
                         <br>ประเภท :
                         <?php
@@ -87,7 +78,7 @@
                         ที่อยู่ :<br>
                         <?php echo $row["seller_address"]?>
                     </p>
-                    <button type="button" class="btn btn-outline-warning  float-right">Warning</button>
+                    <button type="button" class="btn btn-outline-warning  float-right">ดูรายการอาหาร</button>
                 </div>
 
                 <!--    <div class="card-footer bg-transparent border-danger">Footer</div>-->
