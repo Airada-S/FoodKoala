@@ -15,7 +15,7 @@
         <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>
-    <form class="form-inline" action="check.php?s=3">
+    <form class="form-inline" action="check.php?s=3" method='POST'>
         <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">เข้าสู่ระบบ</button>
     </form>
 </nav>
@@ -41,9 +41,9 @@
                 <input class="form-control" id="SearchID" placeholder="คำที่ใช้ค้นหา" name="SearchID" style="color: red;border-color: red">
                 <button type="submit" class="btn btn-outline-danger ">ค้นหา</button>
             </div>
-            <a href="check.php?s=2?pt=อาหาร" class="btn btn-outline-warning ml-5">เมนู อาหาร</a>
-            <a href="" class="btn btn-outline-warning ml-2">เมนู เครื่องดื่ม</a>
-            <a href="" class="btn btn-outline-warning ml-2">เมนู ขนม</a>
+            <a href="check.php?s=2&pt=อาหาร" class="btn btn-outline-warning ml-5">เมนู อาหาร</a>
+            <a href="check.php?s=2&pt=เครื่องดื่ม" class="btn btn-outline-warning ml-2">เมนู เครื่องดื่ม</a>
+            <a href="check.php?s=2&pt=ขนม" class="btn btn-outline-warning ml-2">เมนู ขนม</a>
         </div>
     </form>
 

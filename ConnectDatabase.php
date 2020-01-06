@@ -28,11 +28,19 @@ class connectDB {
         $sql = "SELECT DISTINCT `seller_id` FROM `product` WHERE `product_type` = '".$ProductType."'";
         $val = $this->connect()->query($sql);
         $sql2 = "SELECT * FROM `seller` WHERE `seller_id` = ";
-        for ($i=0;$i<$val->num_rows;$i++) {
-            if ($i == 0) {
-                echo $val[$i]["seller_id"];
+        if($val->num_rows>0){
+            $i = 0;
+            while($row = $val->fetch_assoc()) {
+                if($i == 0){
+                    $sql2=$sql2."'".$row["seller_id"]."'";
+                }
+                else{
+                    $sql2=$sql2." OR `seller_id` = '".$row["seller_id"]."'";
+                }
+                $i++;
             }
         }
-//        return $this->connect()->query($sql2);
+
+        return $this->connect()->query($sql2);
     }
 }

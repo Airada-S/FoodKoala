@@ -11,7 +11,6 @@ if($s==1){
     $_SESSION['page'] = 'menu';
     header("Location:index.php?pt=".$pt);
 }elseif($s == 3){
-    $_SESSION['page'] = 'menu';
     session_destroy();
     header("Location:index.php");
 }
