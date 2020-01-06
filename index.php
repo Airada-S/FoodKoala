@@ -19,22 +19,31 @@
         <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">เข้าสู่ระบบ</button>
     </form>
 </nav>
-    <form class="form-inline  justify-content-center" action="SearchSeller.php" onsubmit="return checkSearch()" method="get">
+<form class="form-inline justify-content-center">
+
+
+
+</form>
+    <form class="form-inline justify-content-center" action="SearchSeller.php" onsubmit="return checkSearch()" method="get">
         <div class="btn-group mt-2">
-            <select class="custom-select " style="color: red;border-color: red" id="inputGroupSelect01" onchange="switchShow()">
+<!--            <select class="custom-select " style="color: red;border-color: red" id="inputGroupSelect01" onchange="switchShow()">-->
+            <select class="custom-select " style="color: red;border-color: red" id="inputGroupSelect01" onchange="">
                     <option selected >ค้นหาด้วย ชื่อร้านค้า</option>
                     <option value="1" >ค้นหาด้วย ชื่ออาหาร</option>
             </select>
-            <select class="custom-select ml-2" style="color: red;border-color: red" id="inputGroupSelect02" hidden>
-                <option selected>เมนู ทั้งหมด</option>
-                <option value="1">เมนู อาหาร</option>
-                <option value="2">เมนู เครื่องดื่ม</option>
-                <option value="3">เมนู ขนม</option>
-            </select>
+<!--            <select class="custom-select ml-2" style="color: red;border-color: red" id="inputGroupSelect02" hidden>-->
+<!--                <option selected>เมนู ทั้งหมด</option>-->
+<!--                <option value="1">เมนู อาหาร</option>-->
+<!--                <option value="2">เมนู เครื่องดื่ม</option>-->
+<!--                <option value="3">เมนู ขนม</option>-->
+<!--            </select>-->
             <div class="ml-2">
-                <input class="form-control" id="SearchID" placeholder="คำที่ใช้ค้นหา" name="SearchID">
+                <input class="form-control" id="SearchID" placeholder="คำที่ใช้ค้นหา" name="SearchID" style="color: red;border-color: red">
                 <button type="submit" class="btn btn-outline-danger ">ค้นหา</button>
             </div>
+            <a href="check.php?s=2?pt=อาหาร" class="btn btn-outline-warning ml-5">เมนู อาหาร</a>
+            <a href="" class="btn btn-outline-warning ml-2">เมนู เครื่องดื่ม</a>
+            <a href="" class="btn btn-outline-warning ml-2">เมนู ขนม</a>
         </div>
     </form>
 
