@@ -15,7 +15,7 @@
         <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>
-    <form class="form-inline">
+    <form class="form-inline" action="check.php?s=3">
         <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">เข้าสู่ระบบ</button>
     </form>
 </nav>
