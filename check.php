@@ -3,8 +3,9 @@ session_start();
 $s = $_REQUEST["s"];
 echo $s;
 if($s==1){
+//    session_destroy();
     $_SESSION['status']='login';
-    echo $_SESSION['status'];
+//    echo $_SESSION['status'];
     header("Location:index.php");
 }elseif($s == 2){
     $pt = $_REQUEST["pt"];
@@ -20,5 +21,8 @@ if($s==1){
 }elseif($s == 4){
     session_destroy();
     header("Location:index.php");
+}elseif($s == 5){
+    $id = $_REQUEST["id"];
+    echo $id;
 }
 ?>

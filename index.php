@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>index</title>
 </head>
 <body>
 <?php
     require("SetSessionStatus.php");
+    include 'header.php';
 ?>
-<nav class="navbar navbar-light bg-danger">
-    <a class="navbar-brand text-light" href="#">
-        <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
-        FoodKoala
-    </a>
-    <form class="form-inline" action="check.php?s=4" method='POST'>
-        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">เข้าสู่ระบบ</button>
-    </form>
-</nav>
+
 <form class="form-inline justify-content-center">
 
 
@@ -49,6 +40,7 @@
         while($row = $result->fetch_assoc()) {
 ?>
     <li class="list-inline-item">
+        <form action="check.php?s=5&id=<?php echo $row["seller_id"] ?>" method="POST">
             <div class="card border-danger ml-5 mt-3" style="max-width: 20rem;">
                 <!--    <div class="card-header bg-transparent border-danger">Header</div>-->
                 <div class="card-body">
@@ -105,9 +97,10 @@
                         ที่อยู่ :<br>
                         <?php echo $row["seller_address"]?>
                     </p>
-                    <button type="button" class="btn btn-outline-warning  float-right">ดูรายการอาหาร</button>
+                    <button type="submit" class="btn btn-outline-warning  float-right">ดูรายการอาหาร</button>
                 </div>
             </div>
+        </form>
     </li>
 <?php
         }
@@ -116,9 +109,6 @@
     }
 ?>
 </ul>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
     function switchShow() {
         let x = document.getElementById("inputGroupSelect01");
