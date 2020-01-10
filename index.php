@@ -15,7 +15,7 @@
         <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>
-    <form class="form-inline" action="check.php?s=3" method='POST'>
+    <form class="form-inline" action="check.php?s=4" method='POST'>
         <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">เข้าสู่ระบบ</button>
     </form>
 </nav>
@@ -24,21 +24,15 @@
 
 
 </form>
-    <form class="form-inline justify-content-center" action="SearchSeller.php" onsubmit="return checkSearch()" method="get">
+    <form class="form-inline justify-content-center" action="check.php?s=3" onsubmit="return checkSearch()" method="POST">
         <div class="btn-group mt-2">
 <!--            <select class="custom-select " style="color: red;border-color: red" id="inputGroupSelect01" onchange="switchShow()">-->
-            <select class="custom-select " style="color: red;border-color: red" id="inputGroupSelect01" onchange="">
-                    <option selected >ค้นหาด้วย ชื่อร้านค้า</option>
-                    <option value="1" >ค้นหาด้วย ชื่ออาหาร</option>
+            <select class="custom-select " style="color: red;border-color: red" id="inputGroupSelect01" onchange="" name="choice">
+                    <option selected value="searchBySellerName">ค้นหาด้วย ชื่อร้านค้า</option>
+                    <option value="searchByProductName" >ค้นหาด้วย ชื่ออาหาร</option>
             </select>
-<!--            <select class="custom-select ml-2" style="color: red;border-color: red" id="inputGroupSelect02" hidden>-->
-<!--                <option selected>เมนู ทั้งหมด</option>-->
-<!--                <option value="1">เมนู อาหาร</option>-->
-<!--                <option value="2">เมนู เครื่องดื่ม</option>-->
-<!--                <option value="3">เมนู ขนม</option>-->
-<!--            </select>-->
             <div class="ml-2">
-                <input class="form-control" id="SearchID" placeholder="คำที่ใช้ค้นหา" name="SearchID" style="color: red;border-color: red">
+                <input class="form-control" id="Search" placeholder="คำที่ใช้ค้นหา" name="Search" style="color: red;border-color: red">
                 <button type="submit" class="btn btn-outline-danger ">ค้นหา</button>
             </div>
             <a href="check.php?s=2&pt=อาหาร" class="btn btn-outline-warning ml-5">เมนู อาหาร</a>
@@ -66,23 +60,25 @@
                         <?php
                         $result3 = $conn->getStar($row["seller_id"]);
                         $sum = 0;
-
+                        $n = 1;
                         if ($result3->num_rows > 0) {
                             $n = 0;
                             while($row3 = $result3->fetch_assoc()) {
-                                $sum = $sum+$row3["reviews_start"];
+                                $sum = $sum+$row3["reviews_star"];
                                 $n++;
                             }
                         }
-                        $stra = ($sum/$n)*2;
+//                        echo $sum."<br>".$n."<br>";
+                        $star = ($sum/$n)*2;
+//                        echo $star;
                         for($i= 1 ;$i<=10;$i++) {
-                            if($stra >= $i) {
-                                if ($i % 2 != 0 && $i == floor($stra)) {
+                            if($star >= $i) {
+                                if ($i % 2 != 0 && $i == floor($star)) {
                                     echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
                                 } else if($i%2==0){
                                     echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
                                 }
-                            }else if($i%2==0 && $i-$stra != 1){
+                            }else if($i%2==0 && $i-$star != 1){
                                 echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
                             }
                         }

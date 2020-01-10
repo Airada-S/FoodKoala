@@ -9,10 +9,18 @@ if($_SESSION['page'] == 'null'){
     $conn = new ConnectDB();
     $result = $conn->getAll();
 }
-if($_SESSION['page'] == 'menu'){
+if($_SESSION['page'] == 'searchByType'){
     $pt = $_REQUEST["pt"];
     $conn = new ConnectDB();
     $result = $conn->getByProductType($pt);
+}if($_SESSION['page'] == 'searchBySellerName'){
+    $search = $_REQUEST["search"];
+    $conn = new ConnectDB();
+    $result = $conn->getBySellerName($search);
+}if($_SESSION['page'] == 'searchByProductName'){
+    $search = $_REQUEST["search"];
+    $conn = new ConnectDB();
+    $result = $conn->getByProductName($search);
 }
 if(!isset($_SESSION['status'])){
     $_SESSION['status'] = 'null';
