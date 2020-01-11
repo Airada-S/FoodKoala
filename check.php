@@ -5,6 +5,7 @@ echo $s;
 if($s==1){
 //    session_destroy();
     $_SESSION['status']='login';
+    $_SESSION['user']=$_POST["user"];
 //    echo $_SESSION['status'];
     header("Location:index.php");
 }elseif($s == 2){
@@ -23,6 +24,12 @@ if($s==1){
     header("Location:index.php");
 }elseif($s == 5){
     $id = $_REQUEST["id"];
-    echo $id;
+    header("Location:seller.php?id=".$id);
+}elseif($s == 6){
+    $pid = $_REQUEST["pid"];
+    $id = $_REQUEST["id"];
+    $_SESSION["pid"] = $_SESSION["pid"].$pid."|";
+    echo $_SESSION["pid"];
+    header("Location:seller.php?id=".$id);
 }
 ?>

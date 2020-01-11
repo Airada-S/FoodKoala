@@ -6,8 +6,8 @@
 </head>
 <body>
 <?php
-    require("SetSessionStatus.php");
     include 'header.php';
+    require("SetSessionStatus.php");
 ?>
 
 <form class="form-inline justify-content-center">

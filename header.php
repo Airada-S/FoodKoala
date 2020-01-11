@@ -4,31 +4,42 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>index</title>
 </head>
 <body>
 <?php
-//    session_start();
+    session_start();
+    if(!isset($_SESSION['status'])){
+        $_SESSION['status'] = 'null';
+    }
+    if(!isset($_SESSION['pid'])){
+        $_SESSION['pid'] = '';
+    }
 //    echo $_SESSION["status"] ;
     $butt = "เข้าสู่ระบบ";
     $link = "login.php";
     if($_SESSION["status"] == "login"){
         $butt = "ออกจากระบบ";
         $link = "check.php?s=4";
-        $_SESSION["num"] = 0;
+        $arr = (explode("|",$_SESSION['pid']));
+        $_SESSION["num"] = count($arr)-1;
     }
 ?>
 <nav class="navbar navbar-light bg-danger">
-    <a class="navbar-brand text-light" href="#">
+    <a class="navbar-brand text-light" href="index.php">
         <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>
     <form class="form-inline" action="<?php echo $link ?>" method='POST'>
 <!--        <i class="fas fa-shopping-cart"></i>-->
 <!--        <i class="fas fa-shopping-bag"></i>-->
+
         <?php
         if($_SESSION["status"] == "login"){?>
-            <i class="fas fa-shopping-basket mr-1" style="font-size: 20px;color: gold"></i>
+            <a style="font-size: 20px;color: gold">
+                <?php echo  $_SESSION["user"]; ?>
+            </a>
+<!--            <i class="fas fa-shopping-basket mr-1 ml-1" style="font-size: 20px;color: gold"></i>-->
+            <i class="fas fa-shopping-cart mr-1 ml-1" style="font-size: 20px;color: gold"></i>
             <a style="font-size: 20px;color: gold">
         <?php
             echo $_SESSION["num"];

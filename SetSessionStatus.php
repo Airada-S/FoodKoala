@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require_once './ConnectDatabase.php';
 if(!isset($_SESSION['status'])){
     $_SESSION['status'] = 'null';
