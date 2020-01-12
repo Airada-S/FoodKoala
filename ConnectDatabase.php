@@ -72,7 +72,12 @@ class connectDB {
         return $this->connect()->query($sql);
     }
     public function getSeller($id){
-    $sql = "SELECT * FROM seller WHERE `seller_id` = '".$id."'";
-    return $this->connect()->query($sql);
-}
+        $sql = "SELECT * FROM seller WHERE `seller_id` = '".$id."'";
+        return $this->connect()->query($sql);
+    }
+    public function getProductByPid($pid){
+        $sql = "SELECT * FROM product WHERE `product_id` = '".$pid."'";
+        return $this->connect()->query($sql);
+    }
+
 }

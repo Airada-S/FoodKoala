@@ -1,7 +1,7 @@
 <?php
 session_start();
 $s = $_REQUEST["s"];
-echo $s;
+//echo $s;
 if($s==1){
 //    session_destroy();
     $_SESSION['status']='login';
@@ -29,7 +29,11 @@ if($s==1){
     $pid = $_REQUEST["pid"];
     $id = $_REQUEST["id"];
     $_SESSION["pid"] = $_SESSION["pid"].$pid."|";
-    echo $_SESSION["pid"];
+
     header("Location:seller.php?id=".$id);
+}elseif($s == 7){
+    echo $_SESSION["pid"];
+//    $id = $_REQUEST["id"];
+    header("Location:showProductList.php");
 }
 ?>

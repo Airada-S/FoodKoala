@@ -78,17 +78,19 @@
                         while ($row = $product->fetch_assoc()) {
 //                            echo $row["product_name"]."<br>";
                             ?>
+<!--                            <form action="check.php?s=6&pid=--><?php //echo $row["product_id"]?><!--&id=--><?php //echo $_REQUEST["id"] ?><!--" method="post">-->
                             <div class="card mt-2">
                                 <div class="card-body">
                                     <?php
                                     echo $row["product_name"]."<br>";
                                     echo $row["product_price"]." บาท";
                                     ?>
-                                    <a href="check.php?s=6&pid=<?php echo $row["product_id"]?>&id=<?php echo $_REQUEST["id"] ?>">
-                                        <i class="fas fa-cart-plus float-right" style="font-size: 40px;color: gold"ห></i>
+                                    <a  class="float-right" type="submit" href="check.php?s=6&pid=<?php echo $row["product_id"]?>&id=<?php echo $_REQUEST["id"] ?>">
+                                        <i class="fas fa-cart-plus float-right" style="font-size: 40px;color: gold"></i>
                                     </a>
                                 </div>
                             </div>
+<!--                            </form>-->
                             <?php
                         }
                     }

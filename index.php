@@ -34,9 +34,13 @@
 
 <ul class="list-inline">
 <?php
-//echo $result->num_rows;
-    if ($result->num_rows > 0) {
-        // output data of each row
+//    echo $result->num_rows;
+//    echo is_null ($result["seller_id"]);
+//    echo $result["seller_id"] === NULL;
+//    if((is_null ($result["seller_id"]))){
+//
+//    }
+    if($result->field_count>0){
         while($row = $result->fetch_assoc()) {
 ?>
     <li class="list-inline-item">
@@ -104,7 +108,8 @@
     </li>
 <?php
         }
-    } else {
+    }
+    else {
         echo "0 results";
     }
 ?>
