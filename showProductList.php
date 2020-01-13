@@ -22,18 +22,20 @@
         </thead>
         <tbody>
         <?php
+            $sumall = 0;
             foreach ($_SESSION["listProduct"] as $key => $value){
                $conn = new ConnectDB();
                $product = $conn->getProductByPid($key);
                $row = $product->fetch_assoc();
+               $sumall += $row["product_price"]*$value;
         ?>
                 <tr>
                     <td rowspan="2" >
-                        <a  href="check.php?s=8&pid=--><?php echo $key ?>" >
+                        <a  href="check.php?s=8&pid=<?php echo $key ?>" >
                          <i class="far fa-minus-square" style="font-size: 25px;color: gold"></i>
                         </a>
                         <?php echo $value ?>
-                        <a  href="check.php?s=9&pid=--><?php //echo $key ?><!--" >
+                        <a  href="check.php?s=9&pid=<?php echo $key ?>" >
                             <i class="far fa-plus-square" style="font-size: 25px;color: gold"></i>
                         </a>
                     </td>
@@ -62,8 +64,17 @@
         <?php
             }
         ?>
+        <tr>
+            <td colspan="3">
+                ยอดสุทธิ
+            </td>
+            <td style="text-align: center">
+                <?php echo $sumall ?>
+            </td>
+        </tr>
         </tbody>
     </table>
+        <a href="AddOderProduct.php" style="text-align: center" class="btn btn-outline-warning my-2 my-sm-0">ชำระเงิน</a>
     </div>
 </div>
 <!--<div class="card m-4">-->
