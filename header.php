@@ -8,6 +8,9 @@
 <body>
 <?php
     session_start();
+    if(!isset($_SESSION['id'])){
+        $_SESSION['id'] = 'null';
+    }
     if(!isset($_SESSION['status'])){
         $_SESSION['status'] = 'null';
     }
@@ -20,11 +23,16 @@
 //    echo $_SESSION["status"] ;
     $butt = "เข้าสู่ระบบ";
     $link = "login.php";
+    $link2 = "";
     if($_SESSION["status"] != 'null'){
+//        echo $_SESSION["status"];
         $butt = "ออกจากระบบ";
         $link = "check.php?s=4";
 //        $arr = (explode("|",$_SESSION['pid']));
         $_SESSION["num"] = array_sum($_SESSION["listProduct"]);
+        if($_SESSION["status"] == 'seller'){
+            $link2 = "ShopManage.php";
+        }
     }
 ?>
 <nav class="navbar navbar-light bg-danger">
@@ -39,7 +47,7 @@
         <?php
         if($_SESSION["status"] != "null"){
         ?>
-        <a style="font-size: 20px;color: gold">
+        <a style="font-size: 20px;color: gold" href="<?php echo $link2; ?>">
             <?php echo $_SESSION["user"]; ?>
         </a>
         <!--            <i class="fas fa-shopping-basket mr-1 ml-1" style="font-size: 20px;color: gold"></i>-->
