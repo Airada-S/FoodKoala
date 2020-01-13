@@ -40,7 +40,7 @@
 //    if((is_null ($result["seller_id"]))){
 //
 //    }
-    if($result->field_count>0){
+    if($result->num_rows>0){
         while($row = $result->fetch_assoc()) {
 ?>
     <li class="list-inline-item">
