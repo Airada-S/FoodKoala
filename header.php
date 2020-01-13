@@ -29,7 +29,7 @@
 ?>
 <nav class="navbar navbar-light bg-danger">
     <a class="navbar-brand text-light" href="index.php">
-        <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>
     <form class="form-inline" action="<?php echo $link ?>" method='POST'>
