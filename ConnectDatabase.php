@@ -20,16 +20,12 @@ class connectDB {
             $_SESSION['status'] = 'customer';
             return $result;
         }else{
-
             $sql = "SELECT * FROM `employee`WHERE employee_username = '".$username."' AND employee_password = '".$password."'";
             $result = $this->connect()->query($sql);
             if($result->num_rows>0){
                 $_SESSION['status'] = 'employee';
                 return $result;
-
-
             }else{
-
                 $sql = "SELECT * FROM `seller`WHERE seller_username = '".$username."' AND seller_password = '".$password."'";
                 $result = $this->connect()->query($sql);
                 if($result->num_rows>0){
@@ -37,7 +33,6 @@ class connectDB {
                     return $result;
                 }else{
                     header("Location:login.php");
-
                 }
             }
         }

@@ -37,16 +37,19 @@
 <!--        <i class="fas fa-shopping-bag"></i>-->
 
         <?php
-        if($_SESSION["status"] != "null"){?>
-            <a style="font-size: 20px;color: gold">
-                <?php echo  $_SESSION["user"]; ?>
-            </a>
-<!--            <i class="fas fa-shopping-basket mr-1 ml-1" style="font-size: 20px;color: gold"></i>-->
-            <a style="font-size: 20px;color: gold" href="check.php?s=7">
-            <i class="fas fa-shopping-cart mr-1 ml-1" ></i>
+        if($_SESSION["status"] != "null"){
+        ?>
+        <a style="font-size: 20px;color: gold">
+            <?php echo $_SESSION["user"]; ?>
+        </a>
+        <!--            <i class="fas fa-shopping-basket mr-1 ml-1" style="font-size: 20px;color: gold"></i>-->
+        <?php if($_SESSION["status"] == "customer"){ ?>
+        <a style="font-size: 20px;color: gold" href="check.php?s=7">
+            <i class="fas fa-shopping-cart mr-1 ml-1"></i>
 
-        <?php
+            <?php
             echo $_SESSION["num"];
+            }
         }
         ?>
             </a>
