@@ -57,5 +57,27 @@ if($s==1){
     $pid = $_REQUEST["pid"];
     $_SESSION["listProduct"][$pid] += 1;
     header("Location:showProductList.php");
+}elseif ($s == 10){
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $address = $_POST['address'];
+    $con = new ConnectDB();
+    $con->connect();
+    $con->Insert1($user,$pass,$name,$email,$tel,$address);
+}elseif ($s == 11){
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $address = $_POST['address'];
+    $time = $_POST['time'];
+    $img = $_POST['img'];
+    $con = new ConnectDB();
+    $con->connect();
+    $con->Insert2($user,$pass,$name,$email,$tel,$address,$time,$img);
 }
 ?>
