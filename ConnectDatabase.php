@@ -18,18 +18,24 @@ class connectDB {
         $result = $this->connect()->query($sql);
         if($result->num_rows>0){
             $_SESSION['status'] = 'customer';
+            $val = $result->fetch_assoc();
+            $_SESSION['id'] = $val["customer_id"];
             return $result;
         }else{
             $sql = "SELECT * FROM `employee`WHERE employee_username = '".$username."' AND employee_password = '".$password."'";
             $result = $this->connect()->query($sql);
             if($result->num_rows>0){
                 $_SESSION['status'] = 'employee';
+                $val = $result->fetch_assoc();
+                $_SESSION['id'] = $val["employee_id"];
                 return $result;
             }else{
                 $sql = "SELECT * FROM `seller`WHERE seller_username = '".$username."' AND seller_password = '".$password."'";
                 $result = $this->connect()->query($sql);
                 if($result->num_rows>0){
                     $_SESSION['status'] = 'seller';
+                    $val = $result->fetch_assoc();
+                    $_SESSION['id'] = $val["seller_id"];
                     return $result;
                 }else{
                     header("Location:login.php");

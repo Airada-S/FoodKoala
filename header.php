@@ -8,6 +8,9 @@
 <body>
 <?php
     session_start();
+    if(!isset($_SESSION['id'])){
+        $_SESSION['id'] = 'null';
+    }
     if(!isset($_SESSION['status'])){
         $_SESSION['status'] = 'null';
     }
