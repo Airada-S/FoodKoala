@@ -30,8 +30,9 @@
     }foreach ($arrNum as $key => $value){
         $conn = new ConnectDB();
         $product = $conn->getProductByPid($key);
-        if($product->num_rows >0){
-            while ($row = $product->fetch_assoc()){
+        $row = $product->fetch_assoc();
+//        if($product->num_rows >0){
+//            while ($row = $product->fetch_assoc()){
 ?>
     <div class="card mt-2">
         <div class="card-body" style="font-size: 25px;">
@@ -45,12 +46,17 @@
             <?php
                 echo $row["product_name"];
             ?>
-            <div  class="float-right" href="" style="font-size: 25px;color: gold">
-                <a class="mr-1">ราคา</a>
-                <a >ราคารวม</a>
+            <div  class="float-right" href="" style="font-size: 25px;">
+                <a class="mr-1"><?php echo $row["product_price"] ?></a>
+                <a ><?php echo $row["product_price"]*$value ?></a>
             </div>
             <br>
-            จากร้าน
+            <?php
+                $seller = $conn->getSeller($row["seller_id"]);
+                $row2 = $seller->fetch_assoc();
+                echo "จากร้าน : ".$row2["seller_name"];
+            ?>
+
 <!--            <a  class="float-right" type="submit" href="" style="font-size: 40px;color: gold">-->
 <!--                <i class="far fa-minus-square"></i>-->
 <!--                <i class="far fa-plus-square"></i>-->
@@ -58,10 +64,10 @@
         </div>
     </div>
 <?php
-            }
-        }
+//            }
+//        }
     }
-    print_r($arrNum);
+//    print_r($arrNum);
 ?>
         </p>
     </div>
