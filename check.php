@@ -28,12 +28,31 @@ if($s==1){
 }elseif($s == 6){
     $pid = $_REQUEST["pid"];
     $id = $_REQUEST["id"];
-    $_SESSION["pid"] = $_SESSION["pid"].$pid."|";
+
+    if (array_key_exists($pid, $_SESSION["listProduct"])) {
+        $_SESSION["listProduct"][$pid] += 1;
+    } else {
+        $_SESSION["listProduct"][$pid] = 1;
+    }
+//    $_SESSION["pid"] = $_SESSION["pid"].$pid."|";
 
     header("Location:seller.php?id=".$id);
 }elseif($s == 7){
     echo $_SESSION["pid"];
 //    $id = $_REQUEST["id"];
+    header("Location:showProductList.php");
+}elseif($s == 8){
+    $pid = $_REQUEST["pid"];
+    if($_SESSION["listProduct"][$pid]>=1){
+        $_SESSION["listProduct"][$pid] -= 1;
+    }
+    if($_SESSION["listProduct"][$pid] == 0){
+        unset($_SESSION["listProduct"][$pid]);
+    }
+    header("Location:showProductList.php");
+}elseif($s == 9){
+    $pid = $_REQUEST["pid"];
+    $_SESSION["listProduct"][$pid] += 1;
     header("Location:showProductList.php");
 }
 ?>

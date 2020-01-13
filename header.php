@@ -11,17 +11,20 @@
     if(!isset($_SESSION['status'])){
         $_SESSION['status'] = 'null';
     }
-    if(!isset($_SESSION['pid'])){
-        $_SESSION['pid'] = '';
+    if(!isset($_SESSION["listProduct"])){
+        $_SESSION["listProduct"] = array();
     }
+//    if(!isset($_SESSION['pid'])){
+//        $_SESSION['pid'] = '';
+//    }
 //    echo $_SESSION["status"] ;
     $butt = "เข้าสู่ระบบ";
     $link = "login.php";
     if($_SESSION["status"] == "login"){
         $butt = "ออกจากระบบ";
         $link = "check.php?s=4";
-        $arr = (explode("|",$_SESSION['pid']));
-        $_SESSION["num"] = count($arr)-1;
+//        $arr = (explode("|",$_SESSION['pid']));
+        $_SESSION["num"] = array_sum($_SESSION["listProduct"]);
     }
 ?>
 <nav class="navbar navbar-light bg-danger">

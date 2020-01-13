@@ -8,26 +8,25 @@
 <?php
     require_once './ConnectDatabase.php';
     include 'header.php';
-    $pid = (explode("|",$_SESSION['pid']));
-//    $_SESSION["num"] = count($arr)-1;
+//    $pid = (explode("|",$_SESSION['pid']));
 ?>
 <div class="card m-4">
     <!--                <img src="--><?php //echo $row["seller_img"] ?><!--" class="card-img-top" alt="...">-->
     <div class="card-body">
         <p class="card-text">
 <?php
-    $arrNum = array();
-    for($i=0;$i<$_SESSION["num"];$i++) {
-//        if($i == 0){
-//            array_push($arrNum,array($pid[$i]=>1));
+//    for($i=0;$i<$_SESSION["num"];$i++) {
+////        if($i == 0){
+////            array_push($arrNum,array($pid[$i]=>1));
+////        }
+//        if (array_key_exists($pid[$i], $_SESSION["arrNum"])) {
+//            $_SESSION["arrNum"][$pid[$i]] += 1;
+//        } else {
+////            array_push($arrNum,array($pid[$i]=>1));
+//            $_SESSION["arrNum"][$pid[$i]] = 1;
 //        }
-        if (array_key_exists($pid[$i], $arrNum)) {
-            $arrNum[$pid[$i]] += 1;
-        } else {
-//            array_push($arrNum,array($pid[$i]=>1));
-            $arrNum[$pid[$i]] = 1;
-        }
-    }foreach ($arrNum as $key => $value){
+//    }
+    foreach ($_SESSION["listProduct"] as $key => $value){
         $conn = new ConnectDB();
         $product = $conn->getProductByPid($key);
         $row = $product->fetch_assoc();
@@ -36,11 +35,11 @@
 ?>
     <div class="card mt-2">
         <div class="card-body" style="font-size: 25px;">
-            <a  href="" >
+            <a  href="check.php?s=8&pid=<?php echo $key ?>" >
                 <i class="far fa-minus-square" style="font-size: 25px;color: gold"></i>
             </a>
             <?php echo $value ?>
-            <a  href="" >
+            <a  href="check.php?s=9&pid=<?php echo $key ?>" >
                 <i class="far fa-plus-square" style="font-size: 25px;color: gold"></i>
             </a>
             <?php
@@ -67,7 +66,7 @@
 //            }
 //        }
     }
-//    print_r($arrNum);
+//    print_r($_SESSION["listProduct"]);
 ?>
         </p>
     </div>

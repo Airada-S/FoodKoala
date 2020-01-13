@@ -85,10 +85,10 @@
                                     echo $row["product_name"]."<br>";
                                     echo $row["product_price"]." บาท";
                                     ?>
-                                    <a  class="float-right" type="submit" href="check.php?s=6&pid=<?php echo $row["product_id"]?>&id=<?php echo $_REQUEST["id"] ?>">
-                                        <i class="fas fa-cart-plus float-right" style="font-size: 40px;color: gold"></i>
-                                    </a>
-                                </div>
+                                <a  class="float-right" type="submit" href="check.php?s=6&pid=<?php echo $row["product_id"]?>&id=<?php echo $_REQUEST["id"] ?>">
+                                    <i class="fas fa-cart-plus float-right" style="font-size: 40px;color: gold"></i>
+                                </a>
+                            </div>
                             </div>
 <!--                            </form>-->
                             <?php
