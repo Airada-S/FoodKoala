@@ -76,6 +76,10 @@
                     if ($product->num_rows > 0) {
                     // output data of each row
                         while ($row = $product->fetch_assoc()) {
+                            $link = "";
+                            if($_SESSION['status'] == 'customer'){
+                                $link = "check.php?s=6&pid=".$row["product_id"]."&id=".$_REQUEST["id"];
+                            }
 //                            echo $row["product_name"]."<br>";
                             ?>
 <!--                            <form action="check.php?s=6&pid=--><?php //echo $row["product_id"]?><!--&id=--><?php //echo $_REQUEST["id"] ?><!--" method="post">-->
@@ -85,8 +89,8 @@
                                     echo $row["product_name"]."<br>";
                                     echo $row["product_price"]." บาท";
                                     ?>
-                                <a  class="float-right" type="submit" href="check.php?s=6&pid=<?php echo $row["product_id"]?>&id=<?php echo $_REQUEST["id"] ?>">
-                                    <i class="fas fa-cart-plus float-right" style="font-size: 40px;color: gold"></i>
+                                <a  class="float-right" type="submit" href="<?php echo $link ?>">
+                                    <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: gold"></i>
                                 </a>
                             </div>
                             </div>
