@@ -21,7 +21,7 @@ and open the template in the editor.
             <input type="text" placeholder="username" name='user'/>
             <input type='password' placeholder='password' name='pass'/>
             <button>login</button>
-            <p class="message">Not registered? <a href="member.php">Create an account</a></p>
+            <p class="message">Not registered? <a href="">Create an account</a></p>
         </form>
 
 
