@@ -1,11 +1,14 @@
 <?php
 session_start();
+require_once './ConnectDatabase.php';
 $s = $_REQUEST["s"];
 //echo $s;
 if($s==1){
 //    session_destroy();
-    $_SESSION['status']='login';
-    $_SESSION['user']=$_POST["user"];
+    $conn = new ConnectDB();
+    $user = $conn->login($_POST['username'],$_POST['password']);
+    $_SESSION['user'] = $_POST['username'];
+    header("Location:index.php");
 //    echo $_SESSION['status'];
     header("Location:index.php");
 }elseif($s == 2){

@@ -1,5 +1,5 @@
 <?php
-require_once 'header.php';
+//require_once 'header.php';
 class connectDB {
     public function connect(){
         $username = 'team';

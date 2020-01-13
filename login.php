@@ -17,7 +17,7 @@ and open the template in the editor.
 <div class="login-page">
     <div class="form">
 
-        <form class="login-form" action='loginCheck.php' method='POST'>
+        <form class="login-form" action='check.php?s=1' method='POST'>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
             <button>login</button>
