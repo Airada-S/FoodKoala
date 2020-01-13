@@ -1,4 +1,5 @@
 <?php
+require_once 'header.php';
 class connectDB {
     public function connect(){
         $username = 'team';
@@ -11,6 +12,37 @@ class connectDB {
             die("Connection failed: " . $conn->connect_error);
         }
         return $conn;
+    }
+    public function login($username, $password){
+        $sql = "SELECT * FROM `customer`WHERE customer_username = '".$username."' AND customer_password = '".$password."'";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows>0){
+            $_SESSION['status'] = 'customer';
+            return $result;
+        }else{
+
+            $sql = "SELECT * FROM `employee`WHERE employee_username = '".$username."' AND employee_password = '".$password."'";
+            $result = $this->connect()->query($sql);
+            if($result->num_rows>0){
+                $_SESSION['status'] = 'employee';
+                return $result;
+
+
+            }else{
+
+                $sql = "SELECT * FROM `seller`WHERE seller_username = '".$username."' AND seller_password = '".$password."'";
+                $result = $this->connect()->query($sql);
+                if($result->num_rows>0){
+                    $_SESSION['status'] = 'seller';
+                    return $result;
+                }else{
+                    header("Location:login.php");
+
+                }
+            }
+        }
+
+
     }
     public function getAll(){
         $sql = "SELECT * FROM seller";

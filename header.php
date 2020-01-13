@@ -20,7 +20,7 @@
 //    echo $_SESSION["status"] ;
     $butt = "เข้าสู่ระบบ";
     $link = "login.php";
-    if($_SESSION["status"] == "login"){
+    if($_SESSION["status"] != 'null'){
         $butt = "ออกจากระบบ";
         $link = "check.php?s=4";
 //        $arr = (explode("|",$_SESSION['pid']));
@@ -37,7 +37,7 @@
 <!--        <i class="fas fa-shopping-bag"></i>-->
 
         <?php
-        if($_SESSION["status"] == "login"){?>
+        if($_SESSION["status"] != "null"){?>
             <a style="font-size: 20px;color: gold">
                 <?php echo  $_SESSION["user"]; ?>
             </a>
