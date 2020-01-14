@@ -122,7 +122,7 @@ class connectDB {
         }
     }
     public function Insert2($user,$pass,$name,$email,$tel,$address,$time,$img){
-        $sql = "INSERT INTO `seller`(`seller_name`, `seller_email`, `seller_tel`, `seller_status`, `seller_img`, `seller_time`, `seller_address`, `seller_username`, `seller_password`) VALUES ('".$name."','".$email."','".$tel."','1','".$img."','".$time."','".$address."','".$user."','".$pass."')";
+        $sql = "INSERT INTO `seller`(`seller_name`, `seller_email`, `seller_tel`, `seller_status`, `seller_img`, `seller_time`, `seller_address`, `seller_username`, `seller_password`) VALUES ('".$name."','".$email."','".$tel."','0','".$img."','".$time."','".$address."','".$user."','".$pass."')";
         echo $sql;
         if(mysqli_query($this->connect(), $sql)){
             header("Location:Login.php");
