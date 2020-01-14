@@ -27,15 +27,15 @@
                         <tr>
                             <td style="border-top-width: 0px;">ชื่อ:</td>
                             <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="name1">Ottot</p>
-                                <input type="text" hidden value="Ottot" id="name2">
+                                <p class="font-weight-normal" id="name1">name</p>
+                                <input type="text" hidden value="name" id="name2">
                             </td>
                         </tr>
                         <tr>
                             <td style="border-top-width: 0px;">เบอร์โทร:</td>
                             <td style="border-top-width: 0px;">
                                 <p class="font-weight-normal" id="tel1">096-xxxxxxx</p>
-                                <input type="text" hidden value="096-xxxxxxx" id="tel2">
+                                <input type="text" hidden value="011-111-1111" id="tel2">
                             </td>
                         </tr>
                         <tr>
@@ -71,10 +71,10 @@
                         <i class="fab fa-cc-visa" style="font-size: 40px"></i>
                         <ul class="list-inline mt-3">
                             <li class="list-inline-item" style="width: 49%">
-                                <input type="text"placeholder=" เลขบัตรวิชา" style="width: 100%">
+                                <input type="text"placeholder=" เลขบัตร visa" style="width: 100%">
                             </li>
                             <li class="list-inline-item" style="width: 48%">
-                                <input type="text"placeholder=" รหัสบัตรวิชา" style="width: 100%">
+                                <input type="text"placeholder=" รหัสบัตร visa" style="width: 100%">
                             </li>
                         </ul>
                         <input type="text"placeholder=" จำนวนเงิน" style="width: 100%">

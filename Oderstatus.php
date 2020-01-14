@@ -10,7 +10,7 @@
     $bid = $_REQUEST["bid"];
     require_once './ConnectDatabase.php';
     $conn = new ConnectDB();
-    $bill = $conn->getbillBybid($bid);
+    $bill = $conn->getBillBybid($bid);
     $val = $bill->fetch_assoc();
     $img = "";
     if($val["bill_deliverystatus"] == "ได้รับออเดอร์แล้ว"){

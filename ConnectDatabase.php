@@ -176,6 +176,14 @@ class connectDB {
 //        echo $sql;
         return $this->connect()->query($sql);
     }
+    public function updateCustomerWallet($id, $wallet){
+        $sql = "UPDATE `customer` SET `customer_wallet` = '".$wallet."' where customer_id='".$id."'";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
 
     public function updateSeller($id, $user, $pass, $name, $address, $tel, $image){
         $sql = "Update seller set seller_username = '".$user."', seller_password = '".$pass."', seller_name = '".$name."', seller_address = '".$address."', seller_tel='".$tel."', seller_img = '".$image."' where seller_id=".$id;
