@@ -167,8 +167,12 @@ class connectDB {
             echo 'Insert Incomplete';
         }
     }
-    public function getbillBybid($bid){
+    public function getBillBybid($bid){
         $sql = "SELECT * FROM `bill` WHERE `bill_id` ='".$bid."'";
+        return $this->connect()->query($sql);
+    }
+    public function getOrderByoid($oid){
+        $sql = "SELECT * FROM `order` WHERE `order_id` ='".$oid."'";
         return $this->connect()->query($sql);
     }
 
