@@ -187,8 +187,8 @@
     var cp = document.getElementById("Cpay");
     var pay="";
     function money() {
-        pay = 'money';
-        cp.value = 'money';
+        pay = 'cash';
+        cp.value = 'cash';
     }
     function wallet() {
         pay = 'wallet';
