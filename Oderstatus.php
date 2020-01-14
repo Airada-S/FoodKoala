@@ -22,6 +22,8 @@
     }elseif($val["bill_deliverystatus"] == "ส่งสำเร็จ"){
         $img = "illu-delivered.gif";
     }
+    $oder = $conn->getOrderBybid($bid);
+
 ?>
 <div class="container">
     <div class="row">

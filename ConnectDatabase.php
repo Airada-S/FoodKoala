@@ -171,8 +171,8 @@ class connectDB {
         $sql = "SELECT * FROM `bill` WHERE `bill_id` ='".$bid."'";
         return $this->connect()->query($sql);
     }
-    public function getOrderByoid($oid){
-        $sql = "SELECT * FROM `order` WHERE `order_id` ='".$oid."'";
+    public function getOrderBybid($bid){
+        $sql = "SELECT * FROM `order` WHERE `bill_id` ='".$bid."'";
         return $this->connect()->query($sql);
     }
 
