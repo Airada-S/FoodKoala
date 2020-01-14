@@ -10,7 +10,6 @@ include 'header.php';
 require_once './ConnectDatabase.php';
 
 $conn = new ConnectDB();
-
 ?>
 <div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
     <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
@@ -70,10 +69,22 @@ $conn = new ConnectDB();
                                                 <th style="width: 80%;">รายการ</th>
                                                 <th style="width: 20%;">ราคา</th>
                                             </tr>
-                                            <tr>
-                                                <td style="width: 70%; padding-left: 20px;">ข้าวผัดหมูกรอบ</td>
-                                                <td style="width: 30%;">45</td>
-                                            </tr>
+                                            <?php
+                                                $product = $conn->getProduct(1);
+                                                while($row = $product->fetch_assoc()) {
+                                                    ?>
+                                                    <tr>
+                                                        <?php if($row['product_type'] == "อาหาร") {
+                                                            ?>
+                                                            <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
+                                                            <td style="width: 30%;"><?php echo $row['product_price'] ?></td>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            ?>
                                         </table>
                                     </div>
                                 </div>
@@ -87,7 +98,28 @@ $conn = new ConnectDB();
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        <table style="width: 90%;">
+                                            <tr>
+                                                <th style="width: 80%;">รายการ</th>
+                                                <th style="width: 20%;">ราคา</th>
+                                            </tr>
+                                            <?php
+                                            $product = $conn->getProduct(1);
+                                            while($row = $product->fetch_assoc()) {
+                                                ?>
+                                                <tr>
+                                                    <?php if($row['product_type'] == "เครื่องดื่ม") {
+                                                        ?>
+                                                        <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
+                                                        <td style="width: 30%;"><?php echo $row['product_price'] ?></td>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +132,28 @@ $conn = new ConnectDB();
                                 </div>
                                 <div id="collapseThree" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        <table style="width: 90%;">
+                                            <tr>
+                                                <th style="width: 80%;">รายการ</th>
+                                                <th style="width: 20%;">ราคา</th>
+                                            </tr>
+                                            <?php
+                                            $product = $conn->getProduct(1);
+                                            while($row = $product->fetch_assoc()) {
+                                                ?>
+                                                <tr>
+                                                    <?php if($row['product_type'] == "ขนม") {
+                                                        ?>
+                                                        <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
+                                                        <td style="width: 30%;"><?php echo $row['product_price'] ?></td>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
