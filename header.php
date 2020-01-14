@@ -32,6 +32,8 @@
         $_SESSION["num"] = array_sum($_SESSION["listProduct"]);
         if($_SESSION["status"] == 'seller'){
             $link2 = "ShopManage.php";
+        }elseif ($_SESSION["status"] == 'customer'){
+            $link2 = "customerManage.php";
         }
     }
 ?>

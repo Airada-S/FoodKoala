@@ -26,19 +26,19 @@
                             <h2 class="card-title">รายละเอียดการจัดส่ง</h2>
                         </li>
                     </ul>
-                    <h5 class="card-title">เวลาส่งอาหาร</h5>
+                    <h5 class="card-title">เลือกเวลาส่งอาหาร</h5>
                     <select id="date">
                         <option></option>
                     </select>
                     <input type="time" style="width: 45%;">
                     <h5 class="card-title mt-5">ที่อยู่สำหรับจัดส่ง</h5>
                     <div class="card" style="width: 50%; border-color: #e06c6c;">
-                        <div STYLE="text-align: end;padding: 10px">
+                        <div STYLE="text-align: end;padding-top: 10px;padding-left: 10px;padding-right: 10px;">
                               <a href="#" style="color: #e06c6c"><i class="far fa-edit"></i></a>
-                              <a href="#" style="color: #e06c6c"><i class="far fa-trash-alt"></i></a>
+<!--                              <a href="#" style="color: #e06c6c"><i class="far fa-trash-alt"></i></a>-->
                         </div>
-                        <div class="card-body">
-
+                        <div class="card-body" style="padding: 10px;padding-top: 5px">
+                            <?php echo $row["customer_address"]; ?>
                         </div>
                     </div>
                 </div>
@@ -53,6 +53,7 @@
                             <h2 class="card-title">ข้อมูลส่วนตัว</h2>
                         </li>
                     </ul>
+                    <?php echo $row["customer_name"]."<br>".$row["customer_tel"]; ?>
                 </div>
             </div>
             <div class="card mt-5" style="width: 100%;">
