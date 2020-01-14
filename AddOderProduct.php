@@ -78,7 +78,7 @@
                     <ul class="list-inline" style="text-align: center;margin-top: 10px">
                         <li class="list-inline-item">
                             <button class="btn btn-outline-danger" onclick="money()">
-                                <a ><img src="img/logo.png" style="width: 10rem; height: 10rem;" ></a>
+                                <a ><img src="img/money.png" style="width: 10rem; height: 10rem;" ></a>
                                 <p class="font-weight-normal mt-3">ชำระด้วยเงินสด</p>
                             </button>
                         </li>
@@ -89,8 +89,9 @@
                             </button>
                         </li>
                     </ul>
-
-                    <button type="button" class="btn btn-outline-danger btn-lg btn-block">สั่งอาหาร</button>
+                    <form action="check.php?s=13">
+                        <button class="btn btn-outline-danger btn-lg btn-block" type="submit">สั่งอาหาร</button >
+                    </form>
                 </div>
             </div>
         </div>
@@ -189,7 +190,6 @@
     function wallet() {
         pay = 'wallet';
     }
-
 </script>
 </body>
 </html>
