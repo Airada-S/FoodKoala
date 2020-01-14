@@ -69,14 +69,16 @@
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         <i class="fab fa-cc-visa" style="font-size: 40px"></i>
-                        <ul class="list-inline">
-                            <li class="list-inline-item" style="width: 47%">
+                        <ul class="list-inline mt-3">
+                            <li class="list-inline-item" style="width: 49%">
                                 <input type="text"placeholder=" เลขบัตรวิชา" style="width: 100%">
                             </li>
-                            <li class="list-inline-item" style="width: 47%">
+                            <li class="list-inline-item" style="width: 48%">
                                 <input type="text"placeholder=" รหัสบัตรวิชา" style="width: 100%">
                             </li>
                         </ul>
+                        <input type="text"placeholder=" จำนวนเงิน" style="width: 100%">
+                        <button id="edit1" type="button" class="btn btn-outline-danger mt-4" onclick="editC()" > เติมเงิน <i class="far fa-edit"></i></button>
                     </div>
                 </div>
             </div>
