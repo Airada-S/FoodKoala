@@ -89,7 +89,8 @@
                             </button>
                         </li>
                     </ul>
-                    <form action="check.php?s=13">
+                    <form action="check.php?s=13" method="post">
+                        <input type="hidden" id="Cpay" name="Cpay"value=""/>
                         <button class="btn btn-outline-danger btn-lg btn-block" type="submit">สั่งอาหาร</button >
                     </form>
                 </div>
@@ -183,12 +184,15 @@
         x.add(option);
     }
     document.getElementById("date").selectedIndex = "1";
+    var cp = document.getElementById("Cpay");
     var pay="";
     function money() {
         pay = 'money';
+        cp.value = 'money';
     }
     function wallet() {
         pay = 'wallet';
+        cp.value = 'wallet';
     }
 </script>
 </body>
