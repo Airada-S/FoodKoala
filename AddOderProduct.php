@@ -116,9 +116,10 @@
                                 <td style="border: 0px;padding-left: 0px;padding-bottom: 0px">
                                     <?php echo $row["product_name"]; ?>
                                 </td>
-                                <td rowspan="2" style="border: 0px">
+                                <td rowspan="2" style="border: 0px" class="float-right">
                                     <?php echo $row["product_price"]*$value." บาท"; ?>
                                 </td>
+
                             </tr>
                             <tr>
                                <td style="border: 0px;padding: 0px">
@@ -129,16 +130,30 @@
                                    ?>
                                </td>
                             </tr>
+
                     <?php
                         }
                     ?>
                             <tr>
                                 <td colspan="2">ยอดรวม</td>
-                                <td><?php echo $sumall." บาท"; ?></td>
+                                <td class="float-right"><?php echo $sumall." บาท"; ?></td>
                             </tr>
-                            <th>
-
-                            </th>
+                            <tr>
+                                <td colspan="2" style="border: 0px;padding-top: 0px">ค่าจัดส่ง</td>
+                                <td style="border: 0px;padding-top: 0px" class="float-right">
+                                    <?php
+                                    $cost = 0;
+                                        if($sumall < 500){
+                                            $cost = 50;
+                                        }
+                                        echo $cost." บาท";
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">ยอดสุทธิ</td>
+                                <td class="float-right"><?php echo $cost+$sumall." บาท" ?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
