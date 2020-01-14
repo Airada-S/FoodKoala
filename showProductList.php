@@ -31,18 +31,27 @@
         ?>
                 <tr>
                     <td rowspan="2" >
-                        <a  href="check.php?s=8&pid=<?php echo $key ?>" >
-                         <i class="far fa-minus-square" style="font-size: 25px;color: gold"></i>
-                        </a>
-                        <?php echo $value ?>
-                        <a  href="check.php?s=9&pid=<?php echo $key ?>" >
-                            <i class="far fa-plus-square" style="font-size: 25px;color: gold"></i>
-                        </a>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a  href="check.php?s=8&pid=<?php echo $key ?>" onclick="return deletemount()">
+                                    <i class="far fa-minus-square" style="font-size: 25px;color: gold"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <p id="mount"> <?php echo $value ?> </p>
+                            </li>
+                            <li class="list-inline-item">
+                                <a  href="check.php?s=9&pid=<?php echo $key ?>" >
+                                    <i class="far fa-plus-square" style="font-size: 25px;color: gold"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+
+
                     </td>
                     <td>
-                        <?php
-                        echo $row["product_name"];
-                        ?>
+                        <p id="nameP"> <?php echo $row["product_name"]; ?></p>
                     </td>
 
                     <td rowspan="2" style="text-align: center">
@@ -77,44 +86,17 @@
         <a href="AddOderProduct.php" style="text-align: center" class="btn btn-outline-warning my-2 my-sm-0">ชำระเงิน</a>
     </div>
 </div>
-<!--<div class="card m-4">-->
-<!--    <div class="card-body">-->
-<!--        <p class="card-text">-->
-<?php
-//    foreach ($_SESSION["listProduct"] as $key => $value){
-//        $conn = new ConnectDB();
-//        $product = $conn->getProductByPid($key);
-//        $row = $product->fetch_assoc();
-//
-//?>
-<!--    <div class="card mt-2">-->
-<!--        <div class="card-body" style="font-size: 25px;">-->
-<!--            <a  href="check.php?s=8&pid=--><?php //echo $key ?><!--" >-->
-<!--                <i class="far fa-minus-square" style="font-size: 25px;color: gold"></i>-->
-<!--            </a>-->
-<!--            --><?php //echo $value ?>
-<!--            <a  href="check.php?s=9&pid=--><?php //echo $key ?><!--" >-->
-<!--                <i class="far fa-plus-square" style="font-size: 25px;color: gold"></i>-->
-<!--            </a>-->
-<!--            --><?php
-//                echo $row["product_name"];
-//            ?>
-<!--            <div  class="float-right" href="" style="font-size: 25px;">-->
-<!--                <a class="mr-1">--><?php //echo $row["product_price"] ?><!--</a>-->
-<!--                <a >--><?php //echo $row["product_price"]*$value ?><!--</a>-->
-<!--            </div>-->
-<!--            <br>-->
-<!--            --><?php
-//                $seller = $conn->getSeller($row["seller_id"]);
-//                $row2 = $seller->fetch_assoc();
-//                echo "จากร้าน : ".$row2["seller_name"];
-//            ?>
-<!--        </div>-->
-<!--    </div>-->
-<?php
-//    }
-//?>
-<!--        </p>-->
-<!--    </div>-->
-<!--</div>-->
 </body>
+<script>
+    function deletemount() {
+        const x = document.getElementById("mount").textContent;
+        const name = document.getElementById("nameP").textContent;
+        if(x == 1){
+            if (confirm('คุณต้องลบสินค้า'+name+" หรือไม่")) {
+                    return true
+            } else {
+                    return false
+            }
+        }
+    }
+</script>
