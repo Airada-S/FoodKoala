@@ -87,5 +87,7 @@ if($s==1){
     $con = new ConnectDB();
     $con->connect();
     $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
+}elseif ($s == 13){
+    echo $_POST['Cpay'];
 }
 ?>

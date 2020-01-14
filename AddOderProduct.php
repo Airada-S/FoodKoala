@@ -37,10 +37,11 @@
                               <a href="#" style="color: #e06c6c"><i class="far fa-edit"></i></a>
 <!--                              <a href="#" style="color: #e06c6c"><i class="far fa-trash-alt"></i></a>-->
                         </div>
-                        <div class="card-body" style="padding: 10px;padding-top: 5px">
+                        <div class="card-body" style="padding: 5px 10px 10px;">
                             <?php echo $row["customer_address"]; ?>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="card mt-5" style="width: 100%;">
@@ -49,8 +50,11 @@
                         <li class="list-inline-item">
                             <h1 style="width: 3rem; height: 3rem; background-color: #b87070; text-align: center">2</h1>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item" style="margin-right: 40%">
                             <h2 class="card-title">ข้อมูลส่วนตัว</h2>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" style="color: #e06c6c; margin-right: ">แก้ไข  <i class="far fa-edit"></i></a>
                         </li>
                     </ul>
                     <?php echo $row["customer_name"]."<br>".$row["customer_tel"]; ?>
@@ -66,13 +70,94 @@
                             <h2 class="card-title">การชำระเงิน</h2>
                         </li>
                     </ul>
+                    <a style="margin-bottom: 100px">
+                        ยอดเงินคงเหลือใน Wallet ของคุณ :
+                        <?php echo $row["customer_wallet"]; ?>
+                         บาท
+                    </a>
+                    <ul class="list-inline" style="text-align: center;margin-top: 10px">
+                        <li class="list-inline-item">
+                            <button class="btn btn-outline-danger" onclick="money()">
+                                <a ><img src="img/money.png" style="width: 10rem; height: 10rem;" ></a>
+                                <p class="font-weight-normal mt-3">ชำระด้วยเงินสด</p>
+                            </button>
+                        </li>
+                        <li class="list-inline-item">
+                            <button class="btn btn-outline-danger" onclick="wallet()">
+                            <a><img src="img/coin.png" style="width: 10rem; height: 10rem;" ></a>
+                            <p class="font-weight-normal mt-3">ชำระด้วยเงิน Wallet</p>
+                            </button>
+                        </li>
+                    </ul>
+                    <form action="check.php?s=13" method="post">
+                        <input type="hidden" id="Cpay" name="Cpay"value=""/>
+                        <button class="btn btn-outline-danger btn-lg btn-block" type="submit">สั่งอาหาร</button >
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-6" style="text-align: center">
+        <div class="col-6" >
             <div class="card" style="width: 100%;">
                 <div class="card-body">
-                    <p class="font-weight-normal">ออเดอร์รายการอาหารของคุณ</p>
+                    <h5 class="font-weight-normal" style="text-align: center">รายการออเดอร์ของคุณ</h5>
+                    <table class="table" >
+                        <tbody >
+                    <?php
+                        $sumall = 0;
+                        foreach ($_SESSION["listProduct"] as $key => $value) {
+                            $conn = new ConnectDB();
+                            $product = $conn->getProductByPid($key);
+                            $row = $product->fetch_assoc();
+                            $sumall += $row["product_price"] * $value;
+
+                    ?>
+                            <tr>
+                                <td rowspan="2" style="border: 0px;padding: 0px;padding-top: 12px">
+                                    <?php echo $value."    x"; ?>
+                                </td>
+                                <td style="border: 0px;padding-left: 0px;padding-bottom: 0px">
+                                    <?php echo $row["product_name"]; ?>
+                                </td>
+                                <td rowspan="2" style="border: 0px" class="float-right">
+                                    <?php echo $row["product_price"]*$value." บาท"; ?>
+                                </td>
+
+                            </tr>
+                            <tr>
+                               <td style="border: 0px;padding: 0px">
+                                   <?php
+                                       $seller = $conn->getSeller($row["seller_id"]);
+                                       $row2 = $seller->fetch_assoc();
+                                       echo "จากร้าน : ".$row2["seller_name"];
+                                   ?>
+                               </td>
+                            </tr>
+
+                    <?php
+                        }
+                    ?>
+                            <tr>
+                                <td colspan="2">ยอดรวม</td>
+                                <td class="float-right"><?php echo $sumall." บาท"; ?></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 0px;padding-top: 0px">ค่าจัดส่ง</td>
+                                <td style="border: 0px;padding-top: 0px" class="float-right">
+                                    <?php
+                                    $cost = 0;
+                                        if($sumall < 500){
+                                            $cost = 50;
+                                        }
+                                        echo $cost." บาท";
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">ยอดสุทธิ</td>
+                                <td class="float-right"><?php echo $cost+$sumall." บาท" ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -99,6 +184,16 @@
         x.add(option);
     }
     document.getElementById("date").selectedIndex = "1";
+    var cp = document.getElementById("Cpay");
+    var pay="";
+    function money() {
+        pay = 'money';
+        cp.value = 'money';
+    }
+    function wallet() {
+        pay = 'wallet';
+        cp.value = 'wallet';
+    }
 </script>
 </body>
 </html>

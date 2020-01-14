@@ -74,12 +74,8 @@
             }
         ?>
         <tr>
-            <td colspan="3">
-                ยอดสุทธิ
-            </td>
-            <td style="text-align: center">
-                <?php echo $sumall ?>
-            </td>
+            <td colspan="3">ยอดรวม</td>
+            <td style="text-align: center"><?php echo $sumall ?></td>
         </tr>
         </tbody>
     </table>
