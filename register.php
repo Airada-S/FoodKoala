@@ -89,8 +89,8 @@ require("SetSessionStatus.php");
         let email2 = document.getElementById("email2");
         let tel2 = document.getElementById("tel2");
         let address2 = document.getElementById("address2");
-        let time2 = document.getElementById("address2");
-        let img2 = document.getElementById("address2");
+        let time2 = document.getElementById("time2");
+        let img2 = document.getElementById("img2");
         if(user2.value == ""){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
