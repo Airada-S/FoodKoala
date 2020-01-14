@@ -89,5 +89,8 @@ if($s==1){
     $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
 }elseif ($s == 13){
     echo $_POST['Cpay'];
+    $conn = new ConnectDB();
+    $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
+    header("Location:Oderstatus.php?bid=".$bid);
 }
 ?>

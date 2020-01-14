@@ -124,13 +124,13 @@
 
                             </tr>
                             <tr>
-                               <td style="border: 0px;padding: 0px">
-                                   <?php
-                                       $seller = $conn->getSeller($row["seller_id"]);
-                                       $row2 = $seller->fetch_assoc();
-                                       echo "จากร้าน : ".$row2["seller_name"];
-                                   ?>
-                               </td>
+                                <td style="border: 0px;padding: 0px">
+                                    <?php
+                                    $seller = $conn->getSeller($row["seller_id"]);
+                                    $row2 = $seller->fetch_assoc();
+                                    echo "จากร้าน : ".$row2["seller_name"];
+                                    ?>
+                                </td>
                             </tr>
 
                     <?php
@@ -187,8 +187,8 @@
     var cp = document.getElementById("Cpay");
     var pay="";
     function money() {
-        pay = 'money';
-        cp.value = 'money';
+        pay = 'cash';
+        cp.value = 'cash';
     }
     function wallet() {
         pay = 'wallet';
