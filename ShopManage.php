@@ -19,10 +19,10 @@ $det = $shop->fetch_assoc();
         <div style="margin: 20px;">
             <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
                 <tr>
-                    <td colspan="3" style="text-align: right; padding-top: 10px;"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลร้านค้า</button></td>
+                    <td colspan="3" style="text-align: right; padding-top: 10px;"><a href="ShopEdit.php"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลร้านค้า</button></a></td>
                 </tr>
                 <tr>
-                    <td rowspan="3" STYLE="width: 20%;"><img src="./img/logo.png" width="150" height="150"></td>
+                    <td rowspan="3" STYLE="width: 20%;"><img src="./img/<?php echo $det['seller_img'] ?>" width="150" height="150"></td>
                     <th style="padding-left: 50px; width: 20%">
                         Username :
                     </th>

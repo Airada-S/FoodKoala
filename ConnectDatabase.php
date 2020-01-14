@@ -177,4 +177,20 @@ class connectDB {
         return $this->connect()->query($sql);
     }
 
+    public function updateSeller($id, $user, $pass, $name, $address, $tel, $image){
+        $sql = "Update seller set seller_username = '".$user."', seller_password = '".$pass."', seller_name = '".$name."', seller_address = '".$address."', seller_tel='".$tel."', seller_img = '".$image."' where seller_id=".$id;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:ShopManage.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:ShopEdit.php");
+        }
+    }
+
+    public function selectSellerByUsername($username){
+        $sql = "select * from seller where seller_username = '".$username."'";
+        return $this->connect()->query($sql);
+    }
+
 }

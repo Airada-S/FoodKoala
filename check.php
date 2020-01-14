@@ -92,5 +92,31 @@ if($s==1){
     $conn = new ConnectDB();
     $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
     header("Location:Oderstatus.php?bid=".$bid);
+}elseif ($s == 14){
+    $user = $_POST['seller_username'];
+    $pass = $_POST['seller_password'];
+    $name = $_POST['seller_name'];
+    $addr = $_POST['seller_address'];
+    $tel = $_POST['seller_tel'];
+    $place = "img";
+    $image = $_FILES["seller_img"];
+
+    $conn = new ConnectDB();
+    $username = $conn->selectSellerByUsername($user);
+    $Img = $conn->getSeller($_SESSION['id']);
+    $selImg = $Img->fetch_assoc();
+    if($username->num_rows == 0 || $user == $selImg['seller_username']){
+        echo 'yes';
+        if($image['name'] == ""){
+            $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $selImg['seller_img']);
+        }else{
+            if(move_uploaded_file($image['tmp_name'],$place.'/'.$image['name'])){
+                $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $image['name']);
+
+            }else{
+                echo "NO compleate";
+            }
+        }
+    }
 }
 ?>
