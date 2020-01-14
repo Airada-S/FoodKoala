@@ -80,6 +80,6 @@ if($s==1){
     $img = $_POST['img'];
     $con = new ConnectDB();
     $con->connect();
-    $con->Insert2($user,$pass,$name,$email,$tel,$address,$time,$img);
+    $con->Insert2($user,$pass,$name,$email,$tel,$address,$time,$img,$time,$img);
 }
 ?>

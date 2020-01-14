@@ -113,7 +113,7 @@ class connectDB {
         return $this->connect()->query($sql);
     }
     public function Insert1($user,$pass,$name,$email,$tel,$address){
-        $sql = "INSERT INTO `customer`(`customer_name`, `customer_email`, `customer_address`, `customer_wallet`, `customer_tel`, `customer_username`, `customer_password`) VALUES ('".$name."','".$email."','".$address."','1','".$tel."','".$user."','".$pass."')";
+        $sql = "INSERT INTO `customer`(`customer_name`, `customer_email`, `customer_address`, `customer_wallet`, `customer_tel`, `customer_username`, `customer_password`) VALUES ('".$name."','".$email."','".$address."','0','".$tel."','".$user."','".$pass."')";
         echo $sql;
         if(mysqli_query($this->connect(), $sql)){
             header("Location:Login.php");
@@ -121,8 +121,8 @@ class connectDB {
             echo 'Insert Incomplete';
         }
     }
-    public function Insert2($user,$pass,$name,$email,$tel,$address){
-        $sql = "INSERT INTO `customer`(`customer_name`, `customer_email`, `customer_address`, `customer_wallet`, `customer_tel`, `customer_username`, `customer_password`) VALUES ('".$name."','".$email."','".$address."','1','".$tel."','".$user."','".$pass."')";
+    public function Insert2($user,$pass,$name,$email,$tel,$address,$time,$img){
+        $sql = "INSERT INTO `seller`(`seller_name`, `seller_email`, `seller_tel`, `seller_status`, `seller_img`, `seller_time`, `seller_address`, `seller_username`, `seller_password`) VALUES ('".$name."','".$email."','".$tel."','1','".$img."','".$time."','".$address."','".$user."','".$pass."')";
         echo $sql;
         if(mysqli_query($this->connect(), $sql)){
             header("Location:Login.php");
