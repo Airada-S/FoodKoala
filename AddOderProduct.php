@@ -7,7 +7,11 @@
 </head>
 <body>
 <?php
-include 'header.php';
+    include 'header.php';
+    require_once './ConnectDatabase.php';
+    $conn = new ConnectDB();
+    $customer = $conn->getCustomer($_SESSION["id"]);
+    $row = $customer->fetch_assoc();
 ?>
 <div class="container">
     <div class="row" style="margin-top: 10%" >

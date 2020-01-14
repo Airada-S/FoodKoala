@@ -130,5 +130,9 @@ class connectDB {
             echo 'Insert Incomplete';
         }
     }
+    public function getCustomer($id){
+        $sql = "SELECT * FROM `customer` WHERE `customer_id` = '".$id."'";
+        return $this->connect()->query($sql);
+    }
 
 }
