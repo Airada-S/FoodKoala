@@ -37,10 +37,11 @@
                               <a href="#" style="color: #e06c6c"><i class="far fa-edit"></i></a>
 <!--                              <a href="#" style="color: #e06c6c"><i class="far fa-trash-alt"></i></a>-->
                         </div>
-                        <div class="card-body" style="padding: 10px;padding-top: 5px">
+                        <div class="card-body" style="padding: 5px 10px 10px;">
                             <?php echo $row["customer_address"]; ?>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="card mt-5" style="width: 100%;">
@@ -49,8 +50,11 @@
                         <li class="list-inline-item">
                             <h1 style="width: 3rem; height: 3rem; background-color: #b87070; text-align: center">2</h1>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item" style="margin-right: 40%">
                             <h2 class="card-title">ข้อมูลส่วนตัว</h2>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" style="color: #e06c6c; margin-right: ">แก้ไข  <i class="far fa-edit"></i></a>
                         </li>
                     </ul>
                     <?php echo $row["customer_name"]."<br>".$row["customer_tel"]; ?>
@@ -66,6 +70,21 @@
                             <h2 class="card-title">การชำระเงิน</h2>
                         </li>
                     </ul>
+                    <ul class="list-inline" style="text-align: center">
+                        <li class="list-inline-item">
+                            <div class="border border-danger">
+                                <a href="#"><img src="img/logo.png" style="width: 15rem; height: 10rem;" ></a>
+                                <p class="font-weight-normal mt-3">ชำระด้วยเงินสด</p>
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="border border-danger">
+                            <a href="#"><img src="img/logo.png" style="width: 15rem; height: 10rem;" ></a>
+                            <p class="font-weight-normal mt-3">ชำระด้วยเงิน Wallet</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-danger btn-lg btn-block">Danger</button>
                 </div>
             </div>
         </div>
