@@ -68,7 +68,7 @@ if($s==1){
     $address = $_POST['address'];
     $con = new ConnectDB();
     $con->connect();
-    $con->Insert1($user,$pass,$name,$email,$tel,$address);
+    $con->Insert1($user,$pass,$name,$tel,$address);
 }elseif ($s == 11){
     $user = $_POST['user'];
     $pass = $_POST['pass'];
@@ -80,6 +80,6 @@ if($s==1){
     $img = $_POST['img'];
     $con = new ConnectDB();
     $con->connect();
-    $con->Insert2($user,$pass,$name,$email,$tel,$address,$time,$img,$time,$img);
+    $con->Insert2($user,$pass,$name,$tel,$address,$time,$img,$time,$img);
 }
 ?>
