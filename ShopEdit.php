@@ -71,21 +71,21 @@ $det = $shop->fetch_assoc();
                                                 <th style="width: 20%;">ราคา</th>
                                             </tr>
                                             <?php
-                                                $product = $conn->getProduct($_SESSION['id']);
-                                                while($row = $product->fetch_assoc()) {
-                                                    ?>
-                                                    <tr>
-                                                        <?php if($row['product_type'] == "อาหาร") {
-                                                            ?>
-                                                            <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
-                                                            <td style="width: 15%;"><?php echo $row['product_price'] ?></td>
-                                                            <td style="width: 15%;"><a href="check.php?s=12&pid=<?php echo $row['product_id']?>">แก้ไข</a></td>
-                                                            <?php
-                                                        }
+                                            $product = $conn->getProduct($_SESSION['id']);
+                                            while($row = $product->fetch_assoc()) {
+                                                ?>
+                                                <tr>
+                                                    <?php if($row['product_type'] == "อาหาร") {
                                                         ?>
-                                                    </tr>
-                                                    <?php
-                                                }
+                                                        <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
+                                                        <td style="width: 15%;"><?php echo $row['product_price'] ?></td>
+                                                        <td style="width: 15%;"><a href="check.php?s=12&pid=<?php echo $row['product_id']?>">แก้ไข</a></td>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </tr>
+                                                <?php
+                                            }
                                             ?>
                                         </table>
                                     </div>
