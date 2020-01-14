@@ -23,7 +23,6 @@
         $img = "illu-delivered.gif";
     }
     $oder = $conn->getOrderBybid($bid);
-
 ?>
 <div class="container">
     <div class="row">
@@ -41,7 +40,33 @@
                 <div class="card-body" style="">
                     <h3>รายละเอียดออเดอร์</h3>
                     <hr>
-                    <p class="font-weight-light">ออเดอร์ของคุณจาก:</p>
+                    <p class="font-weight-light">
+                        ออเดอร์ของคุณจาก:<br>
+                    <table class="table" >
+                        <tbody>
+                        <?php
+                            $sumall = 0;
+                            while($row = $oder->fetch_assoc()) {
+                                $sumall += $row["order_sumprice"];
+
+                        ?>
+                        <tr>
+                            <td rowspan="2" style="border: 0px;padding: 0px;padding-top: 12px">
+                                <?php echo $row["order_amount"]."    x"; ?>
+                            </td>
+                            <td style="border: 0px;padding-left: 0px;padding-bottom: 0px">
+<!--                                --><?php //echo $row["product_name"]; ?>
+                            </td>
+                            <td rowspan="2" style="border: 0px" class="float-right">
+                                <?php echo $row["order_sumprice"]." บาท"; ?>
+                            </td>
+                        <?php
+                            }
+                        ?>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </p>
                     <p class="font-weight-light">ที่อยู่สำหรับจัดส่ง:</p>
                     <hr>
                 </div>

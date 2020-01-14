@@ -173,6 +173,7 @@ class connectDB {
     }
     public function getOrderBybid($bid){
         $sql = "SELECT * FROM `order` WHERE `bill_id` ='".$bid."'";
+//        echo $sql;
         return $this->connect()->query($sql);
     }
 
