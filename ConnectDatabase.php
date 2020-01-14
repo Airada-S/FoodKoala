@@ -18,18 +18,24 @@ class connectDB {
         $result = $this->connect()->query($sql);
         if($result->num_rows>0){
             $_SESSION['status'] = 'customer';
+            $val = $result->fetch_assoc();
+            $_SESSION['id'] = $val["customer_id"];
             return $result;
         }else{
             $sql = "SELECT * FROM `employee`WHERE employee_username = '".$username."' AND employee_password = '".$password."'";
             $result = $this->connect()->query($sql);
             if($result->num_rows>0){
                 $_SESSION['status'] = 'employee';
+                $val = $result->fetch_assoc();
+                $_SESSION['id'] = $val["employee_id"];
                 return $result;
             }else{
                 $sql = "SELECT * FROM `seller`WHERE seller_username = '".$username."' AND seller_password = '".$password."'";
                 $result = $this->connect()->query($sql);
                 if($result->num_rows>0){
                     $_SESSION['status'] = 'seller';
+                    $val = $result->fetch_assoc();
+                    $_SESSION['id'] = $val["seller_id"];
                     return $result;
                 }else{
                     header("Location:login.php");
@@ -105,6 +111,24 @@ class connectDB {
     public function getProductByPid($pid){
         $sql = "SELECT * FROM product WHERE `product_id` = '".$pid."'";
         return $this->connect()->query($sql);
+    }
+    public function Insert1($user,$pass,$name,$email,$tel,$address){
+        $sql = "INSERT INTO `customer`(`customer_name`, `customer_email`, `customer_address`, `customer_wallet`, `customer_tel`, `customer_username`, `customer_password`) VALUES ('".$name."','".$email."','".$address."','1','".$tel."','".$user."','".$pass."')";
+        echo $sql;
+        if(mysqli_query($this->connect(), $sql)){
+            header("Location:Login.php");
+        } else {
+            echo 'Insert Incomplete';
+        }
+    }
+    public function Insert2($user,$pass,$name,$email,$tel,$address){
+        $sql = "INSERT INTO `customer`(`customer_name`, `customer_email`, `customer_address`, `customer_wallet`, `customer_tel`, `customer_username`, `customer_password`) VALUES ('".$name."','".$email."','".$address."','1','".$tel."','".$user."','".$pass."')";
+        echo $sql;
+        if(mysqli_query($this->connect(), $sql)){
+            header("Location:Login.php");
+        } else {
+            echo 'Insert Incomplete';
+        }
     }
 
 }
