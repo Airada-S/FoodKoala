@@ -31,7 +31,7 @@ require("SetSessionStatus.php");
             </form>
         </div>
         <div id="seller" class="tab-pane fade">
-            <form class="login-form" action='check.php?s=11' method='POST' id="seller">
+            <form class="login-form" action='check.php?s=11' method='POST' id="seller" enctype="multipart/form-data">
 
                 <input type="text" id='user2' placeholder="Username" name='user'/>
                 <input type='password' id='pass2' placeholder='Password' name='pass'/>

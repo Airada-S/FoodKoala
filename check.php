@@ -1,4 +1,5 @@
 <?php
+error_reporting (E_ALL ^ E_NOTICE);
 session_start();
 require_once './ConnectDatabase.php';
 $s = $_REQUEST["s"];
@@ -70,6 +71,11 @@ if($s==1){
     $con->connect();
     $con->Insert1($user,$pass,$name,$email,$tel,$address);
 }elseif ($s == 11){
+    $file = $_FILES['img'];
+    $place = "img";
+    if(move_uploaded_file($file[tmp_name],"$place/".$file[name])){
+
+    }
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $name = $_POST['name'];
