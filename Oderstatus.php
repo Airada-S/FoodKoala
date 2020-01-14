@@ -48,26 +48,46 @@
                             $sumall = 0;
                             while($row = $oder->fetch_assoc()) {
                                 $sumall += $row["order_sumprice"];
-
+                                $product = $conn->getProductByPid($row["product_id"]);
+                                $val2 = $product->fetch_assoc();
                         ?>
                         <tr>
                             <td rowspan="2" style="border: 0px;padding: 0px;padding-top: 12px">
                                 <?php echo $row["order_amount"]."    x"; ?>
                             </td>
                             <td style="border: 0px;padding-left: 0px;padding-bottom: 0px">
-<!--                                --><?php //echo $row["product_name"]; ?>
+                                <?php echo $val2["product_name"]; ?>
                             </td>
                             <td rowspan="2" style="border: 0px" class="float-right">
                                 <?php echo $row["order_sumprice"]." บาท"; ?>
                             </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 0px;padding: 0px">
+                                <?php
+                                $seller = $conn->getSeller($val2["seller_id"]);
+                                $row2 = $seller->fetch_assoc();
+                                echo "จากร้าน : ".$row2["seller_name"];
+                                ?>
+                            </td>
                         <?php
                             }
                         ?>
+                        <tr>
+                            <td colspan="2">ยอดรวม</td>
+                            <td class="float-right"><?php echo $val["bill_total"]." บาท"; ?></td>
                         </tr>
                         </tbody>
                     </table>
                     </p>
-                    <p class="font-weight-light">ที่อยู่สำหรับจัดส่ง:</p>
+                    <p class="font-weight-light">
+                        ที่อยู่สำหรับจัดส่ง:<br>
+                        <?php
+                            $customer = $conn->getCustomer($_SESSION["id"]);
+                            $val3 = $customer->fetch_assoc();
+                            echo $val3["customer_address"];
+                        ?>
+                    </p>
                     <hr>
                 </div>
             </div>
