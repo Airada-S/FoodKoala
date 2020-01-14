@@ -17,7 +17,7 @@ $conn = new ConnectDB();
         <div style="margin: 20px;">
             <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
                 <tr>
-                    <td rowspan="4" STYLE="width: 20%;"><img src="./image/deco.png" width="200" height="200"></td>
+                    <td rowspan="4" STYLE="width: 20%;"><img src="./img/logo.png" width="200" height="200"></td>
                     <th style="padding-left: 50px; width: 20%">
                         Username :
                     </th>
