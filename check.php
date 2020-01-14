@@ -90,7 +90,7 @@ if($s==1){
 }elseif ($s == 13){
     echo $_POST['Cpay'];
     $conn = new ConnectDB();
-    $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
-    header("Location:Oderstatus.php");
+    $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
+    header("Location:Oderstatus.php?bid=".$bid);
 }
 ?>

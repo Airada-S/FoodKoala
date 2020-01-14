@@ -162,6 +162,7 @@ class connectDB {
                     echo 'Insert Incomplete by key : '.$key;
                 }
             }
+            return $value1["max"];
         } else {
             echo 'Insert Incomplete';
         }
