@@ -141,10 +141,6 @@ $det = $shop->fetch_assoc();
             readURL(input);
         });
     });
-
-    /*  ==========================================
-        SHOW UPLOADED IMAGE NAME
-    * ========================================== */
     var input = document.getElementById( 'upload' );
     var infoArea = document.getElementById( 'upload-label' );
 
