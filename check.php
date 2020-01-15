@@ -87,6 +87,15 @@ if($s==1){
     $con = new ConnectDB();
     $con->connect();
     $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
+}elseif ($s == 12){
+    $pid = $_REQUEST['pid'];
+
+    $name = $_POST['food'];
+    $price = $_POST['price'];
+
+    $conn = new ConnectDB();
+    $conn->updateProduct($pid, $name, $price);
+
 }elseif ($s == 13){
     $conn = new ConnectDB();
     $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
@@ -137,9 +146,27 @@ if($s==1){
     $conn->updateCustomerWallet($_SESSION["id"],$wallet);
     header("Location:customerManage.php");
 }elseif ($s == 16){
+    $pid = $_REQUEST['pid'];
+
+    $conn = new ConnectDB();
+    $conn->delProduct($pid);
 
 }elseif ($s == 17){
+    $pid = $_REQUEST['pid'];
+    $name = $_POST['food'];
+    $price = $_POST['price'];
+    $type = "";
+    $t = $_REQUEST['type'];
+    if ($t == "food"){
+        $type = "อาหาร";
+    }elseif ($t == "drink"){
+        $type = "เครื่องดื่ม";
+    }else{
+        $type = "ขนม";
+    }
 
+    $conn = new ConnectDB();
+    $conn->insertProduct($_SESSION['id'], $name, $price, $type);
 }elseif ($s == 18){
     $star = "star".$_REQUEST["j"];
     $conn = new ConnectDB();

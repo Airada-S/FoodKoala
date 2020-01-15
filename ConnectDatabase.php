@@ -220,4 +220,37 @@ class connectDB {
         }
     }
 
+    public function updateProduct($pid, $name, $price){
+        $sql = "Update product set product_name = '".$name."', product_price = ".$price." where product_id = ".$pid;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:addProduct.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
+        }
+    }
+
+    public function delProduct($pid){
+        $sql = "Update product set product_status = 0 where product_id = ".$pid;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:addProduct.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
+        }
+    }
+
+    public function insertProduct($sid, $name, $price, $type){
+        $sql = "Insert into product(seller_id, product_name, product_price, product_type, product_status) values (".$sid.", '".$name."', ".$price.", '".$type."', 1)";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:addProduct.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
+        }
+    }
+
 }

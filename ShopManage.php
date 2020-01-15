@@ -51,7 +51,7 @@ $det = $shop->fetch_assoc();
                         รายการอาหาร
                     </th>
                     <td style="text-align: right; padding-top: 35px;">
-                        <button type="button" class="btn btn-outline-warning">+ เพิ่มรายการ</button>
+                        <a href="addProduct.php"><button type="button" class="btn btn-outline-warning">+ เพิ่มรายการ</button></a>
                     </td>
                 </tr>
                 <tr>
