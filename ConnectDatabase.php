@@ -4,7 +4,8 @@ class connectDB {
     public function connect(){
         $username = 'team';
         $password = '';
-        $host = '10.31.2.17';
+//        $host = '10.31.2.17';
+        $host = '192.168.255.41';
         $database = "foodkoala2";
         $port = 3306;
         $conn = new mysqli($host.':'.$port, $username, $password,$database);

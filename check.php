@@ -88,9 +88,19 @@ if($s==1){
     $con->connect();
     $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
 }elseif ($s == 13){
-    echo $_POST['Cpay'];
     $conn = new ConnectDB();
     $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
+    if($_POST['Cpay'] == "wallet"){
+        $bill = $conn->getBillBybid($bid);
+        $val1 = $bill->fetch_assoc();
+//        echo $val1["bill_total"]."<br>";
+        $customer = $conn->getCustomer($_SESSION["id"]);
+        $val2 = $customer->fetch_assoc();
+//        echo $val2["customer_wallet"]."<br>";
+        $wallet = $val2["customer_wallet"]-$val1["bill_total"];
+//        echo $wallet;
+        $conn->updateCustomerWallet($_SESSION["id"],$wallet);
+    }
     header("Location:Oderstatus.php?bid=".$bid);
 }elseif ($s == 14){
     $user = $_POST['seller_username'];
@@ -118,5 +128,13 @@ if($s==1){
             }
         }
     }
+}elseif ($s == 15){
+//    echo "edit wallet<br>".$_POST["wallet"];
+    $conn = new ConnectDB();
+    $customer = $conn->getCustomer($_SESSION["id"]);
+    $val = $customer->fetch_assoc();
+    $wallet = $val["customer_wallet"]+$_POST["wallet"];
+    $conn->updateCustomerWallet($_SESSION["id"],$wallet);
+    header("Location:customerManage.php");
 }
 ?>
