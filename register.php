@@ -26,7 +26,7 @@ require("SetSessionStatus.php");
                 <input type="text" id='name' placeholder="Name" name='name'/>
                 <input type="text" id='email' placeholder="Email" name='email'/>
                 <input type="text" id='tel' placeholder="Phone number" name='tel'/>
-                <input type="text" id='address' placeholder="Address" name='address'/>
+                <input type="textarea" id='address' placeholder="Address" name='address'/>
                 <button onclick=" return check()">Insert</button>
             </form>
         </div>
@@ -49,6 +49,9 @@ require("SetSessionStatus.php");
 
 </div>
 <script>
+
+
+
     function check() {
         let user = document.getElementById("user");
         let pass = document.getElementById("pass");
@@ -56,9 +59,17 @@ require("SetSessionStatus.php");
         let email = document.getElementById("email");
         let tel = document.getElementById("tel");
         let address = document.getElementById("address");
+        <?php
+        $con = new ConnectDB();
+        $sql = "SELECT `seller_username` FROM `seller` WHERE seller_username == user ";
+        $result = mysqli_query($con->connect(),$sql);
+    ?>
         if(user.value == ""){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
+        }
+        else if(result){
+
         }
         else if(pass.value == ""){
             window.alert('กรุณากรอกข้อมูล Password')
