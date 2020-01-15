@@ -136,5 +136,13 @@ if($s==1){
     $wallet = $val["customer_wallet"]+$_POST["wallet"];
     $conn->updateCustomerWallet($_SESSION["id"],$wallet);
     header("Location:customerManage.php");
+}elseif ($s == 16){
+
+}elseif ($s == 17){
+
+}elseif ($s == 18){
+    $star = "star".$_REQUEST["j"];
+    $conn = new ConnectDB();
+    $conn->insertReviews($_SESSION["id"],$_POST["sid"],$_POST["detail"],$_POST[$star]);
 }
 ?>
