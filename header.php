@@ -24,6 +24,7 @@
     $butt = "เข้าสู่ระบบ";
     $link = "login.php";
     $link2 = "";
+    $link3 = "index.php";
     if($_SESSION["status"] != 'null'){
 //        echo $_SESSION["status"];
         $butt = "ออกจากระบบ";
@@ -34,11 +35,14 @@
             $link2 = "ShopManage.php";
         }elseif ($_SESSION["status"] == 'customer'){
             $link2 = "customerManage.php";
+        }elseif ($_SESSION["status"] == 'employee'){
+            $link2 = "employeEdit.php";
+            $link3 = "employeManage.php";
         }
     }
 ?>
 <nav class="navbar navbar-light bg-danger">
-    <a class="navbar-brand text-light" href="index.php">
+    <a class="navbar-brand text-light" href="<?php echo $link3 ?>">
         <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>

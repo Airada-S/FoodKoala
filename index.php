@@ -79,7 +79,7 @@
                             }
                         }
                         ?>
-                        <a class="font-weight-light" style="font-size: small"><?php  echo "  ".($sum/$n)."/5"; ?></a>
+                        <a class="font-weight-light" style="font-size: small"><?php  echo "  ".number_format(($sum/$n),1,'.','')."/5"; ?></a>
                         <?php
                         $result2 = $conn->getType($row["seller_id"]);
                         ?>

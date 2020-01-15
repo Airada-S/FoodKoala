@@ -214,7 +214,7 @@ class connectDB {
         $sql="INSERT INTO `reviews`(`customer_id`, `seller_id`, `reviews_detail`, `reviews_star`) VALUES ('".$cid."','".$sid."','".$detail."','".$star."')";
         if(mysqli_query($this->connect(), $sql)){
             echo "true";
-            Header("Location:index.php");
+//            Header("Location:index.php");
         }else{
             echo 'update Incomplete';
         }

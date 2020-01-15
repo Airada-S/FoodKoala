@@ -60,8 +60,8 @@
                             <div class="card-body" >
 
                             <h5 class="mt-2"><?php echo "ร้าน : ".$row2["seller_name"]; ?></h5>
-                            <input type="hidden" name="sid" value="<?php echo $row2["seller_id"]?>">
-                            <input type="hidden" name="star<?php echo $j; ?>" value="0">
+                            <input type="hidden" name = "sid<?php echo $j; ?>" value="<?php echo $row2["seller_id"]?>">
+                            <input type="hidden" id = "star<?php echo $j; ?>" value="0" name = "star<?php echo $j; ?>">
                             <?php
                             for($i=1 ; $i<=5 ; $i++) {
                                 ?>
@@ -69,15 +69,14 @@
                                 <?php
                             }
                             ?>
-                                <textarea name="detail" class="form-control mb-1 mt-2" style="border-color: #b85252" placeholder="ตัวอย่างเช่น : อาหารอร่อยมาก"></textarea>
-                                <button type="submit" class="btn btn-outline-danger float-right mt-1" style="width: 20%">รีวิว</button>
-
+                                <textarea name="detail<?php echo $j; ?>" class="form-control mb-1 mt-2" style="border-color: #b85252" placeholder="ตัวอย่างเช่น : อาหารอร่อยมาก"></textarea>
                             </div>
                         </div>
                             <?php
                         $j++;
                         }
-                        ?>
+                            ?><input type="hidden" value="<?php echo $j; ?>" name="j">
+                            <button type="submit" class="btn btn-outline-danger float-right mt-2" style="width: 20%">รีวิว</button>
                         </form>
                     </div>
                 </div>
@@ -147,7 +146,6 @@
 <script>
 
     function clickStar(n,j) {
-
         document.getElementById(j+"star1").className = "far fa-star";
         document.getElementById(j+"star2").className = "far fa-star";
         document.getElementById(j+"star3").className = "far fa-star";

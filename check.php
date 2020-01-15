@@ -13,7 +13,11 @@ if($s==1){
         $user = $conn->login($_POST['username'], $_POST['password']);
         $_SESSION['user'] = $_POST['username'];
     }
-    header("Location:index.php");
+    if($_SESSION['status'] == 'employee'){
+        header("Location:employeManage.php");
+    }else{
+        header("Location:index.php");
+    }
 }elseif($s == 2){
     $pt = $_REQUEST["pt"];
     $_SESSION['page'] = 'searchByType';
@@ -102,14 +106,12 @@ if($s==1){
     if($_POST['Cpay'] == "wallet"){
         $bill = $conn->getBillBybid($bid);
         $val1 = $bill->fetch_assoc();
-//        echo $val1["bill_total"]."<br>";
         $customer = $conn->getCustomer($_SESSION["id"]);
         $val2 = $customer->fetch_assoc();
-//        echo $val2["customer_wallet"]."<br>";
         $wallet = $val2["customer_wallet"]-$val1["bill_total"];
-//        echo $wallet;
         $conn->updateCustomerWallet($_SESSION["id"],$wallet);
     }
+    $_SESSION["listProduct"] = array();
     header("Location:Oderstatus.php?bid=".$bid);
 }elseif ($s == 14){
     $user = $_POST['seller_username'];
@@ -168,8 +170,15 @@ if($s==1){
     $conn = new ConnectDB();
     $conn->insertProduct($_SESSION['id'], $name, $price, $type);
 }elseif ($s == 18){
-    $star = "star".$_REQUEST["j"];
+    $j = $_REQUEST["j"];
+    echo $j;
     $conn = new ConnectDB();
-    $conn->insertReviews($_SESSION["id"],$_POST["sid"],$_POST["detail"],$_POST[$star]);
+    for ($i = 0 ; $i<$j ; $i++){
+        echo "<br>".$_POST["sid".$i]."<br>".$_POST["star".$i]."<br>".$_POST["detail".$i];
+        $conn->insertReviews($_SESSION["id"],$_POST["sid".$i],$_POST["detail".$i],$_POST["star".$i]);
+    }
+    Header("Location:index.php");
+
+
 }
 ?>
