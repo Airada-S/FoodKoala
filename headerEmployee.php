@@ -7,56 +7,48 @@
 </head>
 <body>
 <?php
-    session_start();
-    if(!isset($_SESSION['id'])){
-        $_SESSION['id'] = 'null';
-    }
-    if(!isset($_SESSION['status'])){
-        $_SESSION['status'] = 'null';
-    }
-    if(!isset($_SESSION["listProduct"])){
-        $_SESSION["listProduct"] = array();
-    }
+session_start();
+if(!isset($_SESSION['id'])){
+    $_SESSION['id'] = 'null';
+}
+if(!isset($_SESSION['status'])){
+    $_SESSION['status'] = 'null';
+}
+if(!isset($_SESSION["listProduct"])){
+    $_SESSION["listProduct"] = array();
+}
 //    if(!isset($_SESSION['pid'])){
 //        $_SESSION['pid'] = '';
 //    }
 //    echo $_SESSION["status"] ;
-    $butt = "เข้าสู่ระบบ";
-    $link = "login.php";
-    $link2 = "";
-    $link3 = "index.php";
-    if($_SESSION["status"] != 'null'){
+$butt = "เข้าสู่ระบบ";
+$link = "login.php";
+$link2 = "";
+if($_SESSION["status"] != 'null'){
 //        echo $_SESSION["status"];
-        $butt = "ออกจากระบบ";
-        $link = "check.php?s=4";
+    $butt = "ออกจากระบบ";
+    $link = "check.php?s=4";
 //        $arr = (explode("|",$_SESSION['pid']));
-        $_SESSION["num"] = array_sum($_SESSION["listProduct"]);
-        if($_SESSION["status"] == 'seller'){
-            $link2 = "ShopManage.php";
-        }elseif ($_SESSION["status"] == 'customer'){
-            $link2 = "customerManage.php";
-        }elseif ($_SESSION["status"] == 'employee'){
-            $link2 = "employeEdit.php";
-            $link3 = "employeManage.php";
-        }
+    $_SESSION["num"] = array_sum($_SESSION["listProduct"]);
+    if($_SESSION["status"] == 'seller'){
+        $link2 = "ShopManage.php";
+    }elseif ($_SESSION["status"] == 'customer'){
+        $link2 = "customerManage.php";
     }
+}
 ?>
 <nav class="navbar navbar-light bg-danger">
-    <a class="navbar-brand text-light" href="<?php echo $link3 ?>">
+    <a class="navbar-brand text-light" href="index.php">
         <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         FoodKoala
     </a>
     <form class="form-inline" action="<?php echo $link ?>" method='POST'>
-<!--        <i class="fas fa-shopping-cart"></i>-->
-<!--        <i class="fas fa-shopping-bag"></i>-->
-
         <?php
         if($_SESSION["status"] != "null"){
         ?>
         <a style="font-size: 20px;color: gold" href="<?php echo $link2; ?>">
             <?php echo $_SESSION["user"]; ?>
         </a>
-        <!--            <i class="fas fa-shopping-basket mr-1 ml-1" style="font-size: 20px;color: gold"></i>-->
         <?php if($_SESSION["status"] == "customer"){ ?>
         <a style="font-size: 20px;color: gold" href="check.php?s=7">
             <i class="fas fa-shopping-cart mr-1 ml-1"></i>
@@ -64,9 +56,9 @@
             <?php
             echo $_SESSION["num"];
             }
-        }
-        ?>
-            </a>
+            }
+            ?>
+        </a>
         <button class="btn btn-outline-warning my-2 my-sm-0 ml-3" type="submit"><?php echo $butt ?></button>
     </form>
 </nav>

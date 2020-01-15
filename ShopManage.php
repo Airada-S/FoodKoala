@@ -51,7 +51,7 @@ $det = $shop->fetch_assoc();
                         รายการอาหาร
                     </th>
                     <td style="text-align: right; padding-top: 35px;">
-                        <button type="button" class="btn btn-outline-warning">+ เพิ่มรายการ</button>
+                        <a href="addProduct.php"><button type="button" class="btn btn-outline-warning">แก้ไขรายการสินค้า</button></a>
                     </td>
                 </tr>
                 <tr>
@@ -75,11 +75,10 @@ $det = $shop->fetch_assoc();
                                                 while($row = $product->fetch_assoc()) {
                                                     ?>
                                                     <tr>
-                                                        <?php if($row['product_type'] == "อาหาร") {
+                                                        <?php if($row['product_type'] == "อาหาร" && $row['product_status']) {
                                                             ?>
                                                             <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
                                                             <td style="width: 15%;"><?php echo $row['product_price'] ?></td>
-                                                            <td style="width: 15%;"><a href="check.php?s=12&pid=<?php echo $row['product_id']?>">แก้ไข</a></td>
                                                             <?php
                                                         }
                                                         ?>
@@ -110,11 +109,10 @@ $det = $shop->fetch_assoc();
                                             while($row = $product->fetch_assoc()) {
                                                 ?>
                                                 <tr>
-                                                    <?php if($row['product_type'] == "เครื่องดื่ม") {
+                                                    <?php if($row['product_type'] == "เครื่องดื่ม" && $row['product_status']) {
                                                         ?>
                                                         <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
                                                         <td style="width: 30%;"><?php echo $row['product_price'] ?></td>
-                                                        <td style="width: 15%;"><a href="check.php?s=12&pid=<?php echo $row['product_id']?>">แก้ไข</a></td>
                                                         <?php
                                                     }
                                                     ?>
@@ -145,11 +143,10 @@ $det = $shop->fetch_assoc();
                                             while($row = $product->fetch_assoc()) {
                                                 ?>
                                                 <tr>
-                                                    <?php if($row['product_type'] == "ขนม") {
+                                                    <?php if($row['product_type'] == "ขนม" && $row['product_status']) {
                                                         ?>
                                                         <td style="width: 70%; padding-left: 20px;"><?php echo $row['product_name'] ?></td>
                                                         <td style="width: 30%;"><?php echo $row['product_price'] ?></td>
-                                                        <td style="width: 15%;"><a href="check.php?s=12&pid=<?php echo $row['product_id']?>">แก้ไข</a></td>
                                                         <?php
                                                     }
                                                     ?>

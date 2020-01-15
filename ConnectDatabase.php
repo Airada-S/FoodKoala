@@ -150,7 +150,7 @@ class connectDB {
         if(mysqli_query($this->connect(), $sql)){
             $sql1 = "SELECT MAX(`bill_id`) as max FROM `bill`";
             $result = $this->connect()->query($sql1);
-            $value1 = $result->fetch_assoc();
+            $value1 = $result->fetch_assoc();//
 
             foreach ($array as $key => $value){
                 $product = $this->getProductByPid($key);
@@ -174,7 +174,6 @@ class connectDB {
     }
     public function getOrderBybid($bid){
         $sql = "SELECT * FROM `order` WHERE `bill_id` ='".$bid."'";
-//        echo $sql;
         return $this->connect()->query($sql);
     }
     public function updateCustomerWallet($id, $wallet){
@@ -196,10 +195,62 @@ class connectDB {
             Header("Location:ShopEdit.php");
         }
     }
-
     public function selectSellerByUsername($username){
         $sql = "select * from seller where seller_username = '".$username."'";
         return $this->connect()->query($sql);
+    }
+    public function selectSellerByAId($id){
+        $sql = "SELECT * FROM `seller` WHERE `seller_id`= ";
+        for($i = 0 ;$i<sizeof($id);$i++){
+            if($i == 0) {
+                $sql = $sql . "'" . $id[$i] . "'";
+            }else{
+                $sql = $sql . " OR `seller_id` = '" . $id[$i] . "'";
+            }
+        }
+        return $this->connect()->query($sql);
+    }
+    public function insertReviews($cid,$sid,$detail,$star){
+        $sql="INSERT INTO `reviews`(`customer_id`, `seller_id`, `reviews_detail`, `reviews_star`) VALUES ('".$cid."','".$sid."','".$detail."','".$star."')";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+//            Header("Location:index.php");
+        }else{
+            echo 'update Incomplete';
+        }
+    }
+
+    public function updateProduct($pid, $name, $price){
+        $sql = "Update product set product_name = '".$name."', product_price = ".$price." where product_id = ".$pid;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:addProduct.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
+        }
+    }
+
+    public function delProduct($pid){
+        $sql = "Update product set product_status = 0 where product_id = ".$pid;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:addProduct.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
+        }
+    }
+
+    public function insertProduct($sid, $name, $price, $type){
+        $sql = "Insert into product(seller_id, product_name, product_price, product_type, product_status) values (".$sid.", '".$name."', ".$price.", '".$type."', 1)";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:addProduct.php");
+        }else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
+        }
     }
 
 }

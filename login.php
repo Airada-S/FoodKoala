@@ -16,7 +16,15 @@ and open the template in the editor.
 <body>
 <div class="login-page">
     <div class="form">
-
+        <div>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="text-align: center;">
+                        <img src="./img/logo.png" width="200" height="200">
+                    </td>
+                </tr>
+            </table>
+        </div>
         <form class="login-form" action='check.php?s=1' method='POST'>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
