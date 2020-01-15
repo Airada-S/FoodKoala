@@ -10,7 +10,7 @@
     require_once './ConnectDatabase.php';
     $conn = new ConnectDB();
     $customer = $conn->getCustomer($_SESSION["id"]);
-    $row = $customer->fetch_assoc();
+    $valCus = $customer->fetch_assoc();
 ?>
 <div class="container mt-5">
     <div class="row" >
@@ -27,22 +27,22 @@
                         <tr>
                             <td style="border-top-width: 0px;">ชื่อ:</td>
                             <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="name1">name</p>
-                                <input type="text" hidden value="name" id="name2">
+                                <p class="font-weight-normal" id="name1"><?php echo $valCus["customer_name"] ?></p>
+                                <input type="text" hidden value="<?php echo $valCus["customer_name"] ?>" id="name2">
                             </td>
                         </tr>
                         <tr>
                             <td style="border-top-width: 0px;">เบอร์โทร:</td>
                             <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="tel1">096-xxxxxxx</p>
-                                <input type="text" hidden value="011-111-1111" id="tel2">
+                                <p class="font-weight-normal" id="tel1"><?php echo $valCus["customer_tel"] ?></p>
+                                <input type="text" hidden value="<?php echo $valCus["customer_tel"] ?>" id="tel2">
                             </td>
                         </tr>
                         <tr>
                             <td style="border-top-width: 0px;">ที่อยู่:</td>
                             <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="add1">15/5 หมู่.2 ต.ในเมือง อ.เมือง จ.ชัยภูมิ</p>
-                                <textarea type="text" hidden id="add2">15/5 หมู่.2 ต.ในเมือง อ.เมือง จ.ชัยภูมิ</textarea>
+                                <p class="font-weight-normal" id="add1"><?php echo $valCus["customer_address"] ?></p>
+                                <textarea type="text" hidden id="add2"><?php echo $valCus["customer_address"] ?></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -61,24 +61,26 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <p class="font-weight-normal" id="add1">ยอดเงินในบัญชี : </p>
+                        <p class="font-weight-normal" id="add1">ยอดเงินในบัญชี : <?php echo $valCus["customer_wallet"]." บาท"; ?></p>
                     </li>
                 </ul>
 
 
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
+                        <form action="check.php?s=15" method="post">
                         <i class="fab fa-cc-visa" style="font-size: 40px"></i>
                         <ul class="list-inline mt-3">
                             <li class="list-inline-item" style="width: 49%">
-                                <input type="text"placeholder=" เลขบัตร visa" style="width: 100%">
+                                <input name="visaId" type="text"placeholder=" เลขบัตร visa" style="width: 100%" value="<?php echo $valCus["comment_visaId"]; ?>">
                             </li>
                             <li class="list-inline-item" style="width: 48%">
-                                <input type="text"placeholder=" รหัสบัตร visa" style="width: 100%">
+                                <input name="visaPass" type="password" placeholder=" รหัสบัตร visa" style="width: 100%" value="<?php echo $valCus["comment_visaPass"]; ?>">
                             </li>
                         </ul>
-                        <input type="text"placeholder=" จำนวนเงิน" style="width: 100%">
-                        <button id="edit1" type="button" class="btn btn-outline-danger mt-4" onclick="editC()" > เติมเงิน <i class="far fa-edit"></i></button>
+                        <input type="text"placeholder=" จำนวนเงิน" style="width: 100%" name="wallet">
+                        <button id="edit1" type="submit" class="btn btn-outline-danger mt-4"  > เติมเงิน </button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -49,7 +49,7 @@
                 <!--    <div class="card-header bg-transparent border-danger">Header</div>-->
                 <div class="card-body">
                     <img class="card-img-top" height="155px" width="255px"
-                         src="<?php echo $row["seller_img"] ?>"
+                         src="./img/<?php echo $row["seller_img"] ?>"
                          alt="Card image cap">
                     <h5 class="card-title text-danger"><?php echo $row["seller_name"] ?></h5>
                     <p class="card-text">
