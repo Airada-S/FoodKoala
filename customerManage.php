@@ -12,7 +12,7 @@
     $customer = $conn->getCustomer($_SESSION["id"]);
     $valCus = $customer->fetch_assoc();
 ?>
-<div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
+<div style="padding-top: 40px; padding-left: 300px; padding-right: 300px;">
     <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
         <div style="margin: 20px;">
             <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
@@ -64,25 +64,28 @@
                     <td colspan="2"></td>
                     <td>
                         <div class="collapse" id="collapseExample">
-                            <div class="card card-body" style="border-color: #b85252">
-                                <form action="check.php?s=15" method="post">
-                                    <i class="fab fa-cc-visa" style="font-size: 40px"></i>
-                                    <ul class="list-inline mt-3">
-                                        <li class="list-inline-item" style="width: 49%">
-                                            <input name="visaId" type="text"placeholder=" เลขบัตร visa" style="width: 100%;border-color: #E8A42A" value="<?php echo $valCus["comment_visaId"]; ?>">
-                                        </li>
-                                        <li class="list-inline-item" style="width: 48%">
-                                            <input name="visaPass" type="password" placeholder=" รหัสบัตร visa" style="width: 100%" value="<?php echo $valCus["comment_visaPass"]; ?>">
-                                        </li>
-                                    </ul>
-                                    <input type="text"placeholder=" จำนวนเงิน" style="width: 100%" name="wallet">
-                                    <button id="edit1" type="submit" class="btn btn-outline-danger mt-4"  > เติมเงิน </button>
-                                </form>
-                            </div>
+                            <table class="table">
+                                    <tr>
+                                        <td><h3>เลขบัตร</h3></td>
+                                        <td><h3>รหัส CNN</h3></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h3>จำนวนเงิน</h3></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+
+                            </table>
                     </td>
                 </tr>
 
             </table>
+            <button type="button" class="btn btn-outline-warning">Warning</button>
         </div>
     </div>
 </div>
