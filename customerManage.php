@@ -12,81 +12,81 @@
     $customer = $conn->getCustomer($_SESSION["id"]);
     $valCus = $customer->fetch_assoc();
 ?>
-<div class="container mt-5">
-    <div class="row" >
-        <div class="col-sm-5"style="text-align: center">
-            <div class="card" style="width: 100%;">
-                <img src="img/logo.png"style="width: 100%;">
-            </div>
-        </div>
-        <div class="col-sm-7 ">
-            <div class="border border-danger" style="padding: 20px">
-                <h2>ข้อมูลผู้ใช้งาน</h2>
-                <table class="table" style="margin-top: 20px">
-                    <tbody>
-                        <tr>
-                            <td style="border-top-width: 0px;">ชื่อ:</td>
-                            <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="name1"><?php echo $valCus["customer_name"] ?></p>
-                                <input type="text" hidden value="<?php echo $valCus["customer_name"] ?>" id="name2">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="border-top-width: 0px;">เบอร์โทร:</td>
-                            <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="tel1"><?php echo $valCus["customer_tel"] ?></p>
-                                <input type="text" hidden value="<?php echo $valCus["customer_tel"] ?>" id="tel2">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="border-top-width: 0px;">ที่อยู่:</td>
-                            <td style="border-top-width: 0px;">
-                                <p class="font-weight-normal" id="add1"><?php echo $valCus["customer_address"] ?></p>
-                                <textarea type="text" hidden id="add2"><?php echo $valCus["customer_address"] ?></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="border-top-width: 0px;"></td>
-                            <td style="border-top-width: 0px;" class="float-right">
-                                <button id="edit1" type="button" class="btn btn-outline-danger" onclick="editC()" > แก้ไข <i class="far fa-edit"></i></button>
-                                <button id="edit2" type="button" class="btn btn-outline-success" onclick="editC()" hidden>บันทึก <i class="far fa-save"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a class="btn btn-primary " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+<div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
+    <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
+        <div style="margin: 20px;">
+            <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
+                <tr>
+                    <td colspan="3" style="text-align: right; padding-top: 10px;"><a href="ShopEdit.php"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลผู้ใช้</button></a></td>
+                </tr>
+                <tr>
+                    <td rowspan="4" STYLE="width: 20%;"><img src="./img/koala2.png" width="150" height="150"></td>
+                    <th style="padding-left: 50px; width: 20%">
+                        Username :
+                    </th>
+                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
+                        <?php echo $valCus["customer_username"] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="padding-left: 50px; width: 20%">
+                        ชื่อผู้ใช้ :
+                    </th>
+                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
+                        <?php echo $valCus["customer_name"] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="padding-left: 50px; width: 20%">
+                        เบอร์โทร :
+                    </th>
+                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
+                            <?php echo $valCus['customer_tel'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="padding-left: 50px; width: 20%">
+                        ยอดเงินในบัญชี :
+                    </th>
+                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
+                        <?php echo $valCus['customer_wallet']." บาท" ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td>
+                        <a class="btn btn-outline-danger btn-block float-right mt-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             เติมเงิน
                         </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <p class="font-weight-normal" id="add1">ยอดเงินในบัญชี : <?php echo $valCus["customer_wallet"]." บาท"; ?></p>
-                    </li>
-                </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body" style="border-color: #b85252">
+                                <form action="check.php?s=15" method="post">
+                                    <i class="fab fa-cc-visa" style="font-size: 40px"></i>
+                                    <ul class="list-inline mt-3">
+                                        <li class="list-inline-item" style="width: 49%">
+                                            <input name="visaId" type="text"placeholder=" เลขบัตร visa" style="width: 100%;border-color: #E8A42A" value="<?php echo $valCus["comment_visaId"]; ?>">
+                                        </li>
+                                        <li class="list-inline-item" style="width: 48%">
+                                            <input name="visaPass" type="password" placeholder=" รหัสบัตร visa" style="width: 100%" value="<?php echo $valCus["comment_visaPass"]; ?>">
+                                        </li>
+                                    </ul>
+                                    <input type="text"placeholder=" จำนวนเงิน" style="width: 100%" name="wallet">
+                                    <button id="edit1" type="submit" class="btn btn-outline-danger mt-4"  > เติมเงิน </button>
+                                </form>
+                            </div>
+                    </td>
+                </tr>
 
-
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <form action="check.php?s=15" method="post">
-                        <i class="fab fa-cc-visa" style="font-size: 40px"></i>
-                        <ul class="list-inline mt-3">
-                            <li class="list-inline-item" style="width: 49%">
-                                <input name="visaId" type="text"placeholder=" เลขบัตร visa" style="width: 100%" value="<?php echo $valCus["comment_visaId"]; ?>">
-                            </li>
-                            <li class="list-inline-item" style="width: 48%">
-                                <input name="visaPass" type="password" placeholder=" รหัสบัตร visa" style="width: 100%" value="<?php echo $valCus["comment_visaPass"]; ?>">
-                            </li>
-                        </ul>
-                        <input type="text"placeholder=" จำนวนเงิน" style="width: 100%" name="wallet">
-                        <button id="edit1" type="submit" class="btn btn-outline-danger mt-4"  > เติมเงิน </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            </table>
         </div>
     </div>
 </div>
+
 </body>
 </html>
 <script>
