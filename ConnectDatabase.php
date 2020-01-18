@@ -252,5 +252,9 @@ class connectDB {
             Header("Location:addProduct.php");
         }
     }
+    public function getBill(){
+        $sql = "SELECT * FROM `bill` WHERE `employee_id` ='0'";
+        return $this->connect()->query($sql);
+    }
 
 }

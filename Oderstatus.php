@@ -27,9 +27,7 @@
     while($row = $oder->fetch_assoc()) {
         $product = $conn->getProductByPid($row["product_id"]);
         $valPro = $product->fetch_assoc();
-        $shop = $conn->getSeller($valPro["seller_id"]);
-        $valShop = $shop->fetch_assoc();
-        array_push($sid,$valShop["seller_id"]);
+        array_push($sid,$valPro["seller_id"]);
     }
 //    print_r($sid);
     $shop = $conn->selectSellerByAId($sid);
