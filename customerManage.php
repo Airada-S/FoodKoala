@@ -65,27 +65,32 @@
                     <td>
                         <div class="collapse" id="collapseExample">
                             <table class="table">
+                                <form action="check.php?s=15" method="post">
                                     <tr>
                                         <td><h3>เลขบัตร</h3></td>
                                         <td><h3>รหัส CNN</h3></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control"></td>
-                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control" value="<?php echo $valCus['comment_visaId']; ?>"></td>
+                                        <td><input type="text" class="form-control" value="<?php echo $valCus['comment_visaPass']; ?>"></td>
                                     </tr>
                                     <tr>
                                         <td><h3>จำนวนเงิน</h3></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control" name="wallet"></td>
+                                        <td>บาท</td>
                                     </tr>
-
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><button type="submit" class="btn btn-outline-warning">ยืนยันการเติมเงิน</button></td>
+                                </tr>
+                                </form>
                             </table>
                     </td>
                 </tr>
 
             </table>
-            <button type="button" class="btn btn-outline-warning">Warning</button>
+
         </div>
     </div>
 </div>

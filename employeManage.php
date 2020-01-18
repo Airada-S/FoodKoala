@@ -10,6 +10,8 @@
     require_once './ConnectDatabase.php';
     $conn = new ConnectDB();
     $bill = $conn->getBill();
+    $img = "img-test.png";
+    $status = "";
 ?>
 <!--<div class="container">-->
 <div STYLE="margin-right: 15%;margin-left: 15%">
@@ -71,7 +73,7 @@
             <div class="card mt-5" style="width: 100%; text-align: center">
                 <div class="card-body">
                     <h3>สถานะออเดอร์ที่รับ</h3>
-                    <img src="img/img-test.png" width="100%">
+                    <img src="img/<?php echo $img; ?>" width="100%">
                     <h3>สถานะ : </h3>
                     <button type="button" class="btn btn-outline-warning float-right">อัพเดทสถานะ</button>
                 </div>
