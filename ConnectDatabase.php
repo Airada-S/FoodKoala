@@ -135,7 +135,7 @@ class connectDB {
         $sql = "SELECT * FROM `customer` WHERE `customer_id` = '".$id."'";
         return $this->connect()->query($sql);
     }
-    public function insertBill($array,$cid){
+    public function insertBill($array,$cid,$pay){
         $sum = 0;
         foreach ($array as $key => $value){
             $product = $this->getProductByPid($key);
@@ -145,7 +145,7 @@ class connectDB {
         if($sum < 500){
             $sum+=50;
         }
-        $sql = "INSERT INTO `bill`(`customer_id`, `bill_total`, `bill_deliverystatus`) VALUES('".$cid."','".$sum."','ได้รับออเดอร์แล้ว')";
+        $sql = "INSERT INTO `bill`(`customer_id`, `bill_total`, `bill_deliverystatus`, `employee_id`, `bill_pay`) VALUES('".$cid."','".$sum."','ได้รับออเดอร์แล้ว','0','".$pay."')";
         echo $sql;
         if(mysqli_query($this->connect(), $sql)){
             $sql1 = "SELECT MAX(`bill_id`) as max FROM `bill`";

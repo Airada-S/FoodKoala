@@ -188,11 +188,11 @@
     var pay="";
     function money() {
         pay = 'cash';
-        cp.value = 'cash';
+        cp.value = 'ชำระเงินปลายทาง';
     }
     function wallet() {
         pay = 'wallet';
-        cp.value = 'wallet';
+        cp.value = 'ชำระเงินผ่าน wallet';
     }
 </script>
 </body>

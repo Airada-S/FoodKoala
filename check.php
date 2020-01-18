@@ -102,8 +102,8 @@ if($s==1){
 
 }elseif ($s == 13){
     $conn = new ConnectDB();
-    $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"]);
-    if($_POST['Cpay'] == "wallet"){
+    $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"],$_POST['Cpay']);
+    if($_POST['Cpay'] == "ชำระเงินผ่าน wallet"){
         $bill = $conn->getBillBybid($bid);
         $val1 = $bill->fetch_assoc();
         $customer = $conn->getCustomer($_SESSION["id"]);
