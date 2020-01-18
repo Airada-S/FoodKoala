@@ -29,7 +29,7 @@ and open the template in the editor.
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
             <button>login</button>
-            <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+            <p class="message">Not registered? <a href="register.php?n=0">Create an account</a></p>
         </form>
 
 

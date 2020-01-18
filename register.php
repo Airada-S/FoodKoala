@@ -21,6 +21,14 @@ require("SetSessionStatus.php");
         <div id="customer" class="tab-pane fade in active">
             <form class="login-form" action='check.php?s=10' method='POST'>
 
+                <?php
+                $n = $_REQUEST["n"];
+                    if($n == 1){
+                        echo "<p style=\"color: #EF3B3A\" >Username ไม่สามารถใช่ได้</p>";
+                    }
+
+                ?>
+
                 <input type="text" id='user' placeholder="Username" name='user'/>
                 <input type='password' id='pass' placeholder='Password' name='pass'/>
                 <input type="text" id='name' placeholder="Name" name='name'/>
@@ -33,6 +41,13 @@ require("SetSessionStatus.php");
         <div id="seller" class="tab-pane fade">
             <form class="login-form" action='check.php?s=11' method='POST' id="seller" enctype="multipart/form-data">
 
+                <?php
+                $n = $_REQUEST["n"];
+                if($n == 2){
+                    echo "<p style=\"color: #EF3B3A\" >Username ไม่สามารถใช่ได้</p>";
+                }
+
+                ?>
                 <input type="text" id='user2' placeholder="Username" name='user2'/>
                 <input type='password' id='pass2' placeholder='Password' name='pass2'/>
                 <input type="text" id='name2' placeholder="Name" name='name2'/>
@@ -46,29 +61,9 @@ require("SetSessionStatus.php");
             </form>
         </div>
     </div>
-    <?php
-    if(!isset($_SESSION['ch'])){
-
-    }else{
-        if($_SESSION['ch']==1){
-            echo "<div class='alert alert-primary' role='alert'>
-             A simple primary alert—check it out!
-            </div>";
-        }
-
-    }
-    ?>
-
 </div>
 
-<?php
-$user = $_POST['user'];
-$user2 = $_POST['user2'];
-$con = new connectDB();
-$sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."' and customer_username = '".$user2."'";
-$result = mysqli_query($con->connect(),$sql);
 
-?>
 
 <script>
 
@@ -89,7 +84,7 @@ $result = mysqli_query($con->connect(),$sql);
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
-        else if($result.value == "admin"){
+        else if(user.value == "admin"){
             window.alert('Username ไมสามารถใช่ได้')
             return false
         }

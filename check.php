@@ -71,9 +71,22 @@ if($s==1){
     $email = $_POST['email'];
     $tel = $_POST['tel'];
     $address = $_POST['address'];
+
     $con = new ConnectDB();
     $con->connect();
-    $con->Insert1($user,$pass,$name,$tel,$address);
+    $sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."'";
+    $sql2 = "SELECT `seller_username` FROM `seller` where seller_username = '".$user."' ";
+    $sql3 = "SELECT `employee_username` FROM `employee` where employee_username = '".$user."' ";
+    $result = mysqli_query($con->connect(),$sql);
+    $result2 = mysqli_query($con->connect(),$sql2);
+    $result3 = mysqli_query($con->connect(),$sql3);
+    if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
+
+        $con->Insert1($user,$pass,$name,$tel,$address);
+    }else{
+        header("Location:register.php?n=1");
+
+    }
 }elseif ($s == 11){
     $file = $_FILES['img2'];
     $place = "img2";
@@ -90,7 +103,18 @@ if($s==1){
     $img = $_POST['img2'];
     $con = new ConnectDB();
     $con->connect();
-    $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
+    $sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."'";
+    $sql2 = "SELECT `seller_username` FROM `seller` where seller_username = '".$user."' ";
+    $sql3 = "SELECT `employee_username` FROM `employee` where employee_username = '".$user."' ";
+    $result = mysqli_query($con->connect(),$sql);
+    $result2 = mysqli_query($con->connect(),$sql2);
+    $result3 = mysqli_query($con->connect(),$sql3);
+    if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
+        $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
+    }else{
+        header("Location:register.php?n=2");
+    }
+
 }elseif ($s == 12){
     $pid = $_REQUEST['pid'];
 
