@@ -14,7 +14,7 @@ require("SetSessionStatus.php");
 
 <div class="login-page">
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#customer">สมาชิก</a></li>
+        <li class="active"><a data-toggle="tab" href="#customer" id="cus">สมาชิก</a></li>
         <li><a data-toggle="tab" href="#seller">ร้านค้า</a></li>
     </ul>
     <div class="form tab-content">
@@ -50,6 +50,9 @@ require("SetSessionStatus.php");
 </div>
 <script>
 
+    $(document).ready(function(){
+        $("#cus").click();
+    });
 
 
     function check() {
