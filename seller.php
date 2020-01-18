@@ -10,19 +10,17 @@
         <title></title>
 
 </head>
-<body>
+<body >
 <?php
-//require("SetSessionStatus.php");
     include 'header.php';
-
-//    $conn = new ConnectDB();
-//    $seller = $conn->getSeller($_REQUEST["id"]);
     if ($seller->num_rows > 0) {
         // output data of each row
-        while ($row = $seller->fetch_assoc()) {
+        $row = $seller->fetch_assoc()
             ?>
-            <div class="card m-4">
-<!--                <img src="--><?php //echo $row["seller_img"] ?><!--" class="card-img-top" alt="...">-->
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center" style="padding-left: 20%;padding-right: 20%">
+            <div class="card m-5" >
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row["seller_name"] ?>
                         <?php
@@ -51,7 +49,7 @@
                             }
                         }
                         ?>
-                        <a class="font-weight-light" style="font-size: small"><?php  echo "  ".($sum/$n)."/5"; ?></a>
+                        <a class="font-weight-light" style="font-size: small"><?php  echo "  ".number_format(($sum / $n), 1, '.', '')."/5"; ?></a>
                     </h5>
                     <p class="card-text">
                         <?php
@@ -76,43 +74,39 @@
                     if ($product->num_rows > 0) {
                     // output data of each row
                         while ($row = $product->fetch_assoc()) {
-                            $link = "";
-                            if($_SESSION['status'] == 'customer'){
-                                $link = "check.php?s=6&pid=".$row["product_id"]."&id=".$_REQUEST["id"];
+                            if($row["product_status"]) {
+                                $link = "";
+                                if ($_SESSION['status'] == 'customer') {
+                                    $link = "check.php?s=6&pid=" . $row["product_id"] . "&id=" . $_REQUEST["id"];
+                                }
+
+                                ?>
+                                <div class="card m-3">
+                                    <div class="card-body">
+                                        <?php
+                                        echo $row["product_name"] . "<br>";
+                                        echo $row["product_price"] . " บาท";
+                                        ?>
+                                        <a class="float-right" type="submit" href="<?php echo $link ?>">
+                                            <i class="fas fa-cart-plus float-right"
+                                               style="font-size: 30px;color: gold"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php
                             }
-//                            echo $row["product_name"]."<br>";
-                            ?>
-<!--                            <form action="check.php?s=6&pid=--><?php //echo $row["product_id"]?><!--&id=--><?php //echo $_REQUEST["id"] ?><!--" method="post">-->
-                            <div class="card mt-2">
-                                <div class="card-body">
-                                    <?php
-                                    echo $row["product_name"]."<br>";
-                                    echo $row["product_price"]." บาท";
-                                    ?>
-                                <a  class="float-right" type="submit" href="<?php echo $link ?>">
-                                    <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: gold"></i>
-                                </a>
-                            </div>
-                            </div>
-<!--                            </form>-->
-                            <?php
                         }
                     }
                     ?>
-
-<!--                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
                 </div>
             </div>
+        </div>
+    </div>
+</div>
             <?php
-        }
+
     }
 
 ?>
-<!--<style>-->
-<!--    img {-->
-<!--        position: absolute;-->
-<!--        clip: rect(0px,100px,50px,0px);-->
-<!--    }-->
-<!--</style>-->
 </body>
 </html>

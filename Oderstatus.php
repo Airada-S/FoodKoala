@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>จัดการร้านค้า</title>
+    <title></title>
 </head>
 <body>
 <?php

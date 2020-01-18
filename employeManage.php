@@ -7,38 +7,36 @@
 <body>
 <?php
     include 'header.php';
+    require_once './ConnectDatabase.php';
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
             <div class="card mt-5" style="width: 100%;">
                 <div class="card-body">
                     <h3>รายการออเดอร์</h3>
                     <div style="overflow: auto; width: 100%; height: 200px; padding: 2%">
                         <table class="table">
-                            <thead>
                             <tr>
-                                <th>ลูกค้า</th>
-                                <th>ร้านค้า</th>
-                                <th>ราคา</th>
-                                <th></th>
+                                <th style="border-bottom: 1px solid #E8A42A; width: 30%">ที่อยู่ที่จัดส่ง</th>
+                                <th style="border-bottom: 1px solid #E8A42A; width: 30%">ร้านที่สั่ง</th>
+                                <th style="border-bottom: 1px solid #E8A42A; width: 20%">วิธีชำระเงิน</th>
+                                <th style="border-bottom: 1px solid #E8A42A; width: 15%">ราคารวม</th>
+                                <th style="border-bottom: 1px solid #E8A42A; width: 5%"></th>
                             </tr>
-                            </thead>
-                            <tbody>
                             <tr>
                                 <td>นัด</td>
                                 <td>ชานมแท้</td>
-                                <td>60</td>
+                                <td>ชำระเงินปลายทาง</td>
+                                <td>155</td>
                                 <td><a href="#" style="color: #76b852;font-size: 20px"><i class="far fa-check-square"></i></a></td>
                             </tr>
-
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="card mt-5" style="width: 100%; text-align: center">
                 <div class="card-body">
                     <h3>สถานะออเดอร์ที่รับ</h3>
