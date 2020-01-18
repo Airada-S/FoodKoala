@@ -75,19 +75,19 @@ if($s==1){
     $con->connect();
     $con->Insert1($user,$pass,$name,$tel,$address);
 }elseif ($s == 11){
-    $file = $_FILES['img'];
-    $place = "img";
+    $file = $_FILES['img2'];
+    $place = "img2";
     if(move_uploaded_file($file[tmp_name],"$place/".$file[name])){
 
     }
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $tel = $_POST['tel'];
-    $address = $_POST['address'];
-    $time = $_POST['time'];
-    $img = $_POST['img'];
+    $user = $_POST['user2'];
+    $pass = $_POST['pass2'];
+    $name = $_POST['name2'];
+    $email = $_POST['email2'];
+    $tel = $_POST['tel2'];
+    $address = $_POST['address2'];
+    $time = $_POST['time2'];
+    $img = $_POST['img2'];
     $con = new ConnectDB();
     $con->connect();
     $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);

@@ -33,21 +33,43 @@ require("SetSessionStatus.php");
         <div id="seller" class="tab-pane fade">
             <form class="login-form" action='check.php?s=11' method='POST' id="seller" enctype="multipart/form-data">
 
-                <input type="text" id='user2' placeholder="Username" name='user'/>
-                <input type='password' id='pass2' placeholder='Password' name='pass'/>
-                <input type="text" id='name2' placeholder="Name" name='name'/>
-                <input type="text" id='email2' placeholder="Email" name='email'/>
-                <input type="text" id='tel2' placeholder="Phone number" name='tel'/>
-                <input type="text" id='address2' placeholder="Address" name='address'/>
-                <input type="text" id='time2' placeholder="Open-close time" name='time'/>
-                <input type="file" id='img2' placeholder="img" name='img'/>
+                <input type="text" id='user2' placeholder="Username" name='user2'/>
+                <input type='password' id='pass2' placeholder='Password' name='pass2'/>
+                <input type="text" id='name2' placeholder="Name" name='name2'/>
+                <input type="text" id='email2' placeholder="Email" name='email2'/>
+                <input type="text" id='tel2' placeholder="Phone number" name='tel2'/>
+                <input type="text" id='address2' placeholder="Address" name='address2'/>
+                <input type="text" id='time2' placeholder="Open-close time" name='time2'/>
+                <input type="file" id='img2' placeholder="img" name='img2'/>
                 <button onclick=" return check2()">Insert</button>
 
             </form>
         </div>
     </div>
+    <?php
+    if(!isset($_SESSION['ch'])){
+
+    }else{
+        if($_SESSION['ch']==1){
+            echo "<div class='alert alert-primary' role='alert'>
+             A simple primary alert—check it out!
+            </div>";
+        }
+
+    }
+    ?>
 
 </div>
+
+<?php
+$user = $_POST['user'];
+$user2 = $_POST['user2'];
+$con = new connectDB();
+$sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."' and customer_username = '".$user2."'";
+$result = mysqli_query($con->connect(),$sql);
+
+?>
+
 <script>
 
     $(document).ready(function(){
@@ -62,17 +84,18 @@ require("SetSessionStatus.php");
         let email = document.getElementById("email");
         let tel = document.getElementById("tel");
         let address = document.getElementById("address");
-        <?php
-        $con = new ConnectDB();
-        $sql = "SELECT `seller_username` FROM `seller` WHERE seller_username == user ";
-        $result = mysqli_query($con->connect(),$sql);
-    ?>
+
         if(user.value == ""){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
-        else if(result){
-
+        else if($result.value == "admin"){
+            window.alert('Username ไมสามารถใช่ได้')
+            return false
+        }
+        else if(user.value == "admin"){
+            window.alert('Username ไมสามารถใช่ได้')
+            return false
         }
         else if(pass.value == ""){
             window.alert('กรุณากรอกข้อมูล Password')
@@ -107,6 +130,10 @@ require("SetSessionStatus.php");
         let img2 = document.getElementById("img2");
         if(user2.value == ""){
             window.alert('กรุณากรอกข้อมูล Username')
+            return false
+        }
+        else if(user2.value == "admin"){
+            window.alert('Username ไมสามารถใช่ได้')
             return false
         }
         else if(pass2.value == ""){
