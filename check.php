@@ -207,6 +207,7 @@ if($s==1){
 }
 elseif ($s == 19){
     $seller_name = $_POST['seller_name'];
+    echo $seller_name;
     $con = new ConnectDB();
     $con->connect();
     $con->UPDATE3($seller_name);

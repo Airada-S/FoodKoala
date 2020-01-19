@@ -132,7 +132,8 @@ class connectDB {
         }
     }
     public function UPDATE3($seller_name){
-        $sql = "UPDATE `seller` SET `seller_status`=true WHERE seller_name ='".$seller_name."'";
+        $sql = "UPDATE `seller` SET `seller_status`= true  WHERE seller_name ='".$seller_name."'";
+        echo $seller_name;
         if(mysqli_query($this->connect(), $sql)){
             header("Location:StoreApproval.php");
         } else {

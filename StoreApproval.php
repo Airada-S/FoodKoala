@@ -59,7 +59,7 @@ while($show = mysqli_fetch_array($result)){
 <div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
     <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
         <div style="margin: 20px;">
-            <form action="check.php?s=19" method="post" enctype="multipart/form-data">
+            <form action="check.php?s=19" method="POST" enctype="multipart/form-data">
                 <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
 
                     <tr>
@@ -71,7 +71,7 @@ while($show = mysqli_fetch_array($result)){
                             Username :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_username" value="<?=$show['seller_username']?> " disabled="disabled">
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_username" value="<?=$show['seller_username']?> " >
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +79,7 @@ while($show = mysqli_fetch_array($result)){
                             Password :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_password" value="<?=$show['seller_password']?>" disabled="disabled">
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_password" value="<?=$show['seller_password']?>" >
                         </td>
                     </tr>
                     <tr>
@@ -87,7 +87,7 @@ while($show = mysqli_fetch_array($result)){
                             ชื่อร้าน :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_name" value="<?=$show['seller_name']?>" disabled="disabled">
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_name" value="<?=$show['seller_name']?>" >
                         </td>
                     </tr>
                     <tr>
@@ -105,7 +105,7 @@ while($show = mysqli_fetch_array($result)){
                             ที่อยู่ :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_address" value="<?=$show['seller_address']?>" disabled="disabled">
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_address" value="<?=$show['seller_address']?>">
                         </td>
                     </tr>
                     <tr>
@@ -114,7 +114,7 @@ while($show = mysqli_fetch_array($result)){
                             เบอร์โทรศัพท์่ :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?=$show['seller_tel']?>" disabled="disabled">
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?=$show['seller_tel']?>" >
                         </td>
                     </tr>
                     <tr>
@@ -123,7 +123,7 @@ while($show = mysqli_fetch_array($result)){
                             เวลา เปิด - ปิด :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?=$show['seller_time']?>" disabled="disabled">
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?=$show['seller_time']?>" >
                         </td>
                     </tr>
                     <tr>
