@@ -131,6 +131,14 @@ class connectDB {
             echo 'Insert Incomplete';
         }
     }
+    public function UPDATE3($seller_name){
+        $sql = "UPDATE `seller` SET `seller_status`=true WHERE seller_name ='".$seller_name."'";
+        if(mysqli_query($this->connect(), $sql)){
+            header("Location:StoreApproval.php");
+        } else {
+            echo 'Insert Incomplete';
+        }
+    }
     public function getCustomer($id){
         $sql = "SELECT * FROM `customer` WHERE `customer_id` = '".$id."'";
         return $this->connect()->query($sql);
