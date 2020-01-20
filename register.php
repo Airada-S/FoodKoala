@@ -85,7 +85,6 @@ require("SetSessionStatus.php");
 
     $(document).ready(function(){
         $("#cus").click();
-
     });
 
     function check() {
