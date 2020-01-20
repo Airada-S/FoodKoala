@@ -17,7 +17,7 @@
         <div style="margin: 20px;">
             <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
                 <tr>
-                    <td colspan="3" style="text-align: right; padding-top: 10px;"><a href="ShopEdit.php"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลผู้ใช้</button></a></td>
+                    <td colspan="3" style="text-align: right; padding-top: 10px;"><a href="customerEdit.php"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลผู้ใช้</button></a></td>
                 </tr>
                 <tr>
                     <td rowspan="4" STYLE="width: 20%;"><img src="./img/koala2.png" width="150" height="150"></td>

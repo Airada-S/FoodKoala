@@ -6,7 +6,11 @@
 </head>
 <body>
 <?php
-include 'header.php';
+    include 'header.php';
+    require_once './ConnectDatabase.php';
+    $conn = new ConnectDB();
+    $customer = $conn->getCustomer($_SESSION["id"]);
+    $row = $customer->fetch_assoc();
 ?>
 <div class="container" >
     <div class="row d-flex justify-content-center" >
@@ -17,23 +21,28 @@ include 'header.php';
                         <table class="table mt-5">
                         <tbody>
                         <tr>
-                            <th scope="row">Username</th>
-                            <td><input type="text" class="form-control" style="border: none" placeholder="Username"></td>
+                            <th scope="row">ชื่อ : </th>
+                            <td><input type="text" name="name" class="form-control" style="border: none" placeholder="name" value="<?php echo $row["customer_name"]; ?>"></td>
 
                         </tr>
                         <tr>
-                            <th scope="row">Password</th>
-                            <td><input type="text" class="form-control" style="border: none" placeholder="Password"></td>
+                            <th scope="row">Username : </th>
+                            <td><input type="text" name="username" class="form-control" style="border: none" placeholder="Username" value="<?php echo $row["customer_username"]; ?>"></td>
 
                         </tr>
                         <tr>
-                            <th scope="row">Addres</th>
-                            <td><input type="text" class="form-control" style="border: none" placeholder="Addre"></td>
+                            <th scope="row">Password : </th>
+                            <td><input type="text" name="password" class="form-control" style="border: none" placeholder="Password" value="<?php echo $row["customer_password"]; ?>"></td>
 
                         </tr>
                         <tr>
-                            <th scope="row">Tel</th>
-                            <td><input type="text" class="form-control" style="border: none" PLACEHOLDER="Tel"></td>
+                            <th scope="row">ที่อยู่ : </th>
+                            <td><input type="text" name="address" class="form-control" style="border: none" placeholder="Address" value="<?php echo $row["customer_address"]; ?>"></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">เบอร์โทร : </th>
+                            <td><input type="text" name="tel" class="form-control" style="border: none" PLACEHOLDER="Tel" value="<?php echo $row["customer_tel"]; ?>"></td>
                         </tr>
                         </tbody>
                     </table>
