@@ -60,18 +60,16 @@ while($show = mysqli_fetch_array($result)){
     <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
         <div style="margin: 20px;">
             <form action="check.php?s=19" method="POST" enctype="multipart/form-data">
-                <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
-
+                <table style="width: 100%;">
                     <tr>
-                        <td rowspan="3" STYLE="width: 20%; text-align: center;">
-
-                            <div class="image-area mt-4"><img id="imageResult" name="img" src="./img/<?php echo $show['seller_img']?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                        <td rowspan="6" STYLE="width: 20%; text-align: center;">
+                            <img id="imageResult" name="img" src="./img/<?php echo $show['seller_img']?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
                         </td>
                         <th style="padding-left: 50px; width: 20%">
                             Username :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_username" value="<?=$show['seller_username']?> " >
+                            <a><?=$show['seller_username']?></a>
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +77,7 @@ while($show = mysqli_fetch_array($result)){
                             Password :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_password" value="<?=$show['seller_password']?>" >
+                            <a><?=$show['seller_password']?></a>
                         </td>
                     </tr>
                     <tr>
@@ -87,43 +85,34 @@ while($show = mysqli_fetch_array($result)){
                             ชื่อร้าน :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_name" value="<?=$show['seller_name']?>" >
+                            <a><?=$show['seller_name']?></a>
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-top: 50px; text-align: center;">
-                            <!-- Upload image input-->
-<!--                            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">-->
-<!--                                <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" name="seller_img">-->
-<!--                                <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>-->
-<!--                                <div class="input-group-append">-->
-<!--                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </td>-->
+
                         <th style="padding-left: 50px; width: 20%">
                             ที่อยู่ :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_address" value="<?=$show['seller_address']?>">
+                            <a><?=$show['seller_address']?></a>
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-top: 50px;"></td>
+
                         <th style="padding-left: 50px; width: 20%">
                             เบอร์โทรศัพท์่ :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?=$show['seller_tel']?>" >
+                            <p><?=$show['seller_tel']?></p>
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-top: 50px;"></td>
+
                         <th style="padding-left: 50px; width: 20%">
                             เวลา เปิด - ปิด :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?=$show['seller_time']?>" >
+                            <p><?=$show['seller_time']?></p>
                         </td>
                     </tr>
                     <tr>
