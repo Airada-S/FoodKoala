@@ -282,4 +282,24 @@ class connectDB {
         return $this->connect()->query($sql);
     }
 
+    public function getEmployeeById($id){
+        $sql = "SELECT * FROM employee WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
+
+    public function updateEmployee($id, $name, $user, $pass, $tel, $address){
+        $sql = "update employee set employee_name = '".$name."', employee_username = '".$user."', employee_password = '".$pass."', employee_tell = '".$tel."', employee_address = '".$address."' where employee_id = ".$id;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:employeProfile.php");
+        }else{
+            echo 'update Incomplete';
+           # Header("Location:employeEdit.php");
+        }
+    }
+
+    public function getBillById($id){
+        $sql = "SELECT * FROM `bill` WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
 }
