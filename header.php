@@ -38,6 +38,8 @@
         }elseif ($_SESSION["status"] == 'employee'){
             $link2 = "employeProfile.php";
             $link3 = "employeManage.php";
+        }elseif ($_SESSION["user"] == "admin"){
+            $link2 = "EditAdmin.php";
         }
     }
 ?>
