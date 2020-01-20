@@ -15,11 +15,9 @@ require("SetSessionStatus.php");
 
 <div class="login-page">
     <div class="form tab-content">
-            <form class="login-form"  method='POST'>
                 <img src="img/logo.png" width="250" height="250" class="d-inline-block align-top" alt="">
-                <button style="margin-top: 15px" >จัดการข้อมูลพนักงาน</button>
-                <button style="margin-top: 15px" >อนุมัติร้านค้า</button>
-            </form>
+                <a href="EditAdmin.php"><button type="submit" style="margin-top: 15px" >จัดการข้อมูลพนักงาน</button></a>
+                <a href="StoreApproval.php"><button style="margin-top: 15px" >อนุมัติร้านค้า</button></a>
         </div>
     </div>
 

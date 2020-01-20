@@ -39,7 +39,7 @@
             $link2 = "employeProfile.php";
             $link3 = "employeManage.php";
         }elseif ($_SESSION["user"] == "admin"){
-            $link2 = "EditAdmin.php";
+            $link2 = "manage.php";
         }
     }
 ?>

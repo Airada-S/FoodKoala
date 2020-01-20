@@ -65,7 +65,7 @@ while($show = mysqli_fetch_array($result)){
                     <tr>
                         <td rowspan="3" STYLE="width: 20%; text-align: center;">
 
-                            <div class="image-area mt-4"><img id="imageResult" name="img" src="./img/<?=$show['seller_img']?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                            <div class="image-area mt-4"><img id="imageResult" name="img" src="./img/<?php echo $show['seller_img']?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                         </td>
                         <th style="padding-left: 50px; width: 20%">
                             Username :
