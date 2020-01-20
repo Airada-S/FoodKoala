@@ -209,7 +209,22 @@ class connectDB {
             echo 'update Incomplete';
         }
     }
-
+    public function updateCustomer($cid,$cname,$cuser,$cpass,$ctel,$cadd){
+        $sql = "UPDATE `customer` SET `customer_name` = '".$cname."',`customer_username` = '".$cuser."',`customer_password` = '".$cpass."',`customer_tel` = '".$ctel."',`customer_address` = '".$cadd."' where customer_id = '".$cid."'";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
+    public function updateCustomerVisa($cid,$cvisaID,$cvisaPass){
+        $sql = "UPDATE `customer` SET `comment_visaPass` = '".$cvisaPass."',`comment_visaId` = '".$cvisaID."' where customer_id = '".$cid."'";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
     public function updateSeller($id, $user, $pass, $name, $address, $tel, $image){
         $sql = "Update seller set seller_username = '".$user."', seller_password = '".$pass."', seller_name = '".$name."', seller_address = '".$address."', seller_tel='".$tel."', seller_img = '".$image."' where seller_id=".$id;
         if(mysqli_query($this->connect(), $sql)){
@@ -282,4 +297,24 @@ class connectDB {
         return $this->connect()->query($sql);
     }
 
+    public function getEmployeeById($id){
+        $sql = "SELECT * FROM employee WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
+
+    public function updateEmployee($id, $name, $user, $pass, $tel, $address){
+        $sql = "update employee set employee_name = '".$name."', employee_username = '".$user."', employee_password = '".$pass."', employee_tell = '".$tel."', employee_address = '".$address."' where employee_id = ".$id;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            Header("Location:employeProfile.php");
+        }else{
+            echo 'update Incomplete';
+           # Header("Location:employeEdit.php");
+        }
+    }
+
+    public function getBillById($id){
+        $sql = "SELECT * FROM `bill` WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
 }

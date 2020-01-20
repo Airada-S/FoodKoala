@@ -226,8 +226,17 @@ elseif ($s == 19){
     }
     echo $_SESSION['bt']." ".$_SESSION['bid'];
     Header("Location:employeManage.php");
+}elseif ($s == 22){
+    $name = $_POST['e_name'];
+    $tel = $_POST['e_tel'];
+    $user = $_POST['e_user'];
+    $pass = $_POST['e_pass'];
+    $addr = $_POST['e_addr'];
+
+    $con = new ConnectDB();
+    $con->updateEmployee($_SESSION['id'], $name, $user, $pass, $tel, $addr);
 }
-elseif ($s == 22){
+elseif ($s == 23){
     $user = $_POST['employee_user'];
     $pass = $_POST['employee_pass'];
     $name = $_POST['employee_name'];
