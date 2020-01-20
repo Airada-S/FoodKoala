@@ -13,9 +13,9 @@ require("SetSessionStatus.php");
 ?>
 
 <div class="login-page">
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#customer" id="cus">สมาชิก</a></li>
-        <li><a data-toggle="tab" href="#seller">ร้านค้า</a></li>
+    <ul class="nav nav-tabs" style="width: 100%">
+        <li class="active" style="background-color: white; padding: 10px; width: 50%; text-align: center;" id="cus1"><a data-toggle="tab" href="#customer" id="cus" style="color: black">สมาชิก</a></li>
+        <li style="background-color: white; padding: 10px; width: 50%; text-align: center;" id="sell"><a data-toggle="tab" href="#seller" id="sel" style="color: black">ร้านค้า</a></li>
     </ul>
     <div class="form tab-content">
         <div id="customer" class="tab-pane fade in active">
@@ -34,8 +34,9 @@ require("SetSessionStatus.php");
                 <input type="text" id='name' placeholder="Name" name='name'/>
                 <input type="text" id='email' placeholder="Email" name='email'/>
                 <input type="text" id='tel' placeholder="Phone number" name='tel'/>
-                <input type="textarea" id='address' placeholder="Address" name='address'/>
-                <button onclick=" return check()">Insert</button>
+                <textarea placeholder="Address" name='address' id='address' style="width: 100%; border: none; background-color: #F2F2F2; height: 100px; padding: 15px; color: #555555;"></textarea>
+<!--                <input type="text" id='address' placeholder="Address" name='address' aria-multiline="true" height="100"/>-->
+                <button onclick=" return check()">สมัครสมาชิก</button>
             </form>
         </div>
         <div id="seller" class="tab-pane fade">
@@ -53,7 +54,8 @@ require("SetSessionStatus.php");
                 <input type="text" id='name2' placeholder="Name" name='name2'/>
                 <input type="text" id='email2' placeholder="Email" name='email2'/>
                 <input type="text" id='tel2' placeholder="Phone number" name='tel2'/>
-                <input type="text" id='address2' placeholder="Address" name='address2'/>
+                <textarea placeholder="Address" name='address2' id='address2' style="width: 100%; border: none; background-color: #F2F2F2; height: 100px; padding: 15px; color: #555555;"></textarea>
+<!--                <input type="text" id='address2' placeholder="Address" name='address2'/>-->
                 <input type="text" id='time2' placeholder="Open-close time" name='time2'/>
                 <input type="file" id='img2' placeholder="img" name='img2'/>
                 <button onclick=" return check2()">Insert</button>
@@ -68,9 +70,23 @@ require("SetSessionStatus.php");
 <script>
 
     $(document).ready(function(){
-        $("#cus").click();
+        $("#cus").click(function(){
+            $("#cus1").css({"background-color": "white"});
+            $("#sell").css({"background-color": "#E8A42A"});
+        });
     });
 
+    $(document).ready(function(){
+        $("#sel").click(function(){
+            $("#cus1").css({"background-color": "#E8A42A"});
+            $("#sell").css({"background-color": "white"});
+        });
+    });
+
+    $(document).ready(function(){
+        $("#cus").click();
+
+    });
 
     function check() {
         let user = document.getElementById("user");
