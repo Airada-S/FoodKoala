@@ -211,5 +211,20 @@ elseif ($s == 19){
     $con = new ConnectDB();
     $con->connect();
     $con->UPDATE3($seller_name);
+}elseif ($s == 20){
+    $_SESSION["bid"] = $_REQUEST["bid"];
+    $con = new ConnectDB();
+    $con->updateBillEmployeeId($_SESSION["bid"],$_SESSION["id"]);
+    Header("Location:employeManage.php");
+}elseif ($s == 21){
+    echo $_SESSION['bt']." ".$_SESSION['bid'];
+    if($_SESSION["bt"] == 'รับออเดอร์ใหม่'){
+        $_SESSION['bid'] = 'null';
+    }else{
+        $con = new ConnectDB();
+        $con->updateBillDeliverystatus($_SESSION["bid"],$_SESSION["bt"]);
+    }
+    echo $_SESSION['bt']." ".$_SESSION['bid'];
+    Header("Location:employeManage.php");
 }
 ?>

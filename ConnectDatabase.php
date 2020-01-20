@@ -193,6 +193,22 @@ class connectDB {
             echo 'update Incomplete';
         }
     }
+    public function updateBillDeliverystatus($bid, $status){
+        $sql = "UPDATE `bill` SET `bill_deliverystatus` = '".$status."' where bill_id='".$bid."'";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
+    public function updateBillEmployeeId($bid, $eid){
+        $sql = "UPDATE `bill` SET `employee_id` = '".$eid."' where bill_id='".$bid."'";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
 
     public function updateSeller($id, $user, $pass, $name, $address, $tel, $image){
         $sql = "Update seller set seller_username = '".$user."', seller_password = '".$pass."', seller_name = '".$name."', seller_address = '".$address."', seller_tel='".$tel."', seller_img = '".$image."' where seller_id=".$id;

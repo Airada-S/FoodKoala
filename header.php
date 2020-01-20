@@ -36,7 +36,7 @@
         }elseif ($_SESSION["status"] == 'customer'){
             $link2 = "customerManage.php";
         }elseif ($_SESSION["status"] == 'employee'){
-            $link2 = "employeEdit.php";
+            $link2 = "employeProfile.php";
             $link3 = "employeManage.php";
         }
     }
