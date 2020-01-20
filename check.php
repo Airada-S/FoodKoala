@@ -227,4 +227,27 @@ elseif ($s == 19){
     echo $_SESSION['bt']." ".$_SESSION['bid'];
     Header("Location:employeManage.php");
 }
+elseif ($s == 22){
+    $user = $_POST['employee_user'];
+    $pass = $_POST['employee_pass'];
+    $name = $_POST['employee_name'];
+    $tel = $_POST['employee_tell'];
+    $address = $_POST['employee_add'];
+
+    $con = new ConnectDB();
+    $con->connect();
+    $sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."'";
+    $sql2 = "SELECT `seller_username` FROM `seller` where seller_username = '".$user."' ";
+    $sql3 = "SELECT `employee_username` FROM `employee` where employee_username = '".$user."' ";
+    $result = mysqli_query($con->connect(),$sql);
+    $result2 = mysqli_query($con->connect(),$sql2);
+    $result3 = mysqli_query($con->connect(),$sql3);
+    if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
+
+        $con->Insert1($user,$pass,$name,$tel,$address);
+    }else{
+        header("Location:register.php?n=1");
+
+    }
+}
 ?>

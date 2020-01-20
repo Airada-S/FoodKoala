@@ -1,13 +1,85 @@
+<?php
+include 'header.php';
+//require("SetSessionStatus.php");
+?>
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="table.css">
+    <link rel="stylesheet" type="text/css" href="button.css">
+
+</head>
+<body>
 
 <?php
-    require_once './Connectdatabase.php';
-    $con = new ConnectDB();
+require './ConnectDatabase.php';
+$con = new connectDB();
+if($con->connect()){
+    $sql = "SELECT * FROM `employee`";
+    $objquery = mysqli_query($con->connect(), $sql);
+
+}else{
+    echo 'Connect Failed:'. mysqli_error($con->connect());
+}
+?>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<!--    <ul class="navbar-nav">-->
+<!--        <li class="nav-item active">-->
+<!--            <a class="nav-link" href="#">--><?php //echo $_SESSION['employee_name']; ?><!--</a>-->
+<!---->
+<!--        </li>-->
+<!--        <li class="nav-item active">-->
+<!--            <a class="nav-link" href="#">--><?php //echo "pan"?><!--</a>-->
+<!---->
+<!--        </li>-->
+<!--        <li class="nav-item active">-->
+<!--            <a class="nav-link" href="#">--><?php //echo $_SESSION['employee_address']; ?><!--</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">--><?php //echo $_SESSION['employee_tell']; ?><!--</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link disabled" href="#">--><?php //echo $_SESSION['email']; ?><!--</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+</nav>
+<form action="check.php?s=20" method="POST">
+    <table>
+        <tr>
+            <th>ลบ</th>
+            <th>แก้ไข</th>
+            <th>ชื่อ</th>
+            <th>ที่อยู่</th>
+            <th>เบอร์โทร</th>
+
+        </tr>
+
+        <?php
+        error_reporting(~E_NOTICE );
+
+        while ($row= mysqli_fetch_array($objquery)){
 
 
+                echo "<tr>";
+                echo "<td><input type='checkbox' name='del[]' value='".$row['id']."'></td>";
+                echo "<td><a href='memberEdit.php?id=".$row['id']."'>แกไข</a></td>";
+                echo "<td>".$row['employee_name']."</td>";
+                echo "<td>".$row['employee_address']."</td>";
+                echo "<td>".$row['employee_tell']."</td>";
 
+                echo "</tr>";
+
+        }
         ?>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="loginCSS.css" title="style1">
-    <title></title>
+    </table>
+    <center>
+        <button class="button button2">ลบข้อมูล</button>
+</form>
+<button class="button button1"><a href="AddEmployee.php">เพิ่มข้อมูล</a></button>
+
+</center>
+</body>
+</html>
+
 
