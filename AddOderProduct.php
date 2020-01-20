@@ -32,11 +32,8 @@
                     </select>
                     <input type="time" style="width: 45%;">
                     <h5 class="card-title mt-5">ที่อยู่สำหรับจัดส่ง</h5>
-                    <div class="card" style="width: 50%; border-color: #e06c6c;">
-                        <div STYLE="text-align: end;padding-top: 10px;padding-left: 10px;padding-right: 10px;">
-                              <a href="#" style="color: #e06c6c"><i class="far fa-edit"></i></a>
-<!--                              <a href="#" style="color: #e06c6c"><i class="far fa-trash-alt"></i></a>-->
-                        </div>
+                    <div class="card" style="width: 75%; border-color: #e06c6c;padding: 5%">
+
                         <div class="card-body" style="padding: 5px 10px 10px;">
                             <?php echo $row["customer_address"]; ?>
                         </div>
@@ -54,7 +51,7 @@
                             <h2 class="card-title">ข้อมูลส่วนตัว</h2>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" style="color: #e06c6c; margin-right: ">แก้ไข  <i class="far fa-edit"></i></a>
+                            <a href="#" style="color: #e06c6c; margin-right: "></a>
                         </li>
                     </ul>
                     <?php echo $row["customer_name"]."<br>".$row["customer_tel"]; ?>
@@ -72,18 +69,18 @@
                     </ul>
                     <a style="margin-bottom: 100px">
                         ยอดเงินคงเหลือใน Wallet ของคุณ :
-                        <?php echo $row["customer_wallet"]; ?>
+                        <a id="yourWallet"><?php echo $row["customer_wallet"]; ?></a>
                          บาท
                     </a>
                     <ul class="list-inline" style="text-align: center;margin-top: 10px">
                         <li class="list-inline-item">
                             <button class="btn btn-outline-danger" onclick="money()">
-                                <a ><img src="img/money.png" style="width: 10rem; height: 10rem;" ></a>
+                                <a  id = "bt"><img src="img/money.png" style="width: 10rem; height: 10rem;" ></a>
                                 <p class="font-weight-normal mt-3">ชำระด้วยเงินสด</p>
                             </button>
                         </li>
                         <li class="list-inline-item">
-                            <button class="btn btn-outline-danger" onclick="wallet()">
+                            <button class="btn btn-outline-danger" onclick="return wallet()">
                             <a><img src="img/coin.png" style="width: 10rem; height: 10rem;" ></a>
                             <p class="font-weight-normal mt-3">ชำระด้วยเงิน Wallet</p>
                             </button>
@@ -154,7 +151,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">ยอดสุทธิ</td>
-                                <td class="float-right"><?php echo $cost+$sumall." บาท" ?></td>
+                                <td class="float-right"><a id = "sum"><?php echo $cost+$sumall ?></a> บาท</td>
                             </tr>
                         </tbody>
                     </table>
@@ -167,6 +164,9 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
+    $(document).ready(function(){
+        $("#bt").click();
+    });
     let tomorrow = new Date();
     const x = document.getElementById("date");
     let date;
@@ -191,8 +191,18 @@
         cp.value = 'ชำระเงินปลายทาง';
     }
     function wallet() {
-        pay = 'wallet';
-        cp.value = 'ชำระเงินผ่าน wallet';
+        var yourWallet = document.getElementById("yourWallet").textContent;
+        var sum = document.getElementById("sum").textContent;
+        // window.alert(yourWallet-sum);
+        if(yourWallet-sum < 0){
+            window.alert("ยอดเงินของตุณไม่พอสำหรับการใช้บริการกรุณาเติมเงินก่อนทำรายการ");
+            return false;
+        }else {
+            pay = 'wallet';
+            cp.value = 'ชำระเงินผ่าน wallet';
+            return true;
+        }
+
     }
 </script>
 </body>
