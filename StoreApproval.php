@@ -85,7 +85,8 @@ while($show = mysqli_fetch_array($result)){
                             ชื่อร้าน :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <a><?=$show['seller_name']?></a>
+                            <input hidden name="seller_name" value="<?=$show['seller_name']?>">
+                            <a ><?=$show['seller_name']?></a>
                         </td>
                     </tr>
                     <tr>
