@@ -89,7 +89,7 @@ if($s==1){
     }
 }elseif ($s == 11){
     $file = $_FILES['img2'];
-    $place = "img2";
+    $place = "img";
     if(move_uploaded_file($file[tmp_name],"$place/".$file[name])){
 
     }
@@ -226,5 +226,8 @@ elseif ($s == 19){
     }
     echo $_SESSION['bt']." ".$_SESSION['bid'];
     Header("Location:employeManage.php");
+}elseif ($s == 22){
+
 }
+
 ?>
