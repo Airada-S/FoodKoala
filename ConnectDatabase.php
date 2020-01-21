@@ -342,8 +342,8 @@ class connectDB {
     public function EmployeeStatus($employee_username){
         $sql = "UPDATE `employee` SET `employee_status`= 0 WHERE employee_username ='".$employee_username."'";
         if(mysqli_query($this->connect(), $sql)){
-            #header("Location:EditAdmin.php");
-            echo "true";
+            header("Location:EditAdmin.php");
+
         }else{
             echo 'update Incomplete';
         }

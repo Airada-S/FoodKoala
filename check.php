@@ -260,7 +260,6 @@ elseif ($s == 23){
     if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
 
         $con->InsertEmployee($user,$pass,$name,$tell,$address);
-
     }
 
 

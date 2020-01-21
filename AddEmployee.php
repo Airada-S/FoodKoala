@@ -99,10 +99,6 @@ if($con->connect()){
             return false
         }
 
-
-
-
-
     }
 </script>
 </body>
