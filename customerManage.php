@@ -67,15 +67,15 @@
                             <table class="table">
                                 <form action="check.php?s=15" method="post">
                                     <tr>
-                                        <td><h3>เลขบัตร</h3></td>
-                                        <td><h3>รหัส CNN</h3></td>
+                                        <td><h4>เลขบัตร</h4></td>
+                                        <td><h4>รหัส CVC</h4></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" class="form-control" value="<?php echo $valCus['comment_visaId']; ?>"></td>
-                                        <td><input type="text" class="form-control" value="<?php echo $valCus['comment_visaPass']; ?>"></td>
+                                        <td><input type="text" class="form-control" name="visaID" value="<?php echo $valCus['comment_visaId']; ?>"></td>
+                                        <td><input type="text" class="form-control" name="visaPass" value="<?php echo $valCus['comment_visaPass']; ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td><h3>จำนวนเงิน</h3></td>
+                                        <td><h4>จำนวนเงิน</h4></td>
                                     </tr>
                                     <tr>
                                         <td><input type="text" class="form-control" name="wallet"></td>

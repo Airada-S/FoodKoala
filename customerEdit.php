@@ -18,11 +18,12 @@
             <div class="card mt-5" style="width: 100%;">
                 <div class="card-body">
                     <h3 style="text-align: center">แก้ไขข้อมูลลูกค้า</h3>
+                    <form action="check.php?s=24" method="post">
                         <table class="table mt-5">
                         <tbody>
                         <tr>
                             <th scope="row">ชื่อ : </th>
-                            <td><input type="text" name="name" class="form-control" style="border: none" placeholder="name" value="<?php echo $row["customer_name"]; ?>"></td>
+                            <td><input type="text" name="name" class="form-control" style="border: none" placeholder="Name" value="<?php echo $row["customer_name"]; ?>"></td>
 
                         </tr>
                         <tr>
@@ -46,7 +47,8 @@
                         </tr>
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-outline-warning" style="text-align: center">บันทึกข้อมูล</button>
+                    <button type="submit" class="btn btn-outline-warning" style="text-align: center">บันทึกข้อมูล</button>
+                    </form>
                 </div>
             </div>
         </div>

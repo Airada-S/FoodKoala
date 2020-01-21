@@ -170,6 +170,7 @@ if($s==1){
     $val = $customer->fetch_assoc();
     $wallet = $val["customer_wallet"]+$_POST["wallet"];
     $conn->updateCustomerWallet($_SESSION["id"],$wallet);
+    $conn->updateCustomerVisa($_SESSION["id"],$_POST["visaID"],$_POST["visaPass"]);
     header("Location:customerManage.php");
 }elseif ($s == 16){
     $pid = $_REQUEST['pid'];
@@ -258,5 +259,9 @@ elseif ($s == 23){
         header("Location:register.php?n=1");
 
     }
+}elseif ($s == 24){
+    $con = new ConnectDB();
+    $con->updateCustomer($_SESSION["id"],$_POST["name"],$_POST["username"],$_POST["password"],$_POST["tel"],$_POST["address"]);
+    header("Location:customerManage.php");
 }
 ?>
