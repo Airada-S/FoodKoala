@@ -23,7 +23,7 @@ class connectDB {
             $_SESSION['id'] = $val["customer_id"];
             return $result;
         }else{
-            $sql = "SELECT * FROM `employee`WHERE employee_username = '".$username."' AND employee_password = '".$password."'";
+            $sql = "SELECT * FROM `employee`WHERE employee_username = '".$username."' AND employee_password = '".$password."'AND employee_status = 1";
             $result = $this->connect()->query($sql);
             if($result->num_rows>0){
                 $_SESSION['status'] = 'employee';
