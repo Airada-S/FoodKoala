@@ -32,7 +32,7 @@ require("SetSessionStatus.php");
                 <input type="text" id='user' placeholder="Username" name='user'/>
                 <input type='password' id='pass' placeholder='Password' name='pass'/>
                 <input type="text" id='name' placeholder="Name" name='name'/>
-                <input type="text" id='email' placeholder="Email" name='email'/>
+<!--                <input type="text" id='email' placeholder="Email" name='email'/>-->
                 <input type="text" id='tel' placeholder="Phone number" name='tel'/>
                 <textarea placeholder="Address" name='address' id='address' style="width: 100%; border: none; background-color: #F2F2F2; height: 100px; padding: 15px; color: #555555;"></textarea>
 <!--                <input type="text" id='address' placeholder="Address" name='address' aria-multiline="true" height="100"/>-->
@@ -52,7 +52,7 @@ require("SetSessionStatus.php");
                 <input type="text" id='user2' placeholder="Username" name='user2'/>
                 <input type='password' id='pass2' placeholder='Password' name='pass2'/>
                 <input type="text" id='name2' placeholder="Name" name='name2'/>
-                <input type="text" id='email2' placeholder="Email" name='email2'/>
+<!--                <input type="text" id='email2' placeholder="Email" name='email2'/>-->
                 <input type="text" id='tel2' placeholder="Phone number" name='tel2'/>
                 <textarea placeholder="Address" name='address2' id='address2' style="width: 100%; border: none; background-color: #F2F2F2; height: 100px; padding: 15px; color: #555555;"></textarea>
 <!--                <input type="text" id='address2' placeholder="Address" name='address2'/>-->
