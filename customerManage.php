@@ -13,87 +13,111 @@
     $valCus = $customer->fetch_assoc();
 ?>
 <div style="padding-top: 40px; padding-left: 300px; padding-right: 300px;">
-    <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
-        <div style="margin: 20px;">
-            <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
-                <tr>
-                    <td colspan="3" style="text-align: right; padding-top: 10px;"><a href="customerEdit.php"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลผู้ใช้</button></a></td>
-                </tr>
-                <tr>
-                    <td rowspan="4" STYLE="width: 20%;"><img src="./img/koala2.png" width="150" height="150"></td>
-                    <th style="padding-left: 50px; width: 20%">
-                        Username :
-                    </th>
-                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
-                        <?php echo $valCus["customer_username"] ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th style="padding-left: 50px; width: 20%">
-                        ชื่อผู้ใช้ :
-                    </th>
-                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
-                        <?php echo $valCus["customer_name"] ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th style="padding-left: 50px; width: 20%">
-                        เบอร์โทร :
-                    </th>
-                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
-                            <?php echo $valCus['customer_tel'] ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th style="padding-left: 50px; width: 20%">
-                        ยอดเงินในบัญชี :
-                    </th>
-                    <td style="padding-left: 20px; border-bottom: 1px solid #E8A42A; width: 60%">
-                        <?php echo $valCus['customer_wallet']." บาท" ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td>
-                        <a class="btn btn-outline-danger btn-block float-right mt-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            เติมเงิน
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td>
-                        <div class="collapse" id="collapseExample">
-                            <table class="table">
-                                <form action="check.php?s=15" method="post">
-                                    <tr>
-                                        <td><h4>เลขบัตร</h4></td>
-                                        <td><h4>รหัส CVC</h4></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" class="form-control" name="visaID" value="<?php echo $valCus['comment_visaId']; ?>"></td>
-                                        <td><input type="text" class="form-control" name="visaPass" value="<?php echo $valCus['comment_visaPass']; ?>"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><h4>จำนวนเงิน</h4></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" class="form-control" name="wallet"></td>
-                                        <td>บาท</td>
-                                    </tr>
-                                <tr>
-                                    <td colspan="2" style="text-align: center"><button type="submit" class="btn btn-outline-warning">ยืนยันการเติมเงิน</button></td>
-                                </tr>
-                                </form>
-                            </table>
-                    </td>
-                </tr>
-
+    <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px; padding: 20px">
+        <table class="table" style="margin-bottom: 0px">
+            <tbody>
+            <tr >
+                <td colspan="2" style="border-top: none">
+                    <h3>
+                        <i class="fas fa-address-card"></i> ข้อมูลส่วนตัว  <a href="customerEdit.php" class="float-right"><button type="button" class="btn btn-outline-warning">แก้ไขข้อมูลผู้ใช้</button></a>
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%; border-top: none">
+                            Username :
+                </th>
+                <td style="padding-left: 20px;border-bottom: solid #E8A42A; width: 60%; border-top: none"><?php echo $valCus["customer_username"] ?>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%; border-top: none">
+                    ชื่อผู้ใช้ :
+                </th>
+                <td style="padding-left: 20px;border-bottom: solid #E8A42A; width: 60%; border-top: none">
+                    <?php echo $valCus["customer_name"] ?>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%; border-top: none">
+                           เบอร์โทร :
+                </th>
+                <td style="padding-left: 20px;border-bottom: solid #E8A42A; width: 60%; border-top: none">
+                    <?php echo $valCus['customer_tel'] ?>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%; border-top: none">
+                    ยอดเงินในบัญชี :
+                </th>
+                <td style="padding-left: 20px; border-bottom: solid #E8A42A; width: 60%; border-top: none">
+                    <?php echo $valCus['customer_wallet']." บาท" ?>
+                </td>
+                   </tr>
+            <tr>
+                <td colspan="2" style="border-top: none">
+                    <a class="btn btn-outline-danger btn-block mt-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        เติมเงิน
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="collapse" id="collapseExample">
+            <table class="table">
+                <form action="check.php?s=15" method="post">
+                    <tr>
+                        <td><h5>เลขบัตร</h5></td>
+                        <td><h5>รหัส CVC</h5></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="visaID" value="<?php echo $valCus['comment_visaId']; ?>"></td>
+                        <td><input type="text" class="form-control" name="visaPass" value="<?php echo $valCus['comment_visaPass']; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td><h5>จำนวนเงิน</h5></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="wallet"></td>
+                        <td>บาท</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center"><button type="submit" class="btn btn-outline-warning">ยืนยันการเติมเงิน</button></td>
+                    </tr>
+                </form>
             </table>
-
         </div>
     </div>
 </div>
+<div style="padding-left: 300px; padding-right: 300px;">
+    <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px; padding: 20px">
+        <table style="width: 100%;" class="table">
+            <tr>
+                <td colspan="3">
+                    <h3><i class="fas fa-history"></i> ประวัติการสั่งซื้อ</h3>
+                </td>
+            </tr>
+            <tr>
+                <th>ร้านค้า</th>
+                <th>ราคา</th>
+                <th>สถานะ</th>
+            </tr>
+            <tr>
+                <td>Name Shop</td>
+                <td>3055 บ.</td>
+                <td>ทำรายการเสร็จสิ้น</td>
+                <td style="color: #76b852"><i class="fas fa-calendar-day"></i> รายละเอียดเพิ่มเติ่ม</td>
+            </tr>
+            <tr>
+                <td>Name Shop</td>
+                <td>3055 บ.</td>
+                <td>ทำรายการเสร็จสิ้น</td>
+                <td style="color: #76b852"><i class="fas fa-calendar-day"></i> รายละเอียดเพิ่มเติ่ม</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 
 </body>
 </html>
