@@ -317,4 +317,14 @@ class connectDB {
         $sql = "SELECT * FROM `bill` WHERE `employee_id` =".$id;
         return $this->connect()->query($sql);
     }
+
+    public function InsertEmployee($user,$pass,$name,$tell,$address){
+        $sql = "INSERT INTO `employee`(`employee_tell`, `employee_name`, `employee_address`, `employee_username`, `employee_password`) VALUES ('".$tell."','".$name."','".$address."','".$user."','".$pass."')";
+        echo $sql;
+        if(mysqli_query($this->connect(), $sql)){
+            header("Location:EditAdmin.php");
+        } else {
+            echo 'Insert Incomplete';
+        }
+    }
 }

@@ -23,30 +23,31 @@ if($con->connect()){
     echo 'Connect Failed:'. mysqli_error($con->connect());
 }
 ?>
-<form action='check.php?s=22' method='POST'>
+<form action='check.php?s=23' method='POST'>
     <div class="form-group">
         <label for="exampleFormControlInput1">Name LastName</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="employee_name">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name LastName" name="employee_name">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Phone Number</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="employee_tell">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number" name="employee_tell">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Address</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="employee_add">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Address" name="employee_add">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">UserName</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="employee_user">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="UserName" name="employee_user">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Password</label>
-        <input type="password" class="form-control" id="exampleFormControlInput1" name="employee_pass">
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" name="employee_pass">
     </div>
+    <input type="submit" name="submit" value="Register" >
 </form>
 <br>
-<input type="submit" name="submit" value="Register" >
+
 </body>
 </html>
 

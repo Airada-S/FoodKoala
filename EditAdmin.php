@@ -44,7 +44,7 @@ if($con->connect()){
 <!--        </li>-->
 <!--    </ul>-->
 </nav>
-<form action="check.php?s=20" method="POST">
+<form method="POST">
     <table>
         <tr>
             <th>ลบ</th>
@@ -75,8 +75,9 @@ if($con->connect()){
     </table>
     <center>
         <button class="button button2">ลบข้อมูล</button>
+        <button class="button button1"><a href="AddEmployee.php">เพิ่มข้อมูล</a></button>
 </form>
-<button class="button button1"><a href="AddEmployee.php">เพิ่มข้อมูล</a></button>
+
 
 </center>
 </body>

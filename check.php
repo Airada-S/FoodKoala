@@ -241,8 +241,10 @@ elseif ($s == 23){
     $user = $_POST['employee_user'];
     $pass = $_POST['employee_pass'];
     $name = $_POST['employee_name'];
-    $tel = $_POST['employee_tell'];
+    $tell = $_POST['employee_tell'];
     $address = $_POST['employee_add'];
+    $employee_status =  $_SESSION['employee_status'];
+
 
     $con = new ConnectDB();
     $con->connect();
@@ -254,11 +256,12 @@ elseif ($s == 23){
     $result3 = mysqli_query($con->connect(),$sql3);
     if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
 
-        $con->Insert1($user,$pass,$name,$tel,$address);
-    }else{
-        header("Location:register.php?n=1");
-
+        $con->InsertEmployee($user,$pass,$name,$tell,$address);
     }
+
+
+
+
 }elseif ($s == 24){
     $con = new ConnectDB();
     $con->updateCustomer($_SESSION["id"],$_POST["name"],$_POST["username"],$_POST["password"],$_POST["tel"],$_POST["address"]);
