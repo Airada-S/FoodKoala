@@ -16,7 +16,7 @@ include 'header.php';
 require './ConnectDatabase.php';
 $con = new connectDB();
 if($con->connect()){
-    $sql = "SELECT * FROM `employee`";
+    $sql = "SELECT * FROM `employee` where employee_status = '1'";
     $objquery = mysqli_query($con->connect(), $sql);
 
 }else{
