@@ -196,12 +196,13 @@ if($s==1){
     $conn->insertProduct($_SESSION['id'], $name, $price, $type);
 }elseif ($s == 18){
     $j = $_REQUEST["j"];
-    echo $j;
+    echo $_REQUEST["bid"];
     $conn = new ConnectDB();
     for ($i = 0 ; $i<$j ; $i++){
         echo "<br>".$_POST["sid".$i]."<br>".$_POST["star".$i]."<br>".$_POST["detail".$i];
         $conn->insertReviews($_SESSION["id"],$_POST["sid".$i],$_POST["detail".$i],$_POST["star".$i]);
     }
+    $conn->updateBillReviewsStatus($_REQUEST["bid"]);
     Header("Location:index.php");
 
 

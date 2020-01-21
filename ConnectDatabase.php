@@ -312,9 +312,21 @@ class connectDB {
            # Header("Location:employeEdit.php");
         }
     }
+    public function updateBillReviewsStatus($bid){
+        $sql = "UPDATE `bill` SET `reviews_status` = '1' where `bill_id` = ".$bid;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
 
     public function getBillById($id){
         $sql = "SELECT * FROM `bill` WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
+    public function getBillByCid($cid){
+        $sql = "SELECT * FROM `bill` WHERE `customer_id` =".$cid;
         return $this->connect()->query($sql);
     }
 
