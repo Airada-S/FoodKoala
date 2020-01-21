@@ -6,9 +6,6 @@ include 'header.php';
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="table.css">
-    <link rel="stylesheet" type="text/css" href="button.css">
-
 </head>
 <body>
 
@@ -23,30 +20,37 @@ if($con->connect()){
     echo 'Connect Failed:'. mysqli_error($con->connect());
 }
 ?>
-<form action='check.php?s=23' method='POST' onsubmit=" return checkEmployee()">
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Name LastName</label>
-        <input type="text" class="form-control" id="NameLast" placeholder="Name LastName" name="employee_name">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Phone Number</label>
-        <input type="text" class="form-control" id="PhoneNumber" placeholder="Phone Number" name="employee_tell">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Address</label>
-        <input type="text" class="form-control" id="Address" placeholder="Address" name="employee_add">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">UserName</label>
-        <input type="text" class="form-control" id="username" placeholder="UserName" name="employee_user">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Password</label>
-        <input type="password" class="form-control" id="Password" placeholder="Password" name="employee_pass">
-    </div>
-    <input type="submit" name="submit" value="Register">
 
-</form>
+<div style="padding-left: 30%; padding-right: 30%; padding-top: 3%; padding-bottom: 3%">
+    <div class="border border-danger" style="padding: 10%">
+    <h3 style="text-align: center">เพิ่มพนักงาน</h3>
+    <form action='check.php?s=23' method='POST' onsubmit=" return checkEmployee()">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">ชื่อพนักงาน</label>
+            <input type="text" class="form-control" id="NameLast" placeholder="Name LastName" name="employee_name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">เบอร์โทรศัพ</label>
+            <input type="text" class="form-control" id="PhoneNumber" placeholder="Phone Number" name="employee_tell">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">ที่อยู่</label>
+            <input type="text" class="form-control" id="Address" placeholder="Address" name="employee_add">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="UserName" name="employee_user">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Password</label>
+            <input type="password" class="form-control" id="Password" placeholder="Password" name="employee_pass">
+        </div>
+        <div style="text-align: center">
+            <button type="submit" name="submit" value="Register" class="btn btn-outline-warning"><i class="far fa-plus-square"></i> เพิ่มพนักงาน</button>
+        </div>
+    </form>
+</div>
+</div>
 <script>
 
     $(document).ready(function(){

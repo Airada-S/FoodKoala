@@ -6,9 +6,6 @@ include 'header.php';
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="table.css">
-    <link rel="stylesheet" type="text/css" href="button.css">
-
 </head>
 <body>
 
@@ -23,58 +20,40 @@ if($con->connect()){
     echo 'Connect Failed:'. mysqli_error($con->connect());
 }
 ?>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-<!--    <ul class="navbar-nav">-->
-<!--        <li class="nav-item active">-->
-<!--            <a class="nav-link" href="#">--><?php //echo $_SESSION['employee_name']; ?><!--</a>-->
-<!---->
-<!--        </li>-->
-<!--        <li class="nav-item active">-->
-<!--            <a class="nav-link" href="#">--><?php //echo "pan"?><!--</a>-->
-<!---->
-<!--        </li>-->
-<!--        <li class="nav-item active">-->
-<!--            <a class="nav-link" href="#">--><?php //echo $_SESSION['employee_address']; ?><!--</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" href="#">--><?php //echo $_SESSION['employee_tell']; ?><!--</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link disabled" href="#">--><?php //echo $_SESSION['email']; ?><!--</a>-->
-<!--        </li>-->
-<!--    </ul>-->
-</nav>
-<form method="POST">
-    <table>
-        <tr>
+<div style="padding-right: 20%; padding-left: 20%; padding-top: 5%">
+    <h3><i class="fas fa-list-ul"></i> รายชื่อพนักงาน</h3>
+    <form method="POST" style="margin-top: 20px">
+        <table class="table">
+            <tr>
 
-            <th>ชื่อ</th>
-            <th>ที่อยู่</th>
-            <th>เบอร์โทร</th>
-            <th>ลบพนักงาน</th>
+                <th>ชื่อ</th>
+                <th>ที่อยู่</th>
+                <th>เบอร์โทร</th>
+                <th>ลบพนักงาน</th>
 
-        </tr>
+            </tr>
 
-        <?php
-        error_reporting(~E_NOTICE );
+            <?php
+            error_reporting(~E_NOTICE );
 
-        while ($row= mysqli_fetch_array($objquery)){
+            while ($row= mysqli_fetch_array($objquery)){
 
 
-                echo "<tr>";
-                echo "<td>".$row['employee_name']."</td>";
-                echo "<td>".$row['employee_address']."</td>";
-                echo "<td>".$row['employee_tell']."</td>";
-                echo "<td><a href='check.php?s=25&user=".$row['employee_username']."'>ลบ</a></td>";
-                echo "</tr>";
+                    echo "<tr>";
+                    echo "<td>".$row['employee_name']."</td>";
+                    echo "<td>".$row['employee_address']."</td>";
+                    echo "<td>".$row['employee_tell']."</td>";
+                    echo "<td><a href='check.php?s=25&user=".$row['employee_username']."'>ลบ</a></td>";
+                    echo "</tr>";
 
-        }
-        ?>
-    </table>
-    <center>
-        <button class="button button1"><a href="AddEmployee.php">เพิ่มข้อมูล</a></button>
-</form>
-    </center>
+            }
+            ?>
+        </table>
+        <div style="text-align: center">
+            <button class="btn btn-outline-warning" type="button" style="width: 20%"><a href="AddEmployee.php" ><i class="far fa-plus-square"></i> เพิ่มพนักงาน</a></button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
 
