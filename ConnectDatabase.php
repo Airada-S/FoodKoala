@@ -154,7 +154,7 @@ class connectDB {
         if($sum < 500){
             $sum+=50;
         }
-        $sql = "INSERT INTO `bill`(`customer_id`, `bill_total`, `bill_deliverystatus`, `employee_id`, `bill_pay`) VALUES('".$cid."','".$sum."','ได้รับออเดอร์แล้ว','0','".$pay."')";
+        $sql = "INSERT INTO `bill`(`customer_id`, `bill_total`, `bill_deliverystatus`, `employee_id`, `bill_pay`, `reviews_status`) VALUES('".$cid."','".$sum."','ได้รับออเดอร์แล้ว','0','".$pay."','0')";
         echo $sql;
         if(mysqli_query($this->connect(), $sql)){
             $sql1 = "SELECT MAX(`bill_id`) as max FROM `bill`";
@@ -312,9 +312,21 @@ class connectDB {
            # Header("Location:employeEdit.php");
         }
     }
+    public function updateBillReviewsStatus($bid){
+        $sql = "UPDATE `bill` SET `reviews_status` = '1' where `bill_id` = ".$bid;
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
 
     public function getBillById($id){
         $sql = "SELECT * FROM `bill` WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
+    public function getBillByCid($cid){
+        $sql = "SELECT * FROM `bill` WHERE `customer_id` =".$cid;
         return $this->connect()->query($sql);
     }
 }

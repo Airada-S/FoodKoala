@@ -9,6 +9,7 @@
     include 'header.php';
     require_once './ConnectDatabase.php';
     $conn = new ConnectDB();
+    $bills = $conn->getBillByCid($_SESSION["id"]);
     $customer = $conn->getCustomer($_SESSION["id"]);
     $valCus = $customer->fetch_assoc();
 ?>
@@ -99,21 +100,40 @@
             </tr>
             <tr>
                 <th>ร้านค้า</th>
-                <th>ราคา</th>
+                <th>ราคารวม</th>
                 <th>สถานะ</th>
             </tr>
-            <tr>
-                <td>Name Shop</td>
-                <td>3055 บ.</td>
-                <td>ทำรายการเสร็จสิ้น</td>
-                <td style="color: #76b852"><i class="fas fa-calendar-day"></i> รายละเอียดเพิ่มเติ่ม</td>
-            </tr>
-            <tr>
-                <td>Name Shop</td>
-                <td>3055 บ.</td>
-                <td>ทำรายการเสร็จสิ้น</td>
-                <td style="color: #76b852"><i class="fas fa-calendar-day"></i> รายละเอียดเพิ่มเติ่ม</td>
-            </tr>
+            <?php
+            while ($valbill = $bills->fetch_assoc()) {
+                $order = $conn->getOrderBybid($valbill["bill_id"]);
+                $sid = array();
+                while ($row = $order->fetch_assoc()) {
+                    $product = $conn->getProductByPid($row["product_id"]);
+                    $valPro = $product->fetch_assoc();
+                    array_push($sid, $valPro["seller_id"]);
+                }
+//                print_r($sid);
+                $shop = $conn->selectSellerByAId($sid);
+                $nameShop = "";
+                $i = 0;
+                while ($valShop = $shop->fetch_assoc()) {
+                    if ($i == 0) {
+                        $nameShop = $nameShop . $valShop["seller_name"];
+                    } else {
+                        $nameShop = $nameShop . " , " . $valShop["seller_name"];
+                    }
+                    $i++;
+                }
+                ?>
+                <tr>
+                    <td><?php echo $nameShop; ?></td>
+                    <td><?php echo $valbill["bill_total"]; ?></td>
+                    <td><?php echo $valbill["bill_deliverystatus"]; ?></td>
+                    <td><a style="color: #76b852" href="Oderstatus.php?bid=<?php echo $valbill["bill_id"]; ?>"><i class="fas fa-calendar-day"></i> รายละเอียดเพิ่มเติ่ม</a></td>
+                </tr>
+                <?php
+            }
+            ?>
         </table>
     </div>
 </div>

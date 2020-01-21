@@ -44,11 +44,11 @@
                 </div>
             </div>
             <?php
-            if($val["bill_deliverystatus"] == "ส่งสำเร็จ") {
+            if($val["bill_deliverystatus"] == "ส่งสำเร็จ" && !$val["reviews_status"]) {
                 ?>
                 <div class="card mt-2" style="width: 100%; padding: 25px">
                     <div class="card-body" >
-                        <form action="check.php?s=18" method="post">
+                        <form action="check.php?s=18&bid=<?php echo $bid; ?>" method="post">
                         <h3 class="font-weight-light " style="text-align: center">รีวิวร้าน</h3>
                         <?php
                         $j=0;
