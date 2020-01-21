@@ -47,11 +47,11 @@ if($con->connect()){
 <form method="POST">
     <table>
         <tr>
-            <th>ลบ</th>
-            <th>แก้ไข</th>
+
             <th>ชื่อ</th>
             <th>ที่อยู่</th>
             <th>เบอร์โทร</th>
+            <th>ลบพนักงาน</th>
 
         </tr>
 
@@ -62,24 +62,19 @@ if($con->connect()){
 
 
                 echo "<tr>";
-                echo "<td><input type='checkbox' name='del[]' value='".$row['id']."'></td>";
-                echo "<td><a href='memberEdit.php?id=".$row['id']."'>แกไข</a></td>";
                 echo "<td>".$row['employee_name']."</td>";
                 echo "<td>".$row['employee_address']."</td>";
                 echo "<td>".$row['employee_tell']."</td>";
-
+                echo "<td><a href='check.php?s=25&user=".$row['employee_username']."'>ลบ</a></td>";
                 echo "</tr>";
 
         }
         ?>
     </table>
     <center>
-        <button class="button button2">ลบข้อมูล</button>
         <button class="button button1"><a href="AddEmployee.php">เพิ่มข้อมูล</a></button>
 </form>
-
-
-</center>
+    </center>
 </body>
 </html>
 

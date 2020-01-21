@@ -244,11 +244,13 @@ elseif ($s == 23){
     $name = $_POST['employee_name'];
     $tell = $_POST['employee_tell'];
     $address = $_POST['employee_add'];
-    $employee_status =  $_SESSION['employee_status'];
+    $employee_status =  1;
 
 
     $con = new ConnectDB();
     $con->connect();
+    $con->EmployeeStatus($_REQUEST['user']);
+
     $sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."'";
     $sql2 = "SELECT `seller_username` FROM `seller` where seller_username = '".$user."' ";
     $sql3 = "SELECT `employee_username` FROM `employee` where employee_username = '".$user."' ";
@@ -258,9 +260,8 @@ elseif ($s == 23){
     if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
 
         $con->InsertEmployee($user,$pass,$name,$tell,$address);
+
     }
-
-
 
 
 }elseif ($s == 24){
@@ -268,4 +269,10 @@ elseif ($s == 23){
     $con->updateCustomer($_SESSION["id"],$_POST["name"],$_POST["username"],$_POST["password"],$_POST["tel"],$_POST["address"]);
     header("Location:customerManage.php");
 }
+elseif ($s == 25){
+    echo $s;
+    $con = new ConnectDB();
+    $con->EmployeeStatus($_REQUEST['user']);
+    header("Location:EditAdmin.php");
+    }
 ?>

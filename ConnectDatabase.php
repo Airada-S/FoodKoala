@@ -331,7 +331,7 @@ class connectDB {
     }
 
     public function InsertEmployee($user,$pass,$name,$tell,$address){
-        $sql = "INSERT INTO `employee`(`employee_tell`, `employee_name`, `employee_address`, `employee_username`, `employee_password`) VALUES ('".$tell."','".$name."','".$address."','".$user."','".$pass."')";
+        $sql = "INSERT INTO `employee`(`employee_tell`, `employee_name`, `employee_address`, `employee_username`, `employee_password`,  `employee_status`) VALUES ('".$tell."','".$name."','".$address."','".$user."','".$pass."','1')";
         echo $sql;
         if(mysqli_query($this->connect(), $sql)){
             header("Location:EditAdmin.php");
@@ -339,4 +339,15 @@ class connectDB {
             echo 'Insert Incomplete';
         }
     }
+    public function EmployeeStatus($employee_username){
+        $sql = "UPDATE `employee` SET `employee_status`= 0 WHERE employee_username ='".$employee_username."'";
+        if(mysqli_query($this->connect(), $sql)){
+            #header("Location:EditAdmin.php");
+            echo "true";
+        }else{
+            echo 'update Incomplete';
+        }
+    }
+
+
 }
