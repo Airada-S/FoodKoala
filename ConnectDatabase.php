@@ -4,7 +4,7 @@ class connectDB {
     public function connect(){
         $username = 'team';
         $password = '';
-        $host = '10.31.2.14';
+        $host = '10.31.2.15';
 //        $host = '10.160.75.88';
         $database = "foodkoala2";
         $port = 3306;
@@ -131,9 +131,8 @@ class connectDB {
             echo 'Insert Incomplete';
         }
     }
-    public function UPDATE3($seller_name){
-        $sql = "UPDATE `seller` SET `seller_status`= true  WHERE seller_name ='".$seller_name."'";
-        echo $seller_name;
+    public function UPDATE3($seller_username){
+        $sql = "UPDATE `seller` SET `seller_status`= true  WHERE seller_username ='".$seller_username."'";
         if(mysqli_query($this->connect(), $sql)){
             header("Location:StoreApproval.php");
         } else {

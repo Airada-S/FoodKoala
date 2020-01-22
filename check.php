@@ -208,11 +208,11 @@ if($s==1){
 
 }
 elseif ($s == 19){
-    $seller_name = $_POST['seller_name'];
-    echo $seller_name;
+    $seller_username = $_POST['seller_username'];
+    echo $seller_username;
     $con = new ConnectDB();
     $con->connect();
-    $con->UPDATE3($seller_name);
+    $con->UPDATE3($seller_username);
 }elseif ($s == 20){
     $_SESSION["bid"] = $_REQUEST["bid"];
     $con = new ConnectDB();
