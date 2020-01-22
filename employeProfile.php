@@ -45,7 +45,7 @@ $bills = $conn->getBillById($_SESSION['id']);
                         </tr>
                         </tbody>
                     </table>
-                    <a href="employeEdit.php"  type="button" class="btn btn-outline-warning float-right">แก้ไขข้อมูล</a>
+                    <a href="employeEdit.php?ce=0"  type="button" class="btn btn-outline-warning float-right">แก้ไขข้อมูล</a>
                 </div>
             </div>
             <div class="card mt-5" style="width: 100%;">

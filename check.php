@@ -15,8 +15,10 @@ if($s==1){
     }
     if($_SESSION['status'] == 'employee'){
         header("Location:employeManage.php");
-    }else{
+    }elseif($_SESSION['status'] == 'admin' || $_SESSION['status'] == 'customer' || $_SESSION['status'] == 'seller'){
         header("Location:index.php");
+    }else{
+        header("Location:login.php?cl=1");
     }
 }elseif($s == 2){
     $pt = $_REQUEST["pt"];
@@ -236,7 +238,19 @@ elseif ($s == 19){
     $addr = $_POST['e_addr'];
 
     $con = new ConnectDB();
-    $con->updateEmployee($_SESSION['id'], $name, $user, $pass, $tel, $addr);
+    $sql = "SELECT `customer_username` FROM `customer` where customer_username = '".$user."'";
+    $sql2 = "SELECT `seller_username` FROM `seller` where seller_username = '".$user."' ";
+    $sql3 = "SELECT `employee_username` FROM `employee` where employee_username = '".$user."' ";
+    $em = $con->getEmployeeById($_SESSION['id']);
+    $valEm = $em->fetch_assoc();
+    $result = mysqli_query($con->connect(),$sql);
+    $result2 = mysqli_query($con->connect(),$sql2);
+    $result3 = mysqli_query($con->connect(),$sql3);
+    if( ($result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ) || $user == $valEm["employee_username"]){
+        $con->updateEmployee($_SESSION['id'], $name, $user, $pass, $tel, $addr);
+    }else{
+        header("Location:employeEdit.php?ce=1");
+    }
 }
 elseif ($s == 23){
     $user = $_POST['employee_user'];

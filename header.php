@@ -22,7 +22,7 @@
 //    }
 //    echo $_SESSION["status"] ;
     $butt = "เข้าสู่ระบบ";
-    $link = "login.php";
+    $link = "login.php?cl=0";
     $link2 = "";
     $link3 = "index.php";
     if($_SESSION["status"] != 'null'){

@@ -21,6 +21,11 @@ $em = $ems->fetch_assoc();
             <div class="card mt-5" style="width: 100%;">
                 <div class="card-body">
                     <h2 style="text-align: center; color: #EF3B3A;">ข้อมูลส่วนตัว</h2>
+                    <?php if($_REQUEST['ce'] == 1){ ?>
+                        <div class="alert alert-danger" role="alert">
+                            Username นี้ซ้ำ
+                        </div>
+                    <?php } ?>
                     <form action="check.php?s=22" method="post">
                     <table style="width: 100%;">
                         <tbody>

@@ -39,7 +39,8 @@ class connectDB {
                     $_SESSION['id'] = $val["seller_id"];
                     return $result;
                 }else{
-                    header("Location:login.php");
+                    echo "ooooooo";
+//                    header("Location:login.php?cl=1");
                 }
             }
         }
@@ -74,7 +75,6 @@ class connectDB {
                 $i++;
             }
         }
-
         return $this->connect()->query($sql2);
     }
     public function getBySellerName($search){
@@ -298,6 +298,10 @@ class connectDB {
 
     public function getEmployeeById($id){
         $sql = "SELECT * FROM employee WHERE `employee_id` =".$id;
+        return $this->connect()->query($sql);
+    }
+    public function getEmployeeByUsername($username){
+        $sql = "SELECT * FROM employee WHERE `employee_username` =".$username;
         return $this->connect()->query($sql);
     }
 
