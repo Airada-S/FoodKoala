@@ -145,6 +145,9 @@ if($s==1){
     $name = $_POST['seller_name'];
     $addr = $_POST['seller_address'];
     $tel = $_POST['seller_tel'];
+    $status = $_POST['seller_Promotion'];
+    $pro = $_POST['seller_pinput'];
+
     $place = "img";
     $image = $_FILES["seller_img"];
 
@@ -155,10 +158,10 @@ if($s==1){
     if($username->num_rows == 0 || $user == $selImg['seller_username']){
         echo 'yes';
         if($image['name'] == ""){
-            $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $selImg['seller_img']);
+            $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $selImg['seller_img'],$status,$pro);
         }else{
             if(move_uploaded_file($image['tmp_name'],$place.'/'.$image['name'])){
-                $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $image['name']);
+                $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $image['name'],$status,$pro);
 
             }else{
                 echo "NO compleate";

@@ -112,6 +112,24 @@ $det = $shop->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
+                        <td style="padding-top: 50px;"></td>
+                        <th style="padding-left: 50px; width: 20%">
+                            โปรโมชั่นร้าน :
+                        </th>
+                        <td style="padding-left: 20px; width: 60%">
+                            <?php if($det['seller_StatusPromotion']==true){ ?>
+                                <input type="radio" name="seller_Promotion1" id="seller_Promotion1" checked > เปิด
+                                <input type="radio" name="seller_Promotion1" id="seller_Promotion2" > ปิด
+                            <?php }else{ ?>
+                                <input type="radio" name="seller_Promotion1" id="seller_Promotion1"> เปิด
+                                <input type="radio" name="seller_Promotion1" id="seller_Promotion2" checked> ปิด
+                            <?php } ?>
+                            <div id="inputPromotion">
+                                <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_pinput" id="seller_pinput" value="<?php echo $det['seller_Promotion'] ?>" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
                         <td colspan="3" style="text-align: center; padding-top: 10px;"><button type="submit" class="btn btn-outline-warning">บันทึก</button></td>
                     </tr>
                 </table>
@@ -121,9 +139,15 @@ $det = $shop->fetch_assoc();
 </div>
 
 <script>
-    /*  ==========================================
-        SHOW UPLOADED IMAGE
-    * ========================================== */
+    // var radio1 = document.getElementById('seller_Promotion1');
+    // var radio2 = document.getElementById('seller_Promotion2');
+    // function setPromotion() {
+    //     if (radio1.checked = true) {
+    //         document.getElementById("seller_pinput").disabled = false;
+    //     } else if(radio2.checked = true){
+    //         document.getElementById("seller_pinput").disabled = true;
+    //     }
+    // }
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -150,6 +174,7 @@ $det = $shop->fetch_assoc();
         var fileName = input.files[0].name;
         infoArea.textContent = 'File name: ' + fileName;
     }
+
 </script>
 </body>
 </html>
