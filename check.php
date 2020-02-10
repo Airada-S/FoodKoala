@@ -145,9 +145,14 @@ if($s==1){
     $name = $_POST['seller_name'];
     $addr = $_POST['seller_address'];
     $tel = $_POST['seller_tel'];
-    $status = $_POST['seller_Promotion'];
+    $condition = $_POST['seller_condition'];
+    $status = $_POST['seller_Promotion1'];
     $pro = $_POST['seller_pinput'];
-
+    if($status == "เปิด"){
+        $status = true;
+    }else{
+        $status = false;
+    }
     $place = "img";
     $image = $_FILES["seller_img"];
 
@@ -158,10 +163,10 @@ if($s==1){
     if($username->num_rows == 0 || $user == $selImg['seller_username']){
         echo 'yes';
         if($image['name'] == ""){
-            $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $selImg['seller_img'],$status,$pro);
+            $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $selImg['seller_img'],$status,$pro,$condition);
         }else{
             if(move_uploaded_file($image['tmp_name'],$place.'/'.$image['name'])){
-                $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $image['name'],$status,$pro);
+                $conn->updateSeller($_SESSION['id'], $user, $pass, $name, $addr, $tel, $image['name'],$status,$pro,$condition);
 
             }else{
                 echo "NO compleate";

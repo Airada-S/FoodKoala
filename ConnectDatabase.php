@@ -224,8 +224,8 @@ class connectDB {
             echo 'update Incomplete';
         }
     }
-    public function updateSeller($id, $user, $pass, $name, $address, $tel, $image){
-        $sql = "Update seller set seller_username = '".$user."', seller_password = '".$pass."', seller_name = '".$name."', seller_address = '".$address."', seller_tel='".$tel."', seller_img = '".$image."' where seller_id=".$id;
+    public function updateSeller($id, $user, $pass, $name, $address, $tel, $image,$status,$pro,$condition){
+        $sql = "Update seller set seller_username = '".$user."', seller_password = '".$pass."', seller_name = '".$name."', seller_address = '".$address."', seller_tel='".$tel."', seller_img = '".$image."', seller_Promotion = '".$pro."', seller_StatusPromotion = '".$status."', seller_conditionPromotion='".$condition."'  where seller_id='".$id."'";
         if(mysqli_query($this->connect(), $sql)){
             echo "true";
             Header("Location:ShopManage.php");

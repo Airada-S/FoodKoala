@@ -118,13 +118,42 @@ $det = $shop->fetch_assoc();
                         </th>
                         <td style="padding-left: 20px; width: 60%">
                             <?php if($det['seller_StatusPromotion']==true){ ?>
-                                <input type="radio" name="seller_Promotion1" id="seller_Promotion1" checked > เปิด
-                                <input type="radio" name="seller_Promotion1" id="seller_Promotion2" > ปิด
-                            <?php }else{ ?>
-                                <input type="radio" name="seller_Promotion1" id="seller_Promotion1"> เปิด
-                                <input type="radio" name="seller_Promotion1" id="seller_Promotion2" checked> ปิด
+                                <div class="form-check-inline">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="seller_Promotion1" id="seller_Promotion1" value="เปิด" checked>
+                                      <label class="form-check-label" for="seller_Promotion1">
+                                        เปิด
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="seller_Promotion1" id="seller_Promotion2" value="ปิด">
+                                      <label class="form-check-label" for="seller_Promotion2">
+                                        ปิด
+                                      </label>
+                                    </div>
+                                </div>
+                            <?php }else if($det['seller_StatusPromotion']==false){ ?>
+                                <div class="form-check-inline">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="seller_Promotion1" id="seller_Promotion1" value="เปิด" >
+                                      <label class="form-check-label" for="seller_Promotion1">
+                                        เปิด
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="seller_Promotion1" id="seller_Promotion2" value="ปิด" checked>
+                                      <label class="form-check-label" for="seller_Promotion2">
+                                        ปิด
+                                      </label>
+                                    </div>
+                                </div>
                             <?php } ?>
-                            <div id="inputPromotion">
+                            <div class="form-group mt-3" >
+                                ซื้อขั้นต่ำ :
+                                <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_condition" id="seller_condition" value="<?php echo $det['seller_conditionPromotion'] ?>" >
+                            </div>
+                            <div class="form-group" >
+                                 ส่วนลด :
                                 <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_pinput" id="seller_pinput" value="<?php echo $det['seller_Promotion'] ?>" >
                             </div>
                         </td>
