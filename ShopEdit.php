@@ -53,7 +53,7 @@ $det = $shop->fetch_assoc();
 <div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
     <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
         <div style="margin: 20px;">
-            <form action="check.php?s=14" method="post" enctype="multipart/form-data">
+            <form action="check.php?s=14" method="post" enctype="multipart/form-data" onsubmit="return phonenumber()">
                 <table style="margin-left: 100px; margin-right: 100px; width: 90%;">
 
                     <tr>
@@ -65,7 +65,7 @@ $det = $shop->fetch_assoc();
                             Username :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_username" value="<?php echo $det['seller_username'] ?>" >
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_username" value="<?php echo $det['seller_username'] ?>" id="username" >
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +73,7 @@ $det = $shop->fetch_assoc();
                             Password :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_password" value="<?php echo $det['seller_password'] ?>" >
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_password" value="<?php echo $det['seller_password'] ?>" id="password" >
                         </td>
                     </tr>
                     <tr>
@@ -81,7 +81,7 @@ $det = $shop->fetch_assoc();
                             ชื่อร้าน :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_name" value="<?php echo $det['seller_name'] ?>" >
+                            <input  type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_name" value="<?php echo $det['seller_name'] ?>" id="name">
                         </td>
                     </tr>
                     <tr>
@@ -108,15 +108,15 @@ $det = $shop->fetch_assoc();
                             เบอร์โทรศัพท์่ :
                         </th>
                         <td style="padding-left: 20px; width: 60%">
-                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?php echo $det['seller_tel'] ?>" >
+                            <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_tel" value="<?php echo $det['seller_tel'] ?>" id="phonnumber" >
                         </td>
                     </tr>
                     <tr>
                         <td style="padding-top: 50px;"></td>
-                        <th style="padding-left: 50px; width: 20%">
+                        <th style="padding-left: 50px; width: 20%; vertical-align: text-top;">
                             โปรโมชั่นร้าน :
                         </th>
-                        <td style="padding-left: 20px; width: 60%">
+                        <td style="padding-left: 20px; width: 60%; border-bottom: 1px solid #E8A42A;">
                             <?php if($det['seller_StatusPromotion']==true){ ?>
                                 <div class="form-check-inline">
                                     <div class="form-check">
@@ -150,16 +150,18 @@ $det = $shop->fetch_assoc();
                             <?php } ?>
                             <div class="form-group mt-3" >
                                 ซื้อขั้นต่ำ :
-                                <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_condition" id="seller_condition" value="<?php echo $det['seller_conditionPromotion'] ?>" >
+                                <input id="SL" class="form-control" type="text" style="border: none;width: 20%;" name="seller_condition" id="seller_condition" value="<?php echo $det['seller_conditionPromotion'] ?>" >
                             </div>
                             <div class="form-group" >
                                  ส่วนลด :
-                                <input type="text" style="border: none; border-bottom: 1px solid #E8A42A; width: 90%;" name="seller_pinput" id="seller_pinput" value="<?php echo $det['seller_Promotion'] ?>" >
+                                <input id="SO" class="form-control" type="text" style="border: none;width: 20%;" name="seller_pinput" id="seller_pinput" value="<?php echo $det['seller_Promotion'] ?>" >
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align: center; padding-top: 10px;"><button type="submit" class="btn btn-outline-warning">บันทึก</button></td>
+                        <td colspan="3" style="text-align: center; padding-top: 10px;">
+                            <input type="submit" class="btn btn-outline-warning">
+                        </td>
                     </tr>
                 </table>
             </form>
@@ -168,19 +170,56 @@ $det = $shop->fetch_assoc();
 </div>
 
 <script>
-    // var radio1 = document.getElementById('seller_Promotion1');
-    // var radio2 = document.getElementById('seller_Promotion2');
-    // function setPromotion() {
-    //     if (radio1.checked = true) {
-    //         document.getElementById("seller_pinput").disabled = false;
-    //     } else if(radio2.checked = true){
-    //         document.getElementById("seller_pinput").disabled = true;
-    //     }
-    // }
+    function phonenumber()
+    {
+        inputtxt = document.getElementById("phonnumber")
+        username = document.getElementById("username")
+        password = document.getElementById("password")
+        nameS = document.getElementById("name")
+        ISL = document.getElementById("SL")
+        ISO = document.getElementById("SO")
+        var phoneno = /^\(?[0]([0-9]{2})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+        var passw=  /^[a-z0-9A-Z]{7,14}$/;
+        var user = /^[A-Za-z0-9_]{4,14}$/;
+        var nameformat = /^[A-Za-z0-9_ ]{2,30}$/;
+        var SL =  /^[0-9]{0,3}$/;
+        var SO =  /^[0-9]{0,2}$/;
+        if(inputtxt.value.match(phoneno)) {
+            if(password.value.match(passw)) {
+                if(username.value.match(user)) {
+                    if(nameS.value.match(nameformat)){
+                        if(ISL.value.match(SL)){
+                            if(ISO.value.match(SO)){
+                                return true
+                            } else{
+                                alert('0 - 100 เปอร์เซนเท่านั้น');
+                                return false
+                            }
+                        } else{
+                            alert('ต้องไม่เกิน 3000');
+                            return false
+                        }
+                    } else{
+                        alert('name \n1.ต้องมีขนาด 2-14 เท่านั้น และต้องไม่มีอักขระพิเศษ ');
+                        return false
+                    }
+                } else {
+                    alert('Username ไม่ถูกต้อง \n1.ต้องมีขนาด 4-14 เท่านั้น และต้องไม่มีอักขระพิเศษ ');
+                    username.focus();
+                    return false;
+                }
+            } else {
+                alert('password ไม่ถูกต้อง\n1.ต้องมี 7 ตัวขึ้นไป\n2.ต้องมีอักษรอยู่ด้วย ')
+                return false;
+            }
+        } else {
+            alert("หมายเลขโทรศัพธ์ของคุณไม่ถูกต้อง ตัวอย่างเช่น 08X-XXXXXXX,08X-XXX-XXXX");
+            return false;
+        }
+    }
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 $('#imageResult')
                     .attr('src', e.target.result);
@@ -188,7 +227,6 @@ $det = $shop->fetch_assoc();
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $(function () {
         $('#upload').on('change', function () {
             readURL(input);
@@ -196,14 +234,12 @@ $det = $shop->fetch_assoc();
     });
     var input = document.getElementById( 'upload' );
     var infoArea = document.getElementById( 'upload-label' );
-
     input.addEventListener( 'change', showFileName );
     function showFileName( event ) {
         var input = event.srcElement;
         var fileName = input.files[0].name;
         infoArea.textContent = 'File name: ' + fileName;
     }
-
 </script>
 </body>
 </html>
