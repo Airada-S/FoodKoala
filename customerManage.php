@@ -66,20 +66,20 @@
         </table>
         <div class="collapse" id="collapseExample">
             <table class="table">
-                <form action="check.php?s=15" method="post">
+                <form action="check.php?s=15" method="post" ONSUBMIT="return chackFormatMony()">
                     <tr>
                         <td><h5>เลขบัตร</h5></td>
                         <td><h5>รหัส CVC</h5></td>
                     </tr>
                     <tr>
-                        <td><input type="text" class="form-control" name="visaID" value="<?php echo $valCus['comment_visaId']; ?>"></td>
-                        <td><input type="text" class="form-control" name="visaPass" value="<?php echo $valCus['comment_visaPass']; ?>"></td>
+                        <td><input type="text" class="form-control" name="visaID" value="<?php echo $valCus['comment_visaId']; ?>" id="passATM"></td>
+                        <td><input type="text" class="form-control" name="visaPass" value="<?php echo $valCus['comment_visaPass']; ?>" id="passCVC"></td>
                     </tr>
                     <tr>
                         <td><h5>จำนวนเงิน</h5></td>
                     </tr>
                     <tr>
-                        <td><input type="text" class="form-control" name="wallet"></td>
+                        <td><input type="text" class="form-control" name="wallet" id="passMonny"></td>
                         <td>บาท</td>
                     </tr>
                     <tr>
@@ -143,6 +143,30 @@
 </html>
 <script>
     let statusedit = false;
+    function chackFormatMony() {
+        passATM1 = document.getElementById("passATM")
+        passCVC1 = document.getElementById("passCVC")
+        passMonny1 = document.getElementById("passMonny")
+        var passATM=  /^[0-9]{16}$/;
+        var passCVC=  /^[0-9]{3,4}$/;
+        var passMonny=  /^[0-9]{3,5}$/;
+        if(passATM1.value.match(passATM)){
+            if(passCVC1.value.match(passCVC)){
+                if(passMonny1.value.match(passMonny)){
+                    return true
+                } else{
+                    alert('จำนวนเงินไม่ถูกต้อง กรุณาใส่เฉพาะตัวเลข 100-10000 บาท');
+                    return false
+                }
+            } else{
+                alert('รหัสบัตร CVC ไม่ถูกต้อง');
+                return false
+            }
+        } else{
+            alert('เลขบัตรไม่ถูกต้อง');
+            return false
+        }
+    }
     function editC() {
         const name1 = document.getElementById("name1");
         const name2 = document.getElementById("name2");
