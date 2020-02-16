@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
     <title></title>
 </head>
 <body>
@@ -67,7 +68,7 @@
         var phoneno = /^\(?[0]([0-9]{2})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
         var passw=  /^[a-z0-9A-Z]{7,14}$/;
         var user = /^[A-Za-z0-9_]{4,14}$/;
-        var nameformat = /^[A-Za-z0-9_]{2,30}$/;
+        var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโั ]{2,30}$/;
 
         if(inputtxt.value.match(phoneno)) {
             if(password.value.match(passw)) {

@@ -83,10 +83,9 @@ if($s==1){
     $result2 = mysqli_query($con->connect(),$sql2);
     $result3 = mysqli_query($con->connect(),$sql3);
     if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
-
         $con->Insert1($user,$pass,$name,$tel,$address);
     }else{
-        header("Location:register.php?n=1");
+        header("Location:register.php?cl=1");
 
     }
 }elseif ($s == 11){
@@ -114,7 +113,7 @@ if($s==1){
     if( $result->num_rows == 0 && $result2->num_rows == 0 && $result3->num_rows == 0 ){
         $con->Insert2($user,$pass,$name,$tel,$address,$time,$file[name]);
     }else{
-        header("Location:register.php?n=2");
+        header("Location:register.php?cl=1");
     }
 
 }elseif ($s == 12){

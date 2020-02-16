@@ -88,6 +88,11 @@ require("SetSessionStatus.php");
     });
 
     function check() {
+        var phoneno = /^\(?[0]([0-9]{2})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+        var passw=  /^[a-z0-9A-Z]{7,14}$/;
+        var userf = /^[A-Za-z0-9_]{4,14}$/;
+        var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโั ]{2,30}$/;
+
         let user = document.getElementById("user");
         let pass = document.getElementById("pass");
         let name = document.getElementById("name");
@@ -95,7 +100,7 @@ require("SetSessionStatus.php");
         let tel = document.getElementById("tel");
         let address = document.getElementById("address");
 
-        if(user.value == ""){
+        if(user.value == "" && user.value.match(userf)){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
@@ -103,23 +108,15 @@ require("SetSessionStatus.php");
             window.alert('Username ไมสามารถใช่ได้')
             return false
         }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
-            return false
-        }
-        else if(pass.value == ""){
+        else if(pass.value == "" && pass.value.match(passw)){
             window.alert('กรุณากรอกข้อมูล Password')
             return false
         }
-        else if(name.value == ""){
+        else if(name.value == "" && name.value.match(nameformat)){
             window.alert('กรุณากรอกข้อมูล Name')
             return false
         }
-        else if(email.value == ""){
-            window.alert('กรุณากรอกข้อมูล Email')
-            return false
-        }
-        else if(tel.value == ""){
+        else if(tel.value == "" && tel.value.match(phoneno)){
             window.alert('กรุณากรอกข้อมูล Phone number')
             return false
         }
@@ -130,15 +127,21 @@ require("SetSessionStatus.php");
 
     }
     function check2() {
+        var phoneno = /^\(?[0]([0-9]{2})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+        var passw=  /^[a-z0-9A-Z]{7,14}$/;
+        var userf = /^[A-Za-z0-9_]{4,14}$/;
+        var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโั ]{2,30}$/;
+        var OC = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+
         let user2 = document.getElementById("user2");
         let pass2 = document.getElementById("pass2");
         let name2 = document.getElementById("name2");
-        let email2 = document.getElementById("email2");
         let tel2 = document.getElementById("tel2");
         let address2 = document.getElementById("address2");
         let time2 = document.getElementById("time2");
         let img2 = document.getElementById("img2");
-        if(user2.value == ""){
+
+        if(user2.value == "" && user2.value.match(userf)){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
@@ -146,19 +149,15 @@ require("SetSessionStatus.php");
             window.alert('Username ไมสามารถใช่ได้')
             return false
         }
-        else if(pass2.value == ""){
+        else if(pass2.value == "" &&  pass2.value.match(passw)){
             window.alert('กรุณากรอกข้อมูล Password')
             return false
         }
-        else if(name2.value == ""){
+        else if(name2.value == "" && name2.value.match(nameformat)){
             window.alert('กรุณากรอกข้อมูล Name')
             return false
         }
-        else if(email2.value == ""){
-            window.alert('กรุณากรอกข้อมูล Email')
-            return false
-        }
-        else if(tel2.value == ""){
+        else if(tel2.value == "" && tel2.value.match(phoneno)){
             window.alert('กรุณากรอกข้อมูล Phone number')
             return false
         }
@@ -166,7 +165,7 @@ require("SetSessionStatus.php");
             window.alert('กรุณากรอกข้อมูล Address')
             return false
         }
-        else if(time2.value == ""){
+        else if(time2.value == "" && time2.value.match(OC)){
             window.alert('กรุณากรอกข้อมูล Open-close time')
             return false
         }
