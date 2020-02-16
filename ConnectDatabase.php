@@ -97,6 +97,9 @@ class connectDB {
                 }
                 $i++;
             }
+        }else{
+            $sql2=$sql2."null";
+            //echo "val = null<br>";
         }
 
         return $this->connect()->query($sql2);
