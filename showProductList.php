@@ -23,6 +23,7 @@
         <tbody>
         <?php
             $sumall = 0;
+            $i=0;
             foreach ($_SESSION["listProduct"] as $key => $value){
                $conn = new ConnectDB();
                $product = $conn->getProductByPid($key);
@@ -33,12 +34,12 @@
                     <td rowspan="2" >
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a  href="check.php?s=8&pid=<?php echo $key ?>" onclick="return deletemount()">
+                                <a  href="check.php?s=8&pid=<?php echo $key ?>" onclick="return deletemount(<?php echo $i ?>)">
                                     <i class="far fa-minus-square" style="font-size: 25px;color: gold"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <p id="mount"> <?php echo $value ?> </p>
+                                <p id="mount<?php echo $i ?>"> <?php echo $value ?> </p>
                             </li>
                             <li class="list-inline-item">
                                 <a  href="check.php?s=9&pid=<?php echo $key ?>" >
@@ -46,12 +47,9 @@
                                 </a>
                             </li>
                         </ul>
-
-
-
                     </td>
                     <td>
-                        <p id="nameP"> <?php echo $row["product_name"]; ?></p>
+                        <p id="nameP<?php echo $i ?>"> <?php echo $row["product_name"]; ?></p>
                     </td>
 
                     <td rowspan="2" style="text-align: center">
@@ -71,6 +69,7 @@
                     </td>
                 </tr>
         <?php
+                $i++;
             }
         ?>
         <tr>
@@ -84,9 +83,9 @@
 </div>
 </body>
 <script>
-    function deletemount() {
-        const x = document.getElementById("mount").textContent;
-        const name = document.getElementById("nameP").textContent;
+    function deletemount(i) {
+        const x = document.getElementById("mount"+i).textContent;
+        const name = document.getElementById("nameP"+i).textContent;
         if(x == 1){
             if (confirm('คุณต้องลบสินค้า'+name+" หรือไม่")) {
                     return true
