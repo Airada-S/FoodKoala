@@ -121,6 +121,14 @@
                             }
                         ?>
                         <tr>
+                            <td colspan="2">ส่วนลด</td>
+                            <td class="float-right"><?php if($val["bill_promotion"] >0){ echo $val["bill_promotion"]."บาท";}else{echo "ไม่มีส่วนลด";}; ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">ค่าจัดส่ง</td>
+                            <td class="float-right"><?php if($val["bill_statusCost"] == true){echo "50 บาท";}else{ echo "ไม่มีค่าจัดส่ง";}; ?></td>
+                        </tr>
+                        <tr>
                             <td colspan="2">ยอดรวม</td>
                             <td class="float-right"><?php echo $val["bill_total"]." บาท"; ?></td>
                         </tr>
