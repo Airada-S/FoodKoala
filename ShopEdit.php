@@ -179,9 +179,9 @@ $det = $shop->fetch_assoc();
         ISL = document.getElementById("SL")
         ISO = document.getElementById("SO")
         var phoneno = /^\(?[0]([0-9]{2})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
-        var passw=  /^[a-z0-9A-Z]{7,14}$/;
+        var passw=  /^[a-z0-9A-Z]{4,14}$/;
         var user = /^[A-Za-z0-9_]{4,14}$/;
-        var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโั ]{2,30}$/;
+        var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโัุู ]{2,}$/;
         var SL =  /^[0-9]{0,3}$/;
         var SO =  /^[0-9]{0,2}$/;
         if(inputtxt.value.match(phoneno)) {
@@ -200,7 +200,7 @@ $det = $shop->fetch_assoc();
                             return false
                         }
                     } else{
-                        alert('name \n1.ต้องมีขนาด 2-14 เท่านั้น และต้องไม่มีอักขระพิเศษ ');
+                        alert('name \n1.ต้องมีขนาด 2-30 เท่านั้น และต้องไม่มีอักขระพิเศษ ');
                         return false
                     }
                 } else {
