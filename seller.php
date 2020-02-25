@@ -35,18 +35,16 @@
                             }
                         }
                         //                        echo $sum."<br>".$n."<br>";
-                        $star = ($sum/$n)*2;
-                        //                        echo $star;
-                        for($i= 1 ;$i<=10;$i++) {
-                            if($star >= $i) {
-                                if ($i % 2 != 0 && $i == floor($star)) {
-                                    echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
-                                } else if($i%2==0){
-                                    echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
-                                }
-                            }else if($i%2==0 && $i-$star != 1){
+                        $star = number_format(($sum / $n), 1, '.', '');
+                        for ($i = 1; $i <= 5; $i++) {
+                            if ($star >= 1) {
+                                echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
+                            } else if($star >= 0.5){
+                                echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
+                            }else {
                                 echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
                             }
+                            $star--;
                         }
                         ?>
                         <a class="font-weight-light" style="font-size: small"><?php  echo "  ".number_format(($sum / $n), 1, '.', '')."/5"; ?></a>
@@ -68,6 +66,16 @@
                                 $i++;
                             }}
                         ?>
+                        <?php if($row["seller_StatusPromotion"] == true){ ?>
+                        <p align="right">
+                            <b style="color: #b85252">ลด <?php echo $row["seller_Promotion"] ?>%</b>
+                            <?php if($row["seller_conditionPromotion"] > 0) {?>
+                                <a style="font-size: small">เมื่อซื้อขั้นต่ำ <?php echo $row["seller_conditionPromotion"] ?> บาท</a>
+                            <?php }else{ ?>
+                                <a style="font-size: small">ไม่มีขั้นต่ำ</a>
+                            <?php } ?>
+                        </p>
+                    <?php } ?>
                     </p>
                     <?php
                     $product = $conn->getProduct($_REQUEST["id"]);

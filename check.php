@@ -126,8 +126,11 @@ if($s==1){
     $conn->updateProduct($pid, $name, $price);
 
 }elseif ($s == 13){
+//    echo $_POST["bTotal"];
+//    echo "<br>".$_POST["bPromo"];
+//    echo "<br>".$_POST["bCost"];
     $conn = new ConnectDB();
-    $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"],$_POST['Cpay']);
+    $bid = $conn->insertBill($_SESSION["listProduct"],$_SESSION["id"],$_POST['Cpay'],$_POST["bTotal"],$_POST["bPromo"],$_POST["bCost"]);
     if($_POST['Cpay'] == "ชำระเงินผ่าน wallet"){
         $bill = $conn->getBillBybid($bid);
         $val1 = $bill->fetch_assoc();

@@ -86,8 +86,11 @@
                             </button>
                         </li>
                     </ul>
-                    <form action="check.php?s=13" method="post">
+                    <form action="check.php?s=13" method="post" onsubmit="setBillValue()">
                         <input type="hidden" id="Cpay" name="Cpay"value=""/>
+                        <input type="hidden" id="bTotal" name="bTotal"value=""/>
+                        <input type="hidden" id="bPromo" name="bPromo"value=""/>
+                        <input type="hidden" id="bCost" name="bCost"value=""/>
                         <button class="btn btn-outline-danger btn-lg btn-block" type="submit">สั่งอาหาร</button >
                     </form>
                 </div>
@@ -97,15 +100,26 @@
             <div class="card" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="font-weight-normal" style="text-align: center">รายการออเดอร์ของคุณ</h5>
+                    <?php
+                    $sid = array();
+                    foreach ($_SESSION["listProduct"] as $key => $value) {
+                        $product = $conn->getProductByPid($key);
+                        $valPro = $product->fetch_assoc();
+                        $arr = array($valPro["seller_id"] => 0);
+                        $sid = $sid+$arr;
+                    }
+                    //print_r($sid);
+                    ?>
                     <table class="table" >
                         <tbody >
                     <?php
-                        $sumall = 0;
+
                         foreach ($_SESSION["listProduct"] as $key => $value) {
                             $conn = new ConnectDB();
                             $product = $conn->getProductByPid($key);
                             $row = $product->fetch_assoc();
-                            $sumall += $row["product_price"] * $value;
+                            $sid[$row["seller_id"]] = $sid[$row["seller_id"]]+($row["product_price"] * $value);
+
 
                     ?>
                             <tr>
@@ -133,25 +147,48 @@
                     <?php
                         }
                     ?>
+
                             <tr>
                                 <td colspan="2">ยอดรวม</td>
-                                <td class="float-right"><?php echo $sumall." บาท"; ?></td>
+                                <td class="float-right"><?php echo array_sum($sid)." บาท"; ?></td>
                             </tr>
+                            <tr>
+                                <td colspan="3" style="padding-bottom: 0px">ส่วนลด</td>
+                            </tr>
+                    <?php
+                    $discount = 0;
+                    foreach ($sid as $key => $value) {
+                        $sells = $conn->getSeller($key);
+                        $sell = $sells->fetch_assoc();
+                        $discount = $discount+($value*$sell["seller_Promotion"]/100);
+                        ?>
+                            <tr>
+                                <td style="border: 0px;padding: 0px"></td>
+                                <td style="border: 0px;padding: 0px">
+                                    <?php echo "จากร้าน : ".$sell["seller_name"]; ?>
+                                </td>
+                                <td class="float-right" style="border: 0px;padding-bottom: 0px;padding-top: 0px"><?php echo ($value*$sell["seller_Promotion"]/100)." บาท"; ?></td>
+                            </tr>
+                    <?php } ?>
+                    <input type="hidden" id="sumPromo" name="sumPromo" value="<?php echo $discount; ?>"/>
                             <tr>
                                 <td colspan="2" style="border: 0px;padding-top: 0px">ค่าจัดส่ง</td>
                                 <td style="border: 0px;padding-top: 0px" class="float-right">
+                                    <a id = "cost">
                                     <?php
                                     $cost = 0;
-                                        if($sumall < 500){
+                                        if(array_sum($sid)-$discount < 500){
                                             $cost = 50;
                                         }
-                                        echo $cost." บาท";
+                                        echo $cost;
                                     ?>
+                                    </a>
+                                     บาท
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">ยอดสุทธิ</td>
-                                <td class="float-right"><a id = "sum"><?php echo $cost+$sumall ?></a> บาท</td>
+                                <td class="float-right"><a id = "sum"><?php echo $cost+array_sum($sid)-$discount ?></a> บาท</td>
                             </tr>
                         </tbody>
                     </table>
@@ -201,6 +238,21 @@
             pay = 'wallet';
             cp.value = 'ชำระเงินผ่าน wallet';
             return true;
+        }
+    }
+    function setBillValue(){
+        var bt = document.getElementById("bTotal");
+        var sum = document.getElementById("sum").textContent;
+        bt.value = sum;
+        var bp = document.getElementById("bPromo");
+        var sumPro = document.getElementById("sumPromo");
+        bp.value = sumPro.value;
+        var bc = document.getElementById("bCost");
+        var cost = document.getElementById("cost").textContent;
+        if(cost == 50){
+            bc.value = 1;
+        }else {
+            bc.value = 0;
         }
 
     }
