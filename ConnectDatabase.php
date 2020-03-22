@@ -4,7 +4,7 @@ class connectDB {
     public function connect(){
         $username = 'team';
         $password = '';
-        $host = '10.31.2.19';
+        $host = '10.160.64.79';
 //        $host = '10.160.75.88';
         $database = "foodkoala2";
         $port = 3306;

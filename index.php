@@ -57,7 +57,6 @@
                                     <?php
                                     $result3 = $conn->getStar($row["seller_id"]);
                                     $sum = 0;
-                                    $n = 1;
                                     if ($result3->num_rows > 0) {
                                         $n = 0;
                                         while ($row3 = $result3->fetch_assoc()) {
